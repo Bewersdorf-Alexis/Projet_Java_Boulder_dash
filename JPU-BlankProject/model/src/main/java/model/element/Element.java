@@ -10,12 +10,13 @@ public class Element {
 	private Permeability permeability;
 	
 	public Element(final Sprite sprite, final Permeability permeability){
-	
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
 	}
 	
 	//*****GET & SET X******\\
 	public int getX() {
-		return x;
+		return this.x;
 	}
 	public void setX(int x) {
 		this.x = x;
@@ -23,7 +24,7 @@ public class Element {
 	
 	//*****GET & SET Y******\\
 	public int getY() {
-		return y;
+		return this.y;
 	}
 	public void setY(int y) {
 		this.y = y;
@@ -31,7 +32,7 @@ public class Element {
 
 	//*****GET & SET Sprite******\\
 	public Sprite getSprite() {
-		return sprite;
+		return this.sprite;
 	}
 
 	protected void setSprite(Sprite sprite) {
@@ -40,7 +41,7 @@ public class Element {
 
 	//*****GET & SET Permeability******\\
 	public Permeability getPermeability() {
-		return permeability;
+		return this.permeability;
 	}
 
 	private void setPermeability(Permeability permeability) {
@@ -48,7 +49,7 @@ public class Element {
 	}
 	
 	public Image getImage() {
-		return null;
+		return this.getSprite().getImage();
 		
 	}
 	
