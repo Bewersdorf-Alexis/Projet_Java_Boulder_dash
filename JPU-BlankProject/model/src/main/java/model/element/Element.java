@@ -4,16 +4,19 @@ import java.awt.Image;
 
 public class Element {
 	
-	private int x;
-	private int y;
+	protected  int x;
+	protected  int y;
 	private Sprite sprite;
-	private Permeability permeability;
+	protected static Permeability permeability;
 	
-	public Element(final Sprite sprite, final Permeability permeability){
+	public Element(final int x, final int y, final Sprite sprite, final Permeability permeability){
+		this.setX(x);
+		this.setY(y);
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
-	
+
+
 	//*****GET & SET X******\\
 	public int getX() {
 		return this.x;

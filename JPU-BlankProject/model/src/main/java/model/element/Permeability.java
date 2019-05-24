@@ -1,5 +1,11 @@
 package model.element;
 
-public class Permeability {
+public enum Permeability {
+	
+	BLOCKING,
+	PENETRABLE,
+	
+	
+	
 
 }
