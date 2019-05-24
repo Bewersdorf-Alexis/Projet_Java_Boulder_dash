@@ -128,46 +128,30 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(1000 + this.getInsets().left + this.getInsets().right, 1000 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
 	}
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
+	//*****FIRST MESSAGE*****\\
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
-	 */
+	//*****KEY*****\\
+	//Typed
 	public void keyTyped(final KeyEvent e) {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-	 */
+	//Pressed
 	public void keyPressed(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-	 */
+	//Released
 	public void keyReleased(final KeyEvent e) {
 
 	}

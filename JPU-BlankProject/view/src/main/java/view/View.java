@@ -9,11 +9,7 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
-/**
- * The Class View.
- *
- * @author Jean-Aymeric Diet
- */
+
 public final class View implements IView, Runnable {
 
 	/** The frame. */
@@ -30,13 +26,7 @@ public final class View implements IView, Runnable {
 		SwingUtilities.invokeLater(this);
 	}
 
-	/**
-	 * Key code to controller order.
-	 *
-	 * @param keyCode
-	 *          the key code
-	 * @return the controller order
-	 */
+	//*****CONTROLLER*****\\
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 			case KeyEvent.VK_G:
@@ -51,32 +41,21 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.English;
 		}
 	}
+	
+	public void setController(final IController controller) {
+		this.viewFrame.setController(controller);
+	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
+	//*****PRINT MESSAGE*****\\
+	/* @see contract.IView#printMessage(java.lang.String)*/
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
-	 */
+	//*****VISIBILITY*****\\
+	/*@see java.lang.Runnable#run()*/
 	public void run() {
 		this.viewFrame.setVisible(true);
 	}
-
-	/**
-	 * Sets the controller.
-	 *
-	 * @param controller
-	 *          the new controller
-	 */
-	public void setController(final IController controller) {
-		this.viewFrame.setController(controller);
-	}
 }
+
