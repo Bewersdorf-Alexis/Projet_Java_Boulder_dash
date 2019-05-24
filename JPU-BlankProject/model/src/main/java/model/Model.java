@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.HelloWorld;
+import entity.Level;
 
 /**
  * The Class Model.
@@ -14,13 +14,13 @@ import entity.HelloWorld;
 public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	private Level helloWorld;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new HelloWorld();
+		this.helloWorld = new Level();
 	}
 
 	/**
@@ -33,7 +33,7 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public HelloWorld getHelloWorld() {
+	public Level getHelloWorld() {
 		return this.helloWorld;
 	}
 
@@ -43,7 +43,7 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setHelloWorld(final HelloWorld helloWorld) {
+	private void setHelloWorld(final Level helloWorld) {
 		this.helloWorld = helloWorld;
 		this.setChanged();
 		this.notifyObservers();

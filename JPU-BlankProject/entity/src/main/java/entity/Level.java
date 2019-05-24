@@ -37,6 +37,20 @@ public class Level extends Entity {
 		this(0, "");
 	}
 
+	public void constructLevel(int x, int y, String map) {
+		
+
+	}
+	
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
+	public String getLevel(int x, int y) {
+		return this.level[x][y];
+	}
+	
 	/**
 	 * Gets the id.
 	 *
@@ -54,25 +68,6 @@ public class Level extends Entity {
 	 */
 	public void setId(final int id) {
 		this.id = id;
-	}
-
-	/**
-	 * Gets the level.
-	 *
-	 * @return the level
-	 */
-	public String getLevel(int x, int y) {
-		return this.level[x][y];
-	}
-
-	/**
-	 * Sets the level.
-	 *
-	 * @param caracter
-	 *          the new character
-	 */
-	public void setLevel(int x, int y, String character) {
-		this.level[x][y] = character;
 	}
 
 	/**
