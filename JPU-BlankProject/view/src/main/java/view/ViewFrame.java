@@ -121,12 +121,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.model = model;
 	}
 
-	/**
-	 * Builds the view frame.
-	 *
-	 * @param model
-	 *          the model
-	 */
+	//*****FRAME******\\
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,12 +132,9 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 	}
 
-	//*****FIRST MESSAGE*****\\
-	public void printMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
 
 	//*****KEY*****\\
+	
 	//Typed
 	public void keyTyped(final KeyEvent e) {
 

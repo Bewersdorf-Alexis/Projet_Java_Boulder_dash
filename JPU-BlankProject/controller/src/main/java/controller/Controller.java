@@ -38,7 +38,7 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'Z', 'Q', 'S', 'D', pour vous déplacer.");
+		this.view.printMessage();
 	}
 
 	/**
@@ -74,16 +74,16 @@ public final class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-			case English:
+			case UP:
 				this.model.loadLevel("GB");
 				break;
-			case Francais:
+			case LEFT:
 				this.model.loadLevel("FR");
 				break;
-			case Deutsch:
+			case DOWN:
 				this.model.loadLevel("DE");
 				break;
-			case Indonesia:
+			case RIGHT:
 				this.model.loadLevel("ID");
 				break;
 			default:

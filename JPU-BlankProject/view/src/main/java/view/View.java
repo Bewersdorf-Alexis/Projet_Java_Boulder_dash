@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
@@ -29,16 +30,16 @@ public final class View implements IView, Runnable {
 	//*****CONTROLLER*****\\
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_G:
-				return ControllerOrder.English;
-			case KeyEvent.VK_F:
-				return ControllerOrder.Francais;
+			case KeyEvent.VK_Z:
+				return ControllerOrder.UP;
+			case KeyEvent.VK_Q:
+				return ControllerOrder.LEFT;
+			case KeyEvent.VK_S:
+				return ControllerOrder.DOWN;
 			case KeyEvent.VK_D:
-				return ControllerOrder.Deutsch;
-			case KeyEvent.VK_I:
-				return ControllerOrder.Indonesia;
-			default:
-				return ControllerOrder.English;
+				return ControllerOrder.RIGHT;
+			default :
+				return ControllerOrder.DEFAULT;
 		}
 	}
 	
@@ -46,16 +47,18 @@ public final class View implements IView, Runnable {
 		this.viewFrame.setController(controller);
 	}
 
-	//*****PRINT MESSAGE*****\\
-	/* @see contract.IView#printMessage(java.lang.String)*/
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
-	}
 
 	//*****VISIBILITY*****\\
 	/*@see java.lang.Runnable#run()*/
 	public void run() {
 		this.viewFrame.setVisible(true);
+	}
+
+	//*****DIALOG*****\\
+	@Override
+	public void printMessage() {
+		JOptionPane.showMessageDialog(null, "Pour vous déplacer utiliser les touches Z, Q, S, D");
+		
 	}
 }
 
