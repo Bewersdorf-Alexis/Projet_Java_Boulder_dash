@@ -15,19 +15,20 @@ public abstract class Mobile extends Element {
 	}
 	
 	public void moveUp() {
-		
+		/*Voir comment changer les coordonnées*/
+		this.y++;
 	}
 	
 	public void moveDown() {
-		
+		this.y--;
 	}
 	
 	public void moveLeft() {
-		
+		this.x--;
 	}
 	
 	public void moveRight() {
-		
+		this.x++;
 	}
 	
 	public void doNothing() {
@@ -51,7 +52,7 @@ public abstract class Mobile extends Element {
 	}	
 	
 	protected void die() {
-		
+		this.state = false;
 	}
 	
 }

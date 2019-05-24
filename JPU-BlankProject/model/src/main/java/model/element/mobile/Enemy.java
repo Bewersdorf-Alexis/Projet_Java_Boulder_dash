@@ -6,7 +6,8 @@ import model.element.Sprite;
 
 public class Enemy extends Character {
 
-	private static Sprite sprite;
+	/*En attente d'ajout des images*/
+	private static Sprite sprite = new Sprite("images/...");
 	private static Sprite spriteLeft;
 	private static Sprite spriteRight;
 	private static Sprite spriteUp;
