@@ -13,7 +13,7 @@ public class LevelTest {
 	@Before
 	public void setUp() throws Exception {
 		this.level = new Level();
-		this.level = new Level(1, "azerty");
+		this.level = new Level(1);
 	}
 
 	/*
@@ -23,52 +23,32 @@ public class LevelTest {
 	}*/
 
 	@Test
-	public void constructLevel() {
+	public void TestconstructLevel() {
 		
-		String expected = "azerty";
-		
-		for(int x=0; x<expected.length(); x++) {
-			for(int y=0; y<expected.length(); y++) {
-				
-				
-				this.level.constructLevel(x, y, expected.substring(x, x+1));
-			}
-		}
+		final String expected = "a";
+		this.level.constructLevel(0, 0, expected);
+		assertEquals(expected, level.getLevel(0, 0));
 	}
 	
 	@Test
-	public void getLevel() {
+	public void TestgetLevel() {
 		
-		fail("Not yet implemented");
+		final String expected = "a";
+		assertEquals(expected, this.level.getLevel(0, 0));
 	}
 	
 	@Test
-	public void getId() {
+	public void TestgetId() {
 		
 		final int expected = 1;
-		assertEquals(expected, level.getId());
+		assertEquals(expected, this.level.getId());
 	}
 
 	@Test
-	public void setId() {
+	public void TestsetId() {
 		
 		final int expected = 2;
 		this.level.setId(expected);
 		assertEquals(expected, level.getId());
-	}
-
-	@Test
-	public void getMap() {
-		
-		final String expected = "azerty";
-		assertEquals(expected, level.getMap());
-	}
-
-	@Test
-	public void setMap() {
-		
-		final String expected = "azertyu";
-		this.level.setMap(expected);
-		assertEquals(expected, level.getMap());
 	}
 }

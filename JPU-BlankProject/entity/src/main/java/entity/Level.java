@@ -3,18 +3,15 @@ package entity;
 /**
  * The Class HelloWorld.
  *
- * @author Jean-Aymeric Diet
+ * @author Carlu Florian
  */
 public class Level extends Entity {
 
 	/** The id. */
 	private int			id;
-
-	/** The Map */
-	private String Map;
 	
 	/** The Level. */
-	private String[][]	level;
+	private String[][]	level = new String[40][22];
 
 	/**
 	 * Instantiates a new Level.
@@ -22,24 +19,36 @@ public class Level extends Entity {
 	 * @param id
 	 *          the id
 
-	 * @param message
-	 *          the message
+	 * initializes the table
 	 */
-	public Level(final int id, final String map) {
+	public Level(final int id) {
 		this.setId(id);
-		this.setMap(map);
+		this.level[0][0] = "a";
 	}
 
 	/**
-	 * Instantiates a new hello world.
+	 * Instantiates a new Level.
 	 */
 	public Level() {
-		this(0, "");
+		this(0);
 	}
 
+	/**
+	 * Builds the level table
+	 * 
+	 * @param x
+	 * 			the x position in table
+	 * 
+	 * @param y
+	 * 			the y position in table
+	 * 
+	 * @param map
+	 * 			the character of map level
+	 * 
+	 */
 	public void constructLevel(int x, int y, String map) {
 		
-
+		this.level[x][y] = map;
 	}
 	
 	/**
@@ -68,25 +77,6 @@ public class Level extends Entity {
 	 */
 	public void setId(final int id) {
 		this.id = id;
-	}
-
-	/**
-	 * Gets the map.
-	 *
-	 * @return the map
-	 */
-	public String getMap() {
-		return Map;
-	}
-
-	/**
-	 * Sets the map.
-	 *
-	 * @param map
-	 *          the new map
-	 */
-	public void setMap(String map) {
-		this.Map = map;
 	}
 
 }
