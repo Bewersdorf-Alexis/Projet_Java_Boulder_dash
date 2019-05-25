@@ -16,7 +16,7 @@ public interface IModel {
 	 *
 	 * @return the helloworld entity
 	 */
-	Level getHelloWorld();
+	Level getLevel();
 
 	/**
 	 * Load the message.
@@ -24,7 +24,7 @@ public interface IModel {
 	 * @param code
 	 *          the code
 	 */
-	void loadHelloWorld(String code);
+	void loadLevel(int id);
 
 	/**
 	 * Gets the observable.

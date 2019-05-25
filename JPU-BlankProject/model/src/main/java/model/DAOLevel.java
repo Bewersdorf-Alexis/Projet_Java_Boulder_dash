@@ -66,47 +66,34 @@ class DAOLevel extends DAOEntity<Level> {
 	 */
 	@Override
 	public Level find(final int id) {
-		Level helloWorld = new Level();
+		Level level = new Level();
 
 		try {
-			final String sql = "{call helloworldById(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setInt(1, id);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				helloWorld = new Level(id, resultSet.getString("message"));
+			
+			for(int x=0; x<40; x++) {
+				for(int y=0; y<22; y++) {
+					
+					final String sql = "{call LevelByID(?,?,?)}";
+					final CallableStatement call = this.getConnection().prepareCall(sql);
+					call.setInt(1, x);
+					call.setInt(2, y);
+					call.setInt(3, id);
+					call.execute();
+					final ResultSet resultSet = call.getResultSet();
+					if (resultSet.first()) {
+							level.constructLevel(y, x, resultSet.getString("C"+x));
+						}
+						return level;
+					
+				}
 			}
-			return helloWorld;
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *:
-	 * @see model.DAOEntity#find(java.lang.String)
-	 */
-	@Override
-	public Level find(final String code) {
-		Level helloWorld = new Level();
-
-		try {
-			final String sql = "{call helloworldByCode(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setString(1, code);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				helloWorld = new Level(resultSet.getInt("id"), code, resultSet.getString("message"));
+				
+			} catch (final SQLException e) {
+				e.printStackTrace();
 			}
-			return helloWorld;
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+			return null;
+				
+
 	}
 
 }

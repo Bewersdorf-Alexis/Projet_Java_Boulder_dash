@@ -14,13 +14,13 @@ import entity.Level;
 public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
-	private Level helloWorld;
+	private Level level;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new Level();
+		this.level = new Level();
 	}
 
 	/**
@@ -33,8 +33,8 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public Level getHelloWorld() {
-		return this.helloWorld;
+	public Level getLevel() {
+		return this.level;
 	}
 
 	/**
@@ -43,8 +43,8 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setHelloWorld(final Level helloWorld) {
-		this.helloWorld = helloWorld;
+	private void setLevel(final Level level) {
+		this.level = level;
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -60,10 +60,10 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadHelloWorld(final String code) {
+	public void loadLevel(final int id) {
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
+			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(daoLevel.find(id));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
