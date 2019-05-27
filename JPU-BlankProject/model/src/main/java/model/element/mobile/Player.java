@@ -3,24 +3,25 @@ package model.element.mobile;
 import java.awt.Image;
 import java.io.IOException;
 
-import model.element.Permeability;
-import model.element.Sprite;
+import contract.ICharacter;
+import contract.ISprite;
+import contract.Permeability;
 
 public class Player implements ICharacter {
 
-	private int x;
-	private int y;
+	private int xPlayer;
+	private int yPlayer;
 	
 	/*En attente des images*/
-	private static Sprite sprite = new Sprite("images/...");
-	private static Sprite spriteLeft;
-	private static Sprite spriteRight;
-	private static Sprite spriteUp;
-	private static Sprite spriteDown;
+	private static ISprite sprite;
+	private static ISprite spriteLeft;
+	private static ISprite spriteRight;
+	private static ISprite spriteUp;
+	private static ISprite spriteDown;
 	
 	public Player(final int x, final int y) throws IOException {
-		this.x = x;
-		this.y = y;
+		this.xPlayer = x;
+		this.yPlayer = y;
 		spriteLeft.loadImage();
 		spriteRight.loadImage();
 		spriteUp.loadImage();
@@ -50,25 +51,25 @@ public class Player implements ICharacter {
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.xPlayer;
 	}
 
 	@Override
 	public void setX(int x) {
 		// TODO Auto-generated method stub
-		
+		this.xPlayer = x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.yPlayer;
 	}
 
 	@Override
 	public void setY(int y) {
 		// TODO Auto-generated method stub
-		
+		this.yPlayer = y;
 	}
 
 	@Override
@@ -78,15 +79,9 @@ public class Player implements ICharacter {
 	}
 
 	@Override
-	public Sprite getSprite() {
+	public ISprite getSprite() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void setSprite(Sprite sprite) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -111,6 +106,48 @@ public class Player implements ICharacter {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void setSprite(ISprite sprite) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getImageName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setImageName(String imageName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

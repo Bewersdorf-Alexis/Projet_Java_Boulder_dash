@@ -2,15 +2,16 @@ package model.element.mobile;
 
 import java.awt.Image;
 
-import model.element.Permeability;
-import model.element.Sprite;
+import contract.IItem;
+import contract.ISprite;
+import contract.Permeability;
 
 public class Rock implements IItem {
 
 	private int x;
 	private int y;
 	
-	private static Sprite sprite;
+	private static ISprite sprite;
 	
 	public Rock(int x, int y) {
 		this.x = x;
@@ -48,18 +49,6 @@ public class Rock implements IItem {
 	}
 
 	@Override
-	public Sprite getSprite() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setSprite(Sprite sprite) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public Permeability getPermeability() {
 		// TODO Auto-generated method stub
 		return null;
@@ -85,6 +74,54 @@ public class Rock implements IItem {
 
 	@Override
 	public void inTheAir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ISprite getSprite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setSprite(ISprite sprite) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getImageName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setImageName(String imageName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
 		// TODO Auto-generated method stub
 		
 	}

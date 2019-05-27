@@ -1,8 +1,8 @@
-package model.element;
+package contract;
 
 import java.awt.Image;
 
-public interface IElement {
+public interface IElement extends ISprite {
 
 
 	public int getX();
@@ -13,9 +13,9 @@ public interface IElement {
 
 	public void setY(int y);
 
-	public Sprite getSprite();
+	public ISprite getSprite();
 
-	public void setSprite(Sprite sprite);
+	public void setSprite(ISprite sprite);
 
 	public Permeability getPermeability();
 

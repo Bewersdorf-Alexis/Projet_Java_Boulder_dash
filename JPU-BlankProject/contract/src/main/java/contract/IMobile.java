@@ -1,8 +1,4 @@
-package model.element.mobile;
-
-import model.element.IElement;
-import model.element.Permeability;
-import model.element.Sprite;
+package contract;
 
 public interface IMobile extends IElement {
 	

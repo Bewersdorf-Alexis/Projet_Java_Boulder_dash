@@ -3,8 +3,9 @@ package model.element.mobile;
 import java.awt.Image;
 import java.io.IOException;
 
-import model.element.Permeability;
-import model.element.Sprite;
+import contract.ICharacter;
+import contract.ISprite;
+import contract.Permeability;
 
 public class Enemy implements ICharacter {
 
@@ -12,11 +13,11 @@ public class Enemy implements ICharacter {
 	private int y;
 	
 	/*En attente d'ajout des images*/
-	private static Sprite sprite = new Sprite("images/...");
-	private static Sprite spriteLeft;
-	private static Sprite spriteRight;
-	private static Sprite spriteUp;
-	private static Sprite spriteDown;
+	private static ISprite sprite;
+	private static ISprite spriteLeft;
+	private static ISprite spriteRight;
+	private static ISprite spriteUp;
+	private static ISprite spriteDown;
 	
 	public Enemy(final int x, final int y) throws IOException {
 		this.x = x;
@@ -80,18 +81,6 @@ public class Enemy implements ICharacter {
 	}
 
 	@Override
-	public Sprite getSprite() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setSprite(Sprite sprite) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public Permeability getPermeability() {
 		// TODO Auto-generated method stub
 		return null;
@@ -113,6 +102,54 @@ public class Enemy implements ICharacter {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ISprite getSprite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setSprite(ISprite sprite) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getImageName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setImageName(String imageName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

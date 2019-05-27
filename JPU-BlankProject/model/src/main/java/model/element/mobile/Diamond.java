@@ -2,12 +2,14 @@ package model.element.mobile;
 
 import java.awt.Image;
 
-import model.element.Permeability;
-import model.element.Sprite;
+import contract.IElement;
+import contract.IItem;
+import contract.ISprite;
+import contract.Permeability;
 
 public class Diamond implements IItem {
 
-	private static Sprite sprite;
+	private static ISprite sprite;
 	private int Score;
 	private boolean stateRecup;
 	
@@ -63,13 +65,13 @@ public class Diamond implements IItem {
 	}
 
 	@Override
-	public Sprite getSprite() {
+	public ISprite getSprite() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setSprite(Sprite sprite) {
+	public void setSprite(ISprite sprite) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -100,6 +102,42 @@ public class Diamond implements IItem {
 
 	@Override
 	public void inTheAir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getImageName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setImageName(String imageName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
 		// TODO Auto-generated method stub
 		
 	}
