@@ -11,20 +11,11 @@ import contract.IModel;
 import contract.IView;
 
 
-public final class View implements IView, Runnable {
+public final class View {
 
-	/** The frame. */
-	private final ViewFrame viewFrame;
-
-	/**
-	 * Instantiates a new view.
-	 *
-	 * @param model
-	 *          the model
-	 */
-	public View(final IModel model) {
-		this.viewFrame = new ViewFrame(model);
-		SwingUtilities.invokeLater(this);
+	
+	public View() {
+		ViewFrame view = new ViewFrame();
 	}
 
 	//*****CONTROLLER*****\\
@@ -42,23 +33,6 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.DEFAULT;
 		}
 	}
-	
-	public void setController(final IController controller) {
-		this.viewFrame.setController(controller);
-	}
 
-
-	//*****VISIBILITY*****\\
-	/*@see java.lang.Runnable#run()*/
-	public void run() {
-		this.viewFrame.setVisible(true);
-	}
-
-	//*****DIALOG*****\\
-	@Override
-	public void printMessage() {
-		JOptionPane.showMessageDialog(null, "Pour vous déplacer utiliser les touches Z, Q, S, D");
-		
-	}
 }
 

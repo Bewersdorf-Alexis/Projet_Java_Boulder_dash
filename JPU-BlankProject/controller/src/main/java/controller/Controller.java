@@ -29,17 +29,6 @@ public final class Controller implements IController {
 		this.setModel(model);
 	}
 
-	/**
-     * Control.
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
-	 */
-	public void control() {
-		this.view.printMessage();
-	}
 
 	/**
      * Sets the view.
