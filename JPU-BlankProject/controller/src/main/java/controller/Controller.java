@@ -1,6 +1,7 @@
 package controller;
 
 import contract.ControllerOrder;
+import contract.ICharacter;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
@@ -15,6 +16,8 @@ public final class Controller implements IController {
 
 	/** The model. */
 	private IModel	model;
+	
+	private ICharacter player;
 
 	/**
 	 * Instantiates a new controller.
@@ -75,16 +78,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				
+				this.player.moveUp();			
 				break;
 			case Down:
-				this.model.loadLevel("FR");
+				this.player.moveDown();
 				break;
 			case Left:
-				this.model.loadLevel("DE");
+				this.player.moveLeft();
 				break;
 			case Right:
-				this.model.loadLevel("ID");
+				this.player.moveRight();
 				break;
 			default:
 				break;
