@@ -33,11 +33,6 @@ class ViewPanel extends JPanel implements Observer {
 	
 	private ICharacter player;
 	
-	/*private int xPlayer;
-	private int yPlayer;
-	private int dxPlayer;
-	private int dyPlayer;*/
-	
 	
 	/**
 	 * Instantiates a new view panel.
@@ -55,8 +50,6 @@ class ViewPanel extends JPanel implements Observer {
 		
 		icoPlayer1 = new ImageIcon(getClass().getResource("/images/JoueurDescendArret.png"));
 		this.imgPlayer1 = this.icoPlayer1.getImage();
-		
-		
 	}
 
 	/**
@@ -105,7 +98,6 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawImage(imgFond, 640, 352, null);
 		graphics.drawImage(imgFond, 640, -352, null);
 		
-		//this.move();
 		int x = player.getX();
 		int y = player.getY();
 		graphics.drawImage(imgPlayer1, x, y, null);
