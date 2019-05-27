@@ -12,7 +12,6 @@ public class Player implements ICharacter {
 	private int xPlayer;
 	private int yPlayer;
 	
-	/*En attente des images*/
 	private static ISprite sprite;
 	private static ISprite spriteLeft;
 	private static ISprite spriteRight;
@@ -29,18 +28,22 @@ public class Player implements ICharacter {
 	}
 	
 	public void moveUp() {
+		this.setY(yPlayer ++);
 		this.setSprite(spriteUp);
 	}
 	
 	public void moveDown() {
+		this.setY(yPlayer --);
 		this.setSprite(spriteDown);
 	}
 	
 	public void moveLeft() {
+		this.setX(xPlayer --);
 		this.setSprite(spriteLeft);
 	}
 	
 	public void moveRight() {
+		this.setX(xPlayer ++);
 		this.setSprite(spriteRight);
 	}
 	
