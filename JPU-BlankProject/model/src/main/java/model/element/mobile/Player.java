@@ -18,13 +18,13 @@ public class Player implements ICharacter {
 	private static ISprite spriteUp;
 	private static ISprite spriteDown;
 	
-	public Player(final int x, final int y) throws IOException {
+	public Player(final int x, final int y) {
 		this.xPlayer = x;
 		this.yPlayer = y;
-		spriteLeft.loadImage();
+		/*spriteLeft.loadImage();
 		spriteRight.loadImage();
 		spriteUp.loadImage();
-		spriteDown.loadImage();
+		spriteDown.loadImage();*/
 	}
 	
 	public void moveUp() {

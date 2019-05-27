@@ -6,10 +6,12 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import contract.ICharacter;
+import contract.IModel;
 
 /**
  * The Class ViewPanel.
@@ -28,7 +30,7 @@ class ViewPanel extends JPanel implements Observer {
 	
 	
 	
-	private ImageIcon icoPlayer1;
+	private Image icoPlayer1;
 	private Image imgPlayer1;
 	
 	private ICharacter player;
@@ -48,8 +50,15 @@ class ViewPanel extends JPanel implements Observer {
 		icoFond = new ImageIcon(getClass().getResource("/images/Background.png"));
 		this.imgFond = this.icoFond.getImage();
 		
-		icoPlayer1 = new ImageIcon(getClass().getResource("/images/JoueurDescendArret.png"));
-		this.imgPlayer1 = this.icoPlayer1.getImage();
+		try {
+			icoPlayer1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/JoueurDescendArret.png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		this.imgPlayer1 = this.icoPlayer1;
+		
+		this.player = this.viewFrame.getModel().getCharacter();
 	}
 
 	/**
@@ -98,9 +107,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawImage(imgFond, 640, 352, null);
 		graphics.drawImage(imgFond, 640, -352, null);
 		
-		int x = player.getX();
-		int y = player.getY();
-		graphics.drawImage(imgPlayer1, x, y, null);
+		graphics.drawImage(imgPlayer1, this.player.getX(), this.player.getY(), null);
 	}
 
 	

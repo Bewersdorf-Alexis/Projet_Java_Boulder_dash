@@ -3,10 +3,10 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
-
-
+import contract.ICharacter;
 import contract.IModel;
 import entity.Level;
+import model.element.mobile.Player;
 
 /**
  * The Class Model.
@@ -17,12 +17,15 @@ public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
 	private Level level;
+	
+	private Player player;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
 		this.level = new Level();
+		this.player = new Player(5, 5);
 	}
 
 	/**
@@ -84,4 +87,9 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+	
+	public ICharacter getCharacter() {
+		return this.player;
+	}
+	
 }
