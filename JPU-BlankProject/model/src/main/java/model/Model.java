@@ -19,13 +19,18 @@ public final class Model extends Observable implements IModel {
 	private Level level;
 	
 	private Player player;
+	
+	private int xPlayer;
+	private int yPlayer;
+	private int dx;
+	private int dy;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
 		this.level = new Level();
-		this.player = new Player(5, 5);
+		this.player = new Player(this.xPlayer, this.yPlayer);
 	}
 
 	/**
@@ -91,5 +96,32 @@ public final class Model extends Observable implements IModel {
 	public ICharacter getCharacter() {
 		return this.player;
 	}
+	
+	public void move(int xPlayer, int yPlayer) {
+		this.xPlayer = xPlayer;
+		this.yPlayer = yPlayer;
+		
+		try {
+			Thread.sleep(3);
+		} catch (InterruptedException e) {}
+	}
+
+	public int getDx() {
+		return this.dx;
+	}
+
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
+	public int getDy() {
+		return this.dy;
+	}
+
+	public void setDy(int dy) {
+		this.dy = dy;
+	}
+	
+	
 	
 }

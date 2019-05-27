@@ -35,6 +35,8 @@ class ViewPanel extends JPanel implements Observer {
 	
 	private ICharacter player;
 	
+	private IModel model;
+	
 	
 	/**
 	 * Instantiates a new view panel.
@@ -59,6 +61,7 @@ class ViewPanel extends JPanel implements Observer {
 		this.imgPlayer1 = this.icoPlayer1;
 		
 		this.player = this.viewFrame.getModel().getCharacter();
+		this.model = this.viewFrame.getModel();
 	}
 
 	/**
@@ -98,17 +101,11 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		//graphics.drawString(this.getViewFrame().getModel().getLevel().getMessage(), 10, 20);
 		graphics.drawImage(imgFond, 0, 0, null);
-		graphics.drawImage(imgFond, -640, 0, null);
-		graphics.drawImage(imgFond, 640, 0, null);
-		graphics.drawImage(imgFond, 0, -352, null);
-		graphics.drawImage(imgFond, 0, 352, null);
-		graphics.drawImage(imgFond, -640, -352, null);
-		graphics.drawImage(imgFond, -640, 352, null);
-		graphics.drawImage(imgFond, 640, 352, null);
-		graphics.drawImage(imgFond, 640, -352, null);
 		
 		graphics.drawImage(imgPlayer1, this.player.getX(), this.player.getY(), null);
+		
+		this.repaint();
 	}
-
+	
 	
 }

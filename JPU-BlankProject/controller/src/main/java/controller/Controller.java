@@ -19,6 +19,7 @@ public final class Controller implements IController {
 	
 	private ICharacter player;
 
+
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -30,6 +31,7 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
+		this.player = this.model.getCharacter();
 	}
 
 	/**
@@ -78,16 +80,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				this.player.moveUp();			
+				this.model.getCharacter().setY(this.model.getCharacter().getY() - 1);
 				break;
 			case Down:
-				this.player.moveDown();
+				this.model.getCharacter().setY(this.model.getCharacter().getY() + 1);
 				break;
 			case Left:
-				this.player.moveLeft();
+				this.model.getCharacter().setX(this.model.getCharacter().getX() - 1);
 				break;
 			case Right:
-				this.player.moveRight();
+				this.model.getCharacter().setX(this.model.getCharacter().getX() + 1);
 				break;
 			default:
 				break;

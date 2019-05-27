@@ -30,21 +30,25 @@ public class Player implements ICharacter {
 	public void moveUp() {
 		this.setY(yPlayer ++);
 		this.setSprite(spriteUp);
+		System.out.println("Je monte");
 	}
 	
 	public void moveDown() {
 		this.setY(yPlayer --);
 		this.setSprite(spriteDown);
+		System.out.println("Je descends");
 	}
 	
 	public void moveLeft() {
 		this.setX(xPlayer --);
 		this.setSprite(spriteLeft);
+		System.out.println("Je vais à gauche");
 	}
 	
 	public void moveRight() {
 		this.setX(xPlayer ++);
 		this.setSprite(spriteRight);
+		System.out.println("Je vais à droite");
 	}
 	
 	public void doNothing() {
