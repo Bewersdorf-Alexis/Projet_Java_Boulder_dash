@@ -6,6 +6,7 @@ package main;
 
 import java.awt.HeadlessException;
 import java.io.IOException;
+
 import contract.ControllerOrder;
 import controller.Controller;
 import model.Model;
@@ -28,7 +29,9 @@ public abstract class Main {
      */
     public static void main(final String[] args) {
         final Model model = new Model();
-        final View view = new View();
+        final View view = new View(model);
+        final Controller controller = new Controller(view, model);
+        view.setController(controller);
 
         controller.control();
         controller.orderPerform(ControllerOrder.Default);

@@ -32,6 +32,18 @@ public final class Controller implements IController {
 		this.setModel(model);
 	}
 
+	//*****WRITE MESSAGE FOR KEY*****\\
+	/**
+     * Control.
+     */
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IController#control()
+	 */
+	public void control() {
+		this.view.printMessage("Pour vous déplacer utilisez les touches Z, Q, S, D");
+	}
 
 	/**
      * Sets the view.

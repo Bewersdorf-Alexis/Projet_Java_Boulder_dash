@@ -45,7 +45,6 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-
 	private void setLevel(final Level level) {
 		this.level = level;
 		this.setChanged();

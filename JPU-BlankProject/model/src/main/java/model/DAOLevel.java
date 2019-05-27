@@ -67,6 +67,7 @@ class DAOLevel extends DAOEntity<Level> {
 	@Override
 	public Level find(final int id) {
 		Level level = new Level();
+
 		try {
 			final String sql = "{call helloworldById(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
@@ -91,6 +92,7 @@ class DAOLevel extends DAOEntity<Level> {
 	@Override
 	public Level find(final String code) {
 		Level level = new Level();
+
 		try {
 			final String sql = "{call helloworldByCode(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);

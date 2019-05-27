@@ -6,6 +6,7 @@ package contract;
  * @author Jean-Aymeric Diet
  */
 public enum ControllerOrder {
+
 	Up,
 	Left,
 	Down,

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.Observable;
@@ -19,9 +20,11 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame					viewFrame;
+	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
+	//*****VARIABLES*****\\
 	private ImageIcon icoFond;
 	private Image imgFond;
 	
@@ -32,12 +35,7 @@ class ViewPanel extends JPanel implements Observer {
 	
 	private ICharacter player;
 	
-	/*private int xPlayer;
-	private int yPlayer;
-	private int dxPlayer;
-	private int dyPlayer;*/
-	
-	
+	//*****PANEL*****\\
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -54,8 +52,6 @@ class ViewPanel extends JPanel implements Observer {
 		
 		icoPlayer1 = new ImageIcon(getClass().getResource("/images/JoueurDescendArret.png"));
 		this.imgPlayer1 = this.icoPlayer1.getImage();
-		
-		
 	}
 
 	/**
@@ -86,6 +82,7 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 	}
 
+	//*****DRAW*****\\
 	/*
 	 * (non-Javadoc)
 	 *
@@ -93,7 +90,6 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		//graphics.drawString(this.getViewFrame().getModel().getLevel().getMessage(), 10, 20);
 		graphics.drawImage(imgFond, 0, 0, null);
 		graphics.drawImage(imgFond, -640, 0, null);
 		graphics.drawImage(imgFond, 640, 0, null);
@@ -103,11 +99,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawImage(imgFond, -640, 352, null);
 		graphics.drawImage(imgFond, 640, 352, null);
 		graphics.drawImage(imgFond, 640, -352, null);
-		
-		//this.move();
-		int x = player.getX();
-		int y = player.getY();
-		graphics.drawImage(imgPlayer1, x, y, null);
+
 	}
 
 	
