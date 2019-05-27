@@ -4,6 +4,10 @@
  */
 package main;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
+import contract.ControllerOrder;
+import controller.Controller;
 import model.Model;
 import view.View;
 
@@ -19,10 +23,15 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
+     * @throws IOException 
+     * @throws HeadlessException 
      */
     public static void main(final String[] args) {
         final Model model = new Model();
         final View view = new View();
 
+        controller.control();
+        controller.orderPerform(ControllerOrder.Default);
+    	
     }
 }

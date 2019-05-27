@@ -3,6 +3,8 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+
+
 import contract.IModel;
 import entity.Level;
 
@@ -14,13 +16,13 @@ import entity.Level;
 public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
-	private Level helloWorld;
+	private Level level;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new Level();
+		this.level = new Level();
 	}
 
 	/**
@@ -34,7 +36,7 @@ public final class Model extends Observable implements IModel {
 	 * @see contract.IModel#getMessage()
 	 */
 	public Level getLevel() {
-		return this.helloWorld;
+		return this.level;
 	}
 
 	/**
@@ -43,8 +45,9 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setLevel(final Level helloWorld) {
-		this.helloWorld = helloWorld;
+
+	private void setLevel(final Level level) {
+		this.level = level;
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -62,8 +65,8 @@ public final class Model extends Observable implements IModel {
 	 */
 	public void loadLevel(final String code) {
 		try {
-			final DAOLevel daoHelloWorld = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(daoHelloWorld.find(code));
+			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(daoLevel.find(code));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

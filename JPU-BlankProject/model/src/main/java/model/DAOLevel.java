@@ -66,8 +66,7 @@ class DAOLevel extends DAOEntity<Level> {
 	 */
 	@Override
 	public Level find(final int id) {
-		Level helloWorld = new Level();
-
+		Level level = new Level();
 		try {
 			final String sql = "{call helloworldById(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
@@ -75,9 +74,9 @@ class DAOLevel extends DAOEntity<Level> {
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
-				helloWorld = new Level(id, resultSet.getString("code"), resultSet.getString("message"));
+				level = new Level(id, resultSet.getString("code"), resultSet.getString("message"));
 			}
-			return helloWorld;
+			return level;
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -91,8 +90,7 @@ class DAOLevel extends DAOEntity<Level> {
 	 */
 	@Override
 	public Level find(final String code) {
-		Level helloWorld = new Level();
-
+		Level level = new Level();
 		try {
 			final String sql = "{call helloworldByCode(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
@@ -100,9 +98,9 @@ class DAOLevel extends DAOEntity<Level> {
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
-				helloWorld = new Level(resultSet.getInt("id"), code, resultSet.getString("message"));
+				level = new Level(resultSet.getInt("id"), code, resultSet.getString("message"));
 			}
-			return helloWorld;
+			return level;
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

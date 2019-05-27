@@ -6,11 +6,9 @@ package contract;
  * @author Jean-Aymeric Diet
  */
 public enum ControllerOrder {
-	UP, 
-	LEFT, 
-	DOWN, 
-	RIGHT, 
-	DEFAULT,
-
-
+	Up,
+	Left,
+	Down,
+	Right, 
+	Default
 }
