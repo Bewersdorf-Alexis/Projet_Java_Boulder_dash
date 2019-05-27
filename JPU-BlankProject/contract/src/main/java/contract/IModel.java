@@ -24,7 +24,8 @@ public interface IModel {
 	 * @param code
 	 *          the code
 	 */
-	void loadLevel(String code);
+
+	void loadLevel(int id);
 
 	/**
 	 * Gets the observable.

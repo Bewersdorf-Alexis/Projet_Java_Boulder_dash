@@ -62,10 +62,11 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadLevel(final String code) {
+
+	public void loadLevel(final int id) {
 		try {
 			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(daoLevel.find(code));
+			this.setLevel(daoLevel.find(id));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

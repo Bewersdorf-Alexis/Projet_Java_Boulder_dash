@@ -74,17 +74,17 @@ public final class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-			case Up:
-				
+			case English:
+				this.model.loadLevel(1);
 				break;
-			case Down:
-				this.model.loadLevel("FR");
+			case Francais:
+				this.model.loadLevel(2);
 				break;
-			case Left:
-				this.model.loadLevel("DE");
+			case Deutsch:
+				this.model.loadLevel(3);
 				break;
-			case Right:
-				this.model.loadLevel("ID");
+			case Indonesia:
+				this.model.loadLevel(4);
 				break;
 			default:
 				break;
