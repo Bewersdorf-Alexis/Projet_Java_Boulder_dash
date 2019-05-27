@@ -67,7 +67,7 @@ class DAOLevel extends DAOEntity<Level> {
 	@Override
 	public Level find(final int id) {
 		Level level = new Level();
-
+		
 		try {
 			
 			for(int x=0; x<40; x++) {
@@ -81,19 +81,18 @@ class DAOLevel extends DAOEntity<Level> {
 					call.execute();
 					final ResultSet resultSet = call.getResultSet();
 					if (resultSet.first()) {
-							level.constructLevel(y, x, resultSet.getString("C"+x));
+							level.constructLevel(x, y, resultSet.getString("C"+x));
 						}
-						return level;
-					
+						
 				}
 			}
+			return level;
 				
 			} catch (final SQLException e) {
 				e.printStackTrace();
 			}
 			return null;
 				
-
 	}
 
 }
