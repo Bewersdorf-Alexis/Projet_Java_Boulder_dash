@@ -1,6 +1,8 @@
 package view;
 
+import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
@@ -24,6 +26,8 @@ public final class View implements IView, Runnable {
 	 *
 	 * @param model
 	 *          the model
+	 * @throws IOException 
+	 * @throws HeadlessException 
 	 */
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
@@ -39,16 +43,16 @@ public final class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_G:
-				return ControllerOrder.English;
-			case KeyEvent.VK_F:
-				return ControllerOrder.Francais;
+			case KeyEvent.VK_Z:
+				return ControllerOrder.Up;
+			case KeyEvent.VK_Q:
+				return ControllerOrder.Left;
+			case KeyEvent.VK_S:
+				return ControllerOrder.Down;
 			case KeyEvent.VK_D:
-				return ControllerOrder.Deutsch;
-			case KeyEvent.VK_I:
-				return ControllerOrder.Indonesia;
+				return ControllerOrder.Right;
 			default:
-				return ControllerOrder.English;
+				return ControllerOrder.Default;
 		}
 	}
 
