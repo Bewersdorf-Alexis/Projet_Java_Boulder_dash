@@ -92,7 +92,6 @@ public final class Controller implements IController {
 				this.model.getCharacter().moveRight();
 				break;
 			default:
-				this.model.getCharacter().moveRight();
 				break;
 		}
 	}

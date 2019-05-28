@@ -35,11 +35,5 @@ public interface IModel {
 	
 	ICharacter getCharacter();
 	
-	void move(int xPlayer, int yPlayer);
-	
-	void setDy(int dy);
-	int getDy();
-	void setDx(int dx);
-	int getDx();
 	
 }
