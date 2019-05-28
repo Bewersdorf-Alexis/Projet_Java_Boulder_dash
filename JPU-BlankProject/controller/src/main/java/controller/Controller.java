@@ -80,18 +80,19 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				this.model.getCharacter().setY(this.model.getCharacter().getY() - 1);
+				this.model.getCharacter().moveUp();
 				break;
 			case Down:
-				this.model.getCharacter().setY(this.model.getCharacter().getY() + 1);
+				this.model.getCharacter().moveDown();
 				break;
 			case Left:
-				this.model.getCharacter().setX(this.model.getCharacter().getX() - 1);
+				this.model.getCharacter().moveLeft();
 				break;
 			case Right:
-				this.model.getCharacter().setX(this.model.getCharacter().getX() + 1);
+				this.model.getCharacter().moveRight();
 				break;
 			default:
+				this.model.getCharacter().moveRight();
 				break;
 		}
 	}
