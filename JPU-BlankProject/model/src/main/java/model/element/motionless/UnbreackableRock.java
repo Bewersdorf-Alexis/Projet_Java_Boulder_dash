@@ -8,7 +8,7 @@ public class UnbreackableRock extends MotionLessElement {
 
 	//mettre les sprites
 	
-	UnbreackableRock(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
+	UnbreackableRock(int x, int y, IModel level) {
 		super(x, y, sprite, level, permeability);
 
 	}

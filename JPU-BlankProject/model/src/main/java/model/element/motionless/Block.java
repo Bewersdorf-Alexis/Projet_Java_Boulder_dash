@@ -8,7 +8,7 @@ public class Block extends MotionLessElement {
 
 	//mettre sprite
 	
-	Block(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
+	Block(int x, int y, IModel level) {
 		super(x, y, sprite, level, permeability);
 
 	}

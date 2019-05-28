@@ -9,7 +9,7 @@ public class Ennemy extends Mobile implements ICharacter {
 
 	//mettre les sprites
 	
-	Ennemy(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
+	Ennemy(int x, int y, IModel level) {
 		super(x, y, sprite, level, permeability);
 
 	}

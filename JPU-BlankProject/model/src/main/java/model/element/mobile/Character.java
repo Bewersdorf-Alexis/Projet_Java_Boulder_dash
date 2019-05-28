@@ -10,8 +10,45 @@ public class Character extends Mobile implements ICharacter {
 	
 	//mettre les sprites
 	
-	Character(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
-		super(x, y, sprite, level, permeability);
+    /** The Constant CharacterDescendsStop. */
+    private static final Sprite CharacterDescendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+	
+    /** The Constant CharacterDescendsRightFoot. */
+    private static final Sprite CharacterDescendsRightFoot          = new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterDescendsLeftFoot. */
+    private static final Sprite CharacterDescendsLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+	
+    /** The Constant RightCharacterStop. */
+    private static final Sprite RightCharacterStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant RightCharacterRightFoot. */
+    private static final Sprite RightCharacterRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant RightCharacterLeftFoot. */
+    private static final Sprite RightCharacterLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterStop. */
+    private static final Sprite LeftCharacterStop          			= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterRightFoot. */
+    private static final Sprite LeftCharacterRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterLeftFoot. */
+    private static final Sprite LeftCharacterLeftFoot          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsStop. */
+    private static final Sprite CharacterAscendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsRightFoot. */
+    private static final Sprite CharacterAscendsRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsLeftFoot. */
+    private static final Sprite CharacterAscendsLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+	
+	Character(int x, int y, IModel level) {
+		super(x, y, sprite, level, Permeability.BLOCKING);
 
 	}
 

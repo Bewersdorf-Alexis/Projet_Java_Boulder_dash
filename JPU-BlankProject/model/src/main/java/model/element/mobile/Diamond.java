@@ -9,7 +9,7 @@ public class Diamond extends Mobile implements IItem {
 
 	//mettre les sprites
 	
-	Diamond(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
+	Diamond(int x, int y, IModel level) {
 		super(x, y, sprite, level, permeability);
 
 	}

@@ -9,7 +9,7 @@ public class Rock extends Mobile implements IItem {
 
 	//mettre les sprites
 	
-	Rock(int x, int y, Sprite sprite, IModel level, Permeability permeability) {
+	Rock(int x, int y, IModel level) {
 		super(x, y, sprite, level, permeability);
 
 	}
