@@ -38,6 +38,7 @@ class ViewPanel extends JPanel implements Observer {
 	private IModel model;
 	
 	
+	
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -100,6 +101,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawImage(imgFond, 0, 0, null);
 		
 		graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), null);
+		
 		
 		this.repaint();
 	}
