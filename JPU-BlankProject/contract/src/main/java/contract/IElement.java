@@ -1,6 +1,6 @@
 package contract;
 
-import java.awt.Image;
+
 
 public interface IElement extends ISprite {
 
@@ -20,7 +20,5 @@ public interface IElement extends ISprite {
 	public Permeability getPermeability();
 
 	public void setPermeability(Permeability permeability);
-	
-	public Image getImage();
 	
 }

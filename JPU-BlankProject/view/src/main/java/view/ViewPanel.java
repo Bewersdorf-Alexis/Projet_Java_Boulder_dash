@@ -28,11 +28,6 @@ class ViewPanel extends JPanel implements Observer {
 	private Image icoFond;
 	private Image imgFond;
 	
-	
-	
-	private Image icoPlayer1;
-	private Image imgPlayer1;
-	
 	private ICharacter player;
 	
 	private IModel model;

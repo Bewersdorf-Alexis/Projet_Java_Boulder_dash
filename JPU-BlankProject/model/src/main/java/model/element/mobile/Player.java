@@ -12,6 +12,8 @@ import contract.Permeability;
 
 public class Player implements ICharacter {
 
+	private ISprite sprite;
+	
 	private int xPlayer;
 	private int yPlayer;
 
@@ -42,8 +44,6 @@ public class Player implements ICharacter {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		//this.setSprite(spriteUp);
-		//System.out.println("Je monte");
 	}
 	
 	public void moveDown() {
@@ -55,8 +55,6 @@ public class Player implements ICharacter {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		//this.setSprite(spriteDown);
-		//System.out.println("Je descends");
 	}
 	
 	public void moveLeft() {
@@ -68,8 +66,6 @@ public class Player implements ICharacter {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		//this.setSprite(spriteLeft);
-		//System.out.println("Je vais à gauche");
 	}
 	
 	public void moveRight() {
@@ -81,8 +77,6 @@ public class Player implements ICharacter {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		//this.setSprite(spriteRight);
-		//System.out.println("Je vais à droite");
 	}
 	
 	public void doNothing() {
@@ -127,7 +121,7 @@ public class Player implements ICharacter {
 	@Override
 	public ISprite getSprite() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.sprite;
 	}
 
 	@Override
@@ -157,7 +151,7 @@ public class Player implements ICharacter {
 	@Override
 	public void setSprite(ISprite sprite) {
 		// TODO Auto-generated method stub
-		
+		this.sprite = sprite;
 	}
 
 	@Override
@@ -166,9 +160,11 @@ public class Player implements ICharacter {
 		this.image = image;
 	}
 
-	public void loadImage() throws IOException {
+	public void loadImage() {
 		// TODO Auto-generated method stub
+		try {
 		this.setImage(ImageIO.read(new File("images/" + this.getImageName() + ".png")));
+		} catch(Exception e) {}
 	}
 
 	@Override
