@@ -1,20 +1,22 @@
 package entity;
 
-import contract.IElement;
+
 
 /**
  * The Class HelloWorld.
  *
  * @author Jean-Aymeric Diet
  */
-public class Level extends Entity implements IElement {
+public class Level extends Entity {
 
 	/** The id. */
 	private int				id;
 	
 	/** The Level. */
-	private IElement[][]	level = new IElement[40][22];
+	//private IElement[][]	level = new IElement[40][22];
 
+	
+	
 	/**
 	 * Instantiates a new Level.
 	 *
@@ -46,19 +48,19 @@ public class Level extends Entity implements IElement {
 	 * 			the character of map level
 	 * 
 	 */
-	public void constructLevel(int x, int y, IElement element) {
+	/*public void constructLevel(int x, int y, IElement element) {
 		
 		this.level[x][y] = element;
-	}
+	}*/
 	
 	/**
 	 * Gets the level.
 	 *
 	 * @return the level
 	 */
-	public IElement getElement(int x, int y) {
+	/*public IElement getElement(int x, int y) {
 		return this.level[x][y];
-	}
+	}*/
 	
 	/**
 	 * Gets the id.
@@ -77,30 +79,6 @@ public class Level extends Entity implements IElement {
 	 */
 	public void setId(final int id) {
 		this.id = id;
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setX(int x) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setY(int y) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

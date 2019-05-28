@@ -31,15 +31,15 @@ public class ModelTest {
     public void tearDown() throws Exception {
     }
 
-    @Test
+    /*@Test
     public void testGetMessage() {
         Assert.assertEquals("", this.model.getLevel().getMessage());
-    }
+    }*/
 
     /**
      * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
      */
-    @Test
+   /* @Test
     public void testGetMessageString() {
         this.model.loadLevel("GB");
         Assert.assertEquals("Hello world", this.model.getLevel().getMessage());
@@ -49,5 +49,5 @@ public class ModelTest {
         Assert.assertEquals("Hallo Welt", this.model.getLevel().getMessage());
         this.model.loadLevel("ID");
         Assert.assertEquals("Salamat pagi dunia", this.model.getLevel().getMessage());
-    }
+    }*/
 }

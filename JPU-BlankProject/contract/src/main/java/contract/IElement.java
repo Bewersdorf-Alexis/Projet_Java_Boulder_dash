@@ -1,8 +1,8 @@
 package contract;
 
+import java.awt.Image;
 
-
-public interface IElement {
+public interface IElement extends ISprite {
 
 
 	public int getX();
@@ -12,5 +12,7 @@ public interface IElement {
 	public int getY();
 
 	public void setY(int y);
+	
+	//public Image getImage();
 	
 }

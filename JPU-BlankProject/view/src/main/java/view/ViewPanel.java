@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import contract.ICharacter;
+import contract.IElement;
+import contract.IMobile;
 import contract.IModel;
 
 /**
@@ -27,8 +29,9 @@ class ViewPanel extends JPanel implements Observer {
 
 	private Image icoFond;
 	private Image imgFond;
+	//private static final Sprite CharacterDescendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
 	
-	private ICharacter player;
+	private IElement player;
 	
 	private IModel model;
 	
@@ -98,6 +101,5 @@ class ViewPanel extends JPanel implements Observer {
 		
 		this.repaint();
 	}
-	
 	
 }

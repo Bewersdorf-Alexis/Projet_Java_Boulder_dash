@@ -65,6 +65,12 @@ class DAOLevel extends DAOEntity<Level> {
 	}
 
 	@Override
+	public Level find(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*@Override
     public Level find(final int id) {
 		
 		Level level = new Level();
@@ -118,7 +124,7 @@ class DAOLevel extends DAOEntity<Level> {
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 
 }

@@ -6,27 +6,27 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import contract.ICharacter;
+import contract.ISprite;
+import contract.Permeability;
 import entity.Level;
-import model.element.Permeability;
-import model.element.Sprite;
 
-public class Enemy extends Mobile implements ICharacter {
+public class Enemy implements ICharacter {
 
 	private int x;
 	private int y;
 	
 	/*En attente d'ajout des images*/
-	private static Sprite sprite = new Sprite("BatDescendArret.png");
-	private static Sprite spriteLeft;
-	private static Sprite spriteRight;
-	private static Sprite spriteUp;
-	private static Sprite spriteDown;
+	private static ISprite sprite;
+	private static ISprite spriteLeft;
+	private static ISprite spriteRight;
+	private static ISprite spriteUp;
+	private static ISprite spriteDown;
 	
 	private String str = null;
 	private static Image image;
 	
 	public Enemy(final int x, final int y, Level level) {
-		super(x, y, sprite, level, Permeability.BLOCKING);
+		
 		/*spriteLeft.loadImage();
 		spriteRight.loadImage();
 		spriteUp.loadImage();
@@ -35,7 +35,7 @@ public class Enemy extends Mobile implements ICharacter {
 	
 	public void moveUp() {
 		this.setY(this.getY() - 16);
-		this.getSprite().setImageName("images/BatMonteArret.png");
+		this.setImageName("images/BatMonteArret.png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
 		}
@@ -96,6 +96,48 @@ public class Enemy extends Mobile implements ICharacter {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getImageName() {
+		// TODO Auto-generated method stub
+		return this.str;
+	}
+
+	@Override
+	public void setImageName(String imageName) {
+		// TODO Auto-generated method stub
+		this.str = imageName;
+	}
+
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
