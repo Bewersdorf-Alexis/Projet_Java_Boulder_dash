@@ -31,7 +31,8 @@ class ViewPanel extends JPanel implements Observer {
 	private Image imgFond;
 	//private static final Sprite CharacterDescendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
 	
-	private IElement player;
+	private ICharacter player;
+	private IMobile diamond;
 	
 	private IModel model;
 	
@@ -56,6 +57,7 @@ class ViewPanel extends JPanel implements Observer {
 		this.imgFond = this.icoFond;
 		
 		this.player = this.viewFrame.getModel().getCharacter();
+		this.diamond = this.viewFrame.getModel().getMobile();
 		this.model = this.viewFrame.getModel();
 	}
 
@@ -98,6 +100,8 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawImage(imgFond, 0, 0, null);
 		
 		graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), null);
+		
+		graphics.drawImage(this.diamond.getImage(), this.diamond.getX(), this.diamond.getY(), null);
 		
 		this.repaint();
 	}

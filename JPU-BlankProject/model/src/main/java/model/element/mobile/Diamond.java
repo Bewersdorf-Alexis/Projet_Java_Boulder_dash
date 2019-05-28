@@ -1,6 +1,9 @@
 package model.element.mobile;
 
 import java.awt.Image;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import contract.IElement;
 import contract.IMobile;
@@ -14,8 +17,16 @@ public class Diamond implements IMobile {
 	private int Score;
 	private boolean stateRecup;
 	
+	private Image image;
+	private String imageName;
+	
+	private int xDiamond;
+	private int yDiamond;
+	
 	public Diamond(final int x, final int y, Level level) {
-		
+		this.xDiamond = x;
+		this.yDiamond = y;
+		this.moveDown();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -39,43 +50,49 @@ public class Diamond implements IMobile {
 	@Override
 	public void moveDown() {
 		// TODO Auto-generated method stub
-		this.setY(this.getY() + 16);
+		//this.setY(this.getY() + 16);
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/diamond.png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.xDiamond;
 	}
 
 	@Override
 	public void setX(int x) {
 		// TODO Auto-generated method stub
-		
+		this.xDiamond = x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.yDiamond;
 	}
 
 	@Override
 	public void setY(int y) {
 		// TODO Auto-generated method stub
-		
+		this.yDiamond = y;
 	}
 
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.image;
 	}
 
 	@Override
 	public void setImage(Image image) {
 		// TODO Auto-generated method stub
-		
+		this.image = image;
 	}
 
 	@Override
@@ -87,13 +104,13 @@ public class Diamond implements IMobile {
 	@Override
 	public String getImageName() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.imageName;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
 		// TODO Auto-generated method stub
-		
+		this.imageName = imageName;
 	}
 
 	@Override
