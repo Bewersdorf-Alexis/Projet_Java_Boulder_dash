@@ -24,7 +24,7 @@ public interface IModel {
 	 * @param code
 	 *          the code
 	 */
-	void loadLevel(String code);
+	void loadLevel(int id);
 
 	/**
 	 * Gets the observable.
@@ -34,6 +34,8 @@ public interface IModel {
 	Observable getObservable();
 	
 	ICharacter getCharacter();
+	
+	IMobile getMobile();
 	
 	
 }

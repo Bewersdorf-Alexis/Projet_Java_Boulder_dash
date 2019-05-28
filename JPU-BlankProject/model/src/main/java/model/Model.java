@@ -4,8 +4,11 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.ICharacter;
+import contract.IElement;
+import contract.IMobile;
 import contract.IModel;
 import entity.Level;
+import model.element.mobile.Diamond;
 import model.element.mobile.Player;
 
 /**
@@ -22,6 +25,8 @@ public final class Model extends Observable implements IModel {
 	
 	private int xPlayer;
 	private int yPlayer;
+	
+	private Diamond diamond;
 
 	/**
 	 * Instantiates a new model.
@@ -29,6 +34,7 @@ public final class Model extends Observable implements IModel {
 	public Model() {
 		this.level = new Level();
 		this.player = new Player(this.xPlayer, this.yPlayer);
+		this.diamond = new Diamond(1,1);
 	}
 
 	/**
@@ -68,10 +74,10 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadLevel(final String code) {
+	public void loadLevel(final int id) {
 		try {
 			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(daoLevel.find(code));
+			this.setLevel(daoLevel.find(id));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -93,6 +99,12 @@ public final class Model extends Observable implements IModel {
 	
 	public ICharacter getCharacter() {
 		return this.player;
+	}
+
+	@Override
+	public IMobile getMobile() {
+		// TODO Auto-generated method stub
+		return this.diamond;
 	}
 	
 	

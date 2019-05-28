@@ -7,12 +7,49 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import contract.ICharacter;
-import contract.ISprite;
-import contract.Permeability;
+import entity.Level;
+import model.element.Permeability;
+import model.element.Sprite;
 
-public class Player implements ICharacter {
+public class Player extends Mobile implements ICharacter {
 
-	private ISprite sprite;
+//mettre les sprites
+	
+    /** The Constant CharacterDescendsStop. */
+    private static final Sprite CharacterDescendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+	
+    /** The Constant CharacterDescendsRightFoot. */
+    private static final Sprite CharacterDescendsRightFoot          = new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterDescendsLeftFoot. */
+    private static final Sprite CharacterDescendsLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+	
+    /** The Constant RightCharacterStop. */
+    private static final Sprite RightCharacterStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant RightCharacterRightFoot. */
+    private static final Sprite RightCharacterRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant RightCharacterLeftFoot. */
+    private static final Sprite RightCharacterLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterStop. */
+    private static final Sprite LeftCharacterStop          			= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterRightFoot. */
+    private static final Sprite LeftCharacterRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant LeftCharacterLeftFoot. */
+    private static final Sprite LeftCharacterLeftFoot          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsStop. */
+    private static final Sprite CharacterAscendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsRightFoot. */
+    private static final Sprite CharacterAscendsRightFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
+    
+    /** The Constant CharacterAscendsLeftFoot. */
+    private static final Sprite CharacterAscendsLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
 	
 	private int xPlayer;
 	private int yPlayer;
@@ -25,19 +62,14 @@ public class Player implements ICharacter {
 	private String imageNameLeft = "JoueurGaucheArret";
 	private String str = null;
 	
-	public Player(final int x, final int y) {
-		this.xPlayer = x;
-		this.yPlayer = y;
-		this.doNothing();
-		/*spriteLeft.loadImage();
-		spriteRight.loadImage();
-		spriteUp.loadImage();
-		spriteDown.loadImage();*/
+	public Player(final int x, final int y, Level level) {
+		super(x, y, CharacterDescendsStop, level, Permeability.BLOCKING);
+		//loadImage
 	}
 	
 	public void moveUp() {
 		this.setY(this.getY() - 16);
-		this.setImageName("images/" + imageNameUp + ".png");
+		this.getSprite().setImageName("images/" + imageNameUp + ".png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
 		}
@@ -48,7 +80,7 @@ public class Player implements ICharacter {
 	
 	public void moveDown() {
 		this.setY(this.getY() + 16);
-		this.setImageName("images/" + imageNameDown + ".png");
+		this.getSprite().setImageName("images/" + imageNameDown + ".png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
 		}
@@ -59,7 +91,7 @@ public class Player implements ICharacter {
 	
 	public void moveLeft() {
 		this.setX(this.getX() - 16);
-		this.setImageName("images/" + imageNameLeft + ".png");
+		this.getSprite().setImageName("images/" + imageNameLeft + ".png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
 		}
@@ -70,7 +102,7 @@ public class Player implements ICharacter {
 	
 	public void moveRight() {
 		this.setX(this.getX() + 16);
-		this.setImageName("images/" + imageNameRight + ".png");
+		this.getSprite().setImageName("images/" + imageNameRight + ".png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
 		}
@@ -89,106 +121,15 @@ public class Player implements ICharacter {
 	}
 
 	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return this.xPlayer;
-	}
-
-	@Override
-	public void setX(int x) {
-		// TODO Auto-generated method stub
-		this.xPlayer = x;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return this.yPlayer;
-	}
-
-	@Override
-	public void setY(int y) {
-		// TODO Auto-generated method stub
-		this.yPlayer = y;
-	}
-
-	@Override
 	public void die() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ISprite getSprite() {
-		// TODO Auto-generated method stub
-		return this.sprite;
-	}
-
-	@Override
-	public Permeability getPermeability() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPermeability(Permeability permeability) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Image getImage() {
-		// TODO Auto-generated method stub
-		return this.image;
-	}
-
-	@Override
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void setSprite(ISprite sprite) {
-		// TODO Auto-generated method stub
-		this.sprite = sprite;
-	}
-
-	@Override
-	public void setImage(Image image) {
-		// TODO Auto-generated method stub
-		this.image = image;
-	}
-
-	public void loadImage() {
-		// TODO Auto-generated method stub
-		try {
-		this.setImage(ImageIO.read(new File("images/" + this.getImageName() + ".png")));
-		} catch(Exception e) {}
-	}
-
-	@Override
-	public String getImageName() {
-		// TODO Auto-generated method stub
-		return this.str;
-	}
-
-	@Override
-	public void setImageName(String imageName) {
-		// TODO Auto-generated method stub
-		this.str = imageName;
-	}
-
-	@Override
-	public boolean isImageLoaded() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setImageLoaded(boolean isImageLoaded) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

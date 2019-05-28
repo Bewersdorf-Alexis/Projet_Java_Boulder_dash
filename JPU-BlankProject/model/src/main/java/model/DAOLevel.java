@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.Level;
+import model.element.mobile.Diamond;
+import model.element.mobile.Enemy;
+import model.element.mobile.Rock;
+import model.element.motionless.Block;
+import model.element.motionless.UnbreakableBlock;
 
 /**
  * The Class DAOHelloWorld.
@@ -59,54 +64,61 @@ class DAOLevel extends DAOEntity<Level> {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int)
-	 */
 	@Override
-	public Level find(final int id) {
+    public Level find(final int id) {
+		
 		Level level = new Level();
-
+          
 		try {
-			final String sql = "{call helloworldById(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setInt(1, id);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				level = new Level(id, resultSet.getString("code"), resultSet.getString("message"));
+                 
+			for(int x=0; x<40; x++) {
+				for(int y=0; y<22; y++) {
+                               
+					final String sql = "{call LevelByID(?,?,?)}";
+					final CallableStatement call = this.getConnection().prepareCall(sql);
+					call.setInt(1, x);
+					call.setInt(2, y);
+					call.setInt(3, id);
+					call.execute();
+					final ResultSet resultSet = call.getResultSet();
+					if (resultSet.first()) {
+						switch(resultSet.getString("C"+x)) {
+						case "B":
+							level.constructLevel(x, y, new UnbreakableBlock(x, y, level));
+							break;
+						case "C":
+							level.constructLevel(x, y, new Block(x, y, level));
+							break;
+						case "R":
+							level.constructLevel(x, y, new Rock(x, y, level));
+							break;
+						case "E":
+							level.constructLevel(x, y, new Enemy(x, y, level));
+							break;
+						case "S":
+							level.constructLevel(x, y, new Exit(x, y, level));
+							break;
+						case "P":
+							level.constructLevel(x, y, new Character(x, y, level));
+							break;
+						case "D":
+							level.constructLevel(x, y, new Diamond(x, y, level));
+							break;
+						default :
+							level.constructLevel(x, y, null);
+						}
+                                     
+					}
+                                     
+				}
 			}
 			return level;
+                        
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(java.lang.String)
-	 */
-	@Override
-	public Level find(final String code) {
-		Level level = new Level();
-
-		try {
-			final String sql = "{call helloworldByCode(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setString(1, code);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				level = new Level(resultSet.getInt("id"), code, resultSet.getString("message"));
-			}
-			return level;
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 }

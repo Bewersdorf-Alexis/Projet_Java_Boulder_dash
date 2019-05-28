@@ -2,7 +2,7 @@ package contract;
 
 
 
-public interface IElement extends ISprite {
+public interface IElement {
 
 
 	public int getX();
@@ -12,13 +12,5 @@ public interface IElement extends ISprite {
 	public int getY();
 
 	public void setY(int y);
-
-	public ISprite getSprite();
-
-	public void setSprite(ISprite sprite);
-
-	public Permeability getPermeability();
-
-	public void setPermeability(Permeability permeability);
 	
 }
