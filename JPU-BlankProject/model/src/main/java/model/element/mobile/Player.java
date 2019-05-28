@@ -1,7 +1,10 @@
 package model.element.mobile;
 
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import contract.ICharacter;
 import contract.ISprite;
@@ -11,16 +14,19 @@ public class Player implements ICharacter {
 
 	private int xPlayer;
 	private int yPlayer;
+
+	private static Image image;
 	
-	private static ISprite sprite;
-	private static ISprite spriteLeft;
-	private static ISprite spriteRight;
-	private static ISprite spriteUp;
-	private static ISprite spriteDown;
+	private String imageNameUp = "JoueurMonteArret";
+	private String imageNameDown = "JoueurDescendArret";
+	private String imageNameRight = "JoueurDroiteArret";
+	private String imageNameLeft = "JoueurGaucheArret";
+	private String str = null;
 	
 	public Player(final int x, final int y) {
 		this.xPlayer = x;
 		this.yPlayer = y;
+		this.doNothing();
 		/*spriteLeft.loadImage();
 		spriteRight.loadImage();
 		spriteUp.loadImage();
@@ -29,30 +35,63 @@ public class Player implements ICharacter {
 	
 	public void moveUp() {
 		this.setY(this.getY() - 16);
-		this.setSprite(spriteUp);
+		this.setImageName("images/" + imageNameUp + ".png");
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		//this.setSprite(spriteUp);
 		//System.out.println("Je monte");
 	}
 	
 	public void moveDown() {
 		this.setY(this.getY() + 16);
-		this.setSprite(spriteDown);
+		this.setImageName("images/" + imageNameDown + ".png");
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		//this.setSprite(spriteDown);
 		//System.out.println("Je descends");
 	}
 	
 	public void moveLeft() {
 		this.setX(this.getX() - 16);
-		this.setSprite(spriteLeft);
+		this.setImageName("images/" + imageNameLeft + ".png");
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		//this.setSprite(spriteLeft);
 		//System.out.println("Je vais à gauche");
 	}
 	
 	public void moveRight() {
 		this.setX(this.getX() + 16);
-		this.setSprite(spriteRight);
+		this.setImageName("images/" + imageNameRight + ".png");
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		//this.setSprite(spriteRight);
 		//System.out.println("Je vais à droite");
 	}
 	
 	public void doNothing() {
-		this.setSprite(sprite);
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + imageNameDown + ".png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -106,7 +145,7 @@ public class Player implements ICharacter {
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.image;
 	}
 
 	@Override
@@ -124,25 +163,24 @@ public class Player implements ICharacter {
 	@Override
 	public void setImage(Image image) {
 		// TODO Auto-generated method stub
-		
+		this.image = image;
 	}
 
-	@Override
-	public void loadImage() {
+	public void loadImage() throws IOException {
 		// TODO Auto-generated method stub
-		
+		this.setImage(ImageIO.read(new File("images/" + this.getImageName() + ".png")));
 	}
 
 	@Override
 	public String getImageName() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.str;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
 		// TODO Auto-generated method stub
-		
+		this.str = imageName;
 	}
 
 	@Override

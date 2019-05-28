@@ -25,7 +25,7 @@ class ViewPanel extends JPanel implements Observer {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
-	private ImageIcon icoFond;
+	private Image icoFond;
 	private Image imgFond;
 	
 	
@@ -49,16 +49,13 @@ class ViewPanel extends JPanel implements Observer {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 		
-		icoFond = new ImageIcon(getClass().getResource("/images/Background.png"));
-		this.imgFond = this.icoFond.getImage();
-		
 		try {
-			icoPlayer1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/JoueurDescendArret.png"));
+			icoFond = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/Background.png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		this.imgPlayer1 = this.icoPlayer1;
+		this.imgFond = this.icoFond;
 		
 		this.player = this.viewFrame.getModel().getCharacter();
 		this.model = this.viewFrame.getModel();
@@ -102,7 +99,7 @@ class ViewPanel extends JPanel implements Observer {
 		//graphics.drawString(this.getViewFrame().getModel().getLevel().getMessage(), 10, 20);
 		graphics.drawImage(imgFond, 0, 0, null);
 		
-		graphics.drawImage(imgPlayer1, this.player.getX(), this.player.getY(), null);
+		graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), null);
 		
 		this.repaint();
 	}
