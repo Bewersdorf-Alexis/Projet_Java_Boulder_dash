@@ -57,7 +57,7 @@ public class Level extends Entity {
 	 *
 	 * @return the level
 	 */
-	public IElement getLevel(int x, int y) {
+	public IElement getElement(int x, int y) {
 		return this.level[x][y];
 	}
 	

@@ -86,7 +86,7 @@ class DAOLevel extends DAOEntity<Level> {
 	 */
 	@Override
 	public boolean update(final Level entity) {
-		// Not implemented
+		
 		return false;
 	}
 
@@ -112,9 +112,33 @@ class DAOLevel extends DAOEntity<Level> {
 					call.execute();
 					final ResultSet resultSet = call.getResultSet();
 					if (resultSet.first()) {
-						create(level, x, y, resultSet.getString("C"+x));
-						
+						switch(resultSet.getString("C"+x)) {
+						case "B":
+							level.constructLevel(x, y, new UnbreackableRock(x, y, level));
+							break;
+						case "C":
+							level.constructLevel(x, y, new Block(x, y, level));
+							break;
+						case "R":
+							level.constructLevel(x, y, new Rock(x, y, level));
+							break;
+						case "E":
+							level.constructLevel(x, y, new Ennemy(x, y, level));
+							break;
+						case "S":
+							level.constructLevel(x, y, new Exit(x, y, level));
+							break;
+						case "P":
+							level.constructLevel(x, y, new Character(x, y, level));
+							break;
+						case "D":
+							level.constructLevel(x, y, new Diamond(x, y, level));
+							break;
+						default :
+							level.constructLevel(x, y, null);
 						}
+						
+					}
 						
 				}
 			}
