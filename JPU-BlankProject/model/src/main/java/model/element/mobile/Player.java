@@ -12,36 +12,43 @@ public class Player implements ICharacter {
 	private int xPlayer;
 	private int yPlayer;
 	
-	/*En attente des images*/
 	private static ISprite sprite;
 	private static ISprite spriteLeft;
 	private static ISprite spriteRight;
 	private static ISprite spriteUp;
 	private static ISprite spriteDown;
 	
-	public Player(final int x, final int y) throws IOException {
+	public Player(final int x, final int y) {
 		this.xPlayer = x;
 		this.yPlayer = y;
-		spriteLeft.loadImage();
+		/*spriteLeft.loadImage();
 		spriteRight.loadImage();
 		spriteUp.loadImage();
-		spriteDown.loadImage();
+		spriteDown.loadImage();*/
 	}
 	
 	public void moveUp() {
+		this.setY(this.getY() - 16);
 		this.setSprite(spriteUp);
+		//System.out.println("Je monte");
 	}
 	
 	public void moveDown() {
+		this.setY(this.getY() + 16);
 		this.setSprite(spriteDown);
+		//System.out.println("Je descends");
 	}
 	
 	public void moveLeft() {
+		this.setX(this.getX() - 16);
 		this.setSprite(spriteLeft);
+		//System.out.println("Je vais à gauche");
 	}
 	
 	public void moveRight() {
+		this.setX(this.getX() + 16);
 		this.setSprite(spriteRight);
+		//System.out.println("Je vais à droite");
 	}
 	
 	public void doNothing() {

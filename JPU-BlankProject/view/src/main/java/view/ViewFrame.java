@@ -23,6 +23,8 @@ import contract.IModel;
  */
 class ViewFrame extends JFrame implements KeyListener {
 
+	public static ViewPanel pan;
+
 	/** The model. */
 	private IModel						model;
 
@@ -136,13 +138,14 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @throws IOException 
 	 */
 	private void buildViewFrame(final IModel model) {
+		//pan = new ViewPanel();
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
 		//this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
-		this.setSize(800, 400);
+		this.setSize(640, 352);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}

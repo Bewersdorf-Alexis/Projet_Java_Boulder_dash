@@ -32,4 +32,8 @@ public interface IModel {
 	 * @return the observable
 	 */
 	Observable getObservable();
+	
+	ICharacter getCharacter();
+	
+	
 }

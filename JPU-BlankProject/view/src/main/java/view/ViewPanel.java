@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -10,6 +9,9 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import contract.ICharacter;
+import contract.IModel;
 
 /**
  * The Class ViewPanel.
@@ -28,8 +30,13 @@ class ViewPanel extends JPanel implements Observer {
 	
 	
 	
-	private ImageIcon icoPlayer1;
+	private Image icoPlayer1;
 	private Image imgPlayer1;
+	
+	private ICharacter player;
+	
+	private IModel model;
+	
 	
 	/**
 	 * Instantiates a new view panel.
@@ -45,9 +52,16 @@ class ViewPanel extends JPanel implements Observer {
 		icoFond = new ImageIcon(getClass().getResource("/images/Background.png"));
 		this.imgFond = this.icoFond.getImage();
 		
-		icoPlayer1 = new ImageIcon(getClass().getResource("/images/JoueurDescendArret.png"));
-		this.imgPlayer1 = this.icoPlayer1.getImage();	
+		try {
+			icoPlayer1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/JoueurDescendArret.png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		this.imgPlayer1 = this.icoPlayer1;
 		
+		this.player = this.viewFrame.getModel().getCharacter();
+		this.model = this.viewFrame.getModel();
 	}
 
 	/**
@@ -83,20 +97,15 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
-	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		//graphics.drawString(this.getViewFrame().getModel().getLevel().getMessage(), 10, 20);
 		graphics.drawImage(imgFond, 0, 0, null);
-		graphics.drawImage(imgFond, -640, 0, null);
-		graphics.drawImage(imgFond, 640, 0, null);
-		graphics.drawImage(imgFond, 0, -352, null);
-		graphics.drawImage(imgFond, 0, 352, null);
-		graphics.drawImage(imgFond, -640, -352, null);
-		graphics.drawImage(imgFond, -640, 352, null);
-		graphics.drawImage(imgFond, 640, 352, null);
-		graphics.drawImage(imgFond, 640, -352, null);
 		
-		graphics.drawImage(imgPlayer1, 0, 0, null);
+		graphics.drawImage(imgPlayer1, this.player.getX(), this.player.getY(), null);
+		
+		this.repaint();
 	}
+	
+	
 }
