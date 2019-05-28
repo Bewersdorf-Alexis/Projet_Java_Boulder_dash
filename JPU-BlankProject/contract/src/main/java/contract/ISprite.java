@@ -1,6 +1,7 @@
 package contract;
 
 import java.awt.Image;
+import java.io.IOException;
 
 public interface ISprite {
 
@@ -8,7 +9,7 @@ public interface ISprite {
 	
 	public void setImage(final Image image);
 	
-	public void loadImage();
+	public void loadImage() throws IOException;
 	
 	public String getImageName();
 	
