@@ -2,6 +2,7 @@ package model.element.mobile;
 
 import contract.IItem;
 import contract.IModel;
+import entity.Level;
 import model.element.Permeability;
 import model.element.Sprite;
 
@@ -9,7 +10,7 @@ public class Rock extends Mobile implements IItem {
 
 	//mettre les sprites
 	
-	Rock(int x, int y, IModel level) {
+	public Rock(int x, int y, Level level) {
 		super(x, y, sprite, level, permeability);
 
 	}

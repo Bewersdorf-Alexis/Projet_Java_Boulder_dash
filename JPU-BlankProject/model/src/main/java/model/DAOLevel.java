@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.Level;
+import model.element.mobile.*;
+import model.element.mobile.Character;
+import model.element.motionless.*;
+
 
 /**
  * The Class Level.
@@ -13,7 +17,7 @@ import entity.Level;
  * @author Jean-Aymeric Diet
  */
 class DAOLevel extends DAOEntity<Level> {
-
+	
 	/**
 	 * Instantiates a new DAO hello world.
 	 *
@@ -32,8 +36,34 @@ class DAOLevel extends DAOEntity<Level> {
 	 * @see model.DAOEntity#create(model.Entity)
 	 */
 	@Override
-	public boolean create(final Level entity) {
-		// Not implemented
+	public boolean create(final Level level, int x, int y, String c) {
+		
+		switch(c) {
+		case "B":
+			level.constructLevel(x, y, new UnbreackableRock(x, y, level));
+			break;
+		case "C":
+			level.constructLevel(x, y, new Block(x, y, level));
+			break;
+		case "R":
+			level.constructLevel(x, y, new Rock(x, y, level));
+			break;
+		case "E":
+			level.constructLevel(x, y, new Ennemy(x, y, level));
+			break;
+		case "S":
+			level.constructLevel(x, y, new Exit(x, y, level));
+			break;
+		case "P":
+			level.constructLevel(x, y, new Character(x, y, level));
+			break;
+		case "D":
+			level.constructLevel(x, y, new Diamond(x, y, level));
+			break;
+		default :
+			level.constructLevel(x, y, null);
+		}
+		
 		return false;
 	}
 
@@ -43,8 +73,9 @@ class DAOLevel extends DAOEntity<Level> {
 	 * @see model.DAOEntity#delete(model.Entity)
 	 */
 	@Override
-	public boolean delete(final Level entity) {
-		// Not implemented
+	public boolean delete(Level level) {
+		level = null;
+		
 		return false;
 	}
 
@@ -81,7 +112,8 @@ class DAOLevel extends DAOEntity<Level> {
 					call.execute();
 					final ResultSet resultSet = call.getResultSet();
 					if (resultSet.first()) {
-							level.constructLevel(x, y, resultSet.getString("C"+x));
+						create(level, x, y, resultSet.getString("C"+x));
+						
 						}
 						
 				}

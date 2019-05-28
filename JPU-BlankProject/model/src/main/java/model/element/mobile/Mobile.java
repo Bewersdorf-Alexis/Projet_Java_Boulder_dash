@@ -1,14 +1,14 @@
 package model.element.mobile;
 
 import contract.IMobile;
-import contract.IModel;
+import entity.Level;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
 abstract class Mobile extends Element implements IMobile {
 
-	private IModel level;
+	private Level level;
 	
 	private int x;
 	
@@ -20,13 +20,13 @@ abstract class Mobile extends Element implements IMobile {
 
 	}
 	
-	Mobile(final Sprite sprite, final IModel level, final Permeability permeability) {
+	Mobile(final Sprite sprite, final Level level, final Permeability permeability) {
 	    super(sprite, permeability);
 	    this.setLevel(level);
 	}
 
 
-	Mobile(final int x, final int y, final Sprite sprite, final IModel level, final Permeability permeability) {
+	Mobile(final int x, final int y, final Sprite sprite, final Level level, final Permeability permeability) {
 	    this(sprite, level, permeability);
 	    this.setX(x);
 	    this.setY(y);
@@ -90,12 +90,12 @@ abstract class Mobile extends Element implements IMobile {
 	}
 
 
-	public IModel getLevel() {
+	public Level getLevel() {
 	    return this.level;
 	}
 
 
-	private void setLevel(final IModel level) {
+	private void setLevel(final Level level) {
 	    this.level = level;
 	}
 

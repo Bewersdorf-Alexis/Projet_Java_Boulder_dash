@@ -26,7 +26,7 @@ public class LevelTest {
 	public void TestconstructLevel() {
 		
 		final String expected = "a";
-		this.level.constructLevel(0, 0, expected);
+		//this.level.constructLevel(0, 0, expected);
 		assertEquals(expected, level.getLevel(0, 0));
 	}
 	

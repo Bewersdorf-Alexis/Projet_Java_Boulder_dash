@@ -1,13 +1,14 @@
 package model.element.motionless;
 
 import contract.IModel;
+import entity.Level;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
 public class MotionLessElement extends Element {
 
-	private IModel level;
+	private Level level;
 	
 	private int x;
 	
@@ -18,25 +19,25 @@ public class MotionLessElement extends Element {
 	}
 	
 	
-	MotionLessElement(final Sprite sprite, final IModel level, final Permeability permeability) {
+	MotionLessElement(final Sprite sprite, final Level level, final Permeability permeability) {
 		super(sprite, permeability);
 		this.setLevel(level);
 	}
 
 
-	MotionLessElement(final int x, final int y, final Sprite sprite, final IModel level, final Permeability permeability) {
+	MotionLessElement(final int x, final int y, final Sprite sprite, final Level level, final Permeability permeability) {
 		this(sprite, level, permeability);
 		this.setX(x);
 		this.setY(y);
 	}
 
 
-	public IModel getLevel() {
+	public Level getLevel() {
 		return level;
 	}
 
 
-	public void setLevel(IModel level) {
+	public void setLevel(Level level) {
 		this.level = level;
 	}
 

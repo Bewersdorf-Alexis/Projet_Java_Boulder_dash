@@ -2,6 +2,7 @@ package model.element.mobile;
 
 import contract.ICharacter;
 import contract.IModel;
+import entity.Level;
 import model.element.Permeability;
 import model.element.Sprite;
 
@@ -9,7 +10,7 @@ public class Ennemy extends Mobile implements ICharacter {
 
 	//mettre les sprites
 	
-	Ennemy(int x, int y, IModel level) {
+	public Ennemy(int x, int y, Level level) {
 		super(x, y, sprite, level, permeability);
 
 	}

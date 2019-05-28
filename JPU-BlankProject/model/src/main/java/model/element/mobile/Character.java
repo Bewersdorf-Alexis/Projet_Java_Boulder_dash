@@ -2,6 +2,7 @@ package model.element.mobile;
 
 import contract.ICharacter;
 import contract.IModel;
+import entity.Level;
 import model.element.Permeability;
 import model.element.Sprite;
 
@@ -47,8 +48,8 @@ public class Character extends Mobile implements ICharacter {
     private static final Sprite CharacterAscendsLeftFoot          	= new Sprite("/Sprite_Character/JoueurDescendArret.png");
     
 	
-	Character(int x, int y, IModel level) {
-		super(x, y, sprite, level, Permeability.BLOCKING);
+	public Character(int x, int y, Level level) {
+		super(x, y, CharacterDescendsStop, level, Permeability.BLOCKING);
 
 	}
 

@@ -1,5 +1,7 @@
 package entity;
 
+import contract.IElement;
+
 /**
  * The Class HelloWorld.
  *
@@ -8,10 +10,10 @@ package entity;
 public class Level extends Entity {
 
 	/** The id. */
-	private int			id;
+	private int				id;
 	
 	/** The Level. */
-	private String[][]	level = new String[40][22];
+	private IElement[][]	level = new IElement[40][22];
 
 	/**
 	 * Instantiates a new Level.
@@ -23,7 +25,6 @@ public class Level extends Entity {
 	 */
 	public Level(final int id) {
 		this.setId(id);
-		this.level[0][0] = "a";
 	}
 
 	/**
@@ -46,9 +47,9 @@ public class Level extends Entity {
 	 * 			the character of map level
 	 * 
 	 */
-	public void constructLevel(int x, int y, String map) {
+	public void constructLevel(int x, int y, IElement element) {
 		
-		this.level[x][y] = map;
+		this.level[x][y] = element;
 	}
 	
 	/**
@@ -56,7 +57,7 @@ public class Level extends Entity {
 	 *
 	 * @return the level
 	 */
-	public String getLevel(int x, int y) {
+	public IElement getLevel(int x, int y) {
 		return this.level[x][y];
 	}
 	
