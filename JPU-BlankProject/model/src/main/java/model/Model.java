@@ -33,8 +33,8 @@ public final class Model extends Observable implements IModel {
 	 */
 	public Model() {
 		this.level = new Level();
-		this.player = new Player(this.xPlayer, this.yPlayer);
-		this.diamond = new Diamond(1,1);
+		this.player = new Player(this.xPlayer, this.yPlayer, level);
+		this.diamond = new Diamond(1,1, level);
 	}
 
 	/**
