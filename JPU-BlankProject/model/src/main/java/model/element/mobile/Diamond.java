@@ -3,15 +3,13 @@ package model.element.mobile;
 import java.awt.Image;
 
 import contract.IElement;
-import contract.IItem;
 import contract.IMobile;
-import contract.ISprite;
 import entity.Level;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
-public class Diamond extends Mobile {
+public class Diamond extends Mobile implements IMobile {
 
 	private static Sprite sprite;
 	private int Score;
