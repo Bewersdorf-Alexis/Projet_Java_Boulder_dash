@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import contract.ElementType;
 import contract.IElement;
 import contract.IMobile;
 import contract.ISprite;
@@ -14,6 +15,9 @@ import model.element.LevelMap;
 
 public class Rock implements IElement {
 
+	private Permeability permeability = Permeability.PUSHABLE;
+	private ElementType elementType = ElementType.PLAYER;
+	
 	private int x;
 	private int y;
 	
@@ -129,6 +133,28 @@ public class Rock implements IElement {
 
 	@Override
 	public void doNothing() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Permeability getPermeability() {
+		return permeability;
+	}
+
+	public void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
+	}
+
+	public ElementType getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(ElementType elementType) {
+		this.elementType = elementType;
+	}
+
+	@Override
+	public void die() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import contract.ElementType;
 import contract.ICharacter;
 import contract.IElement;
 import contract.ISprite;
@@ -14,6 +15,9 @@ import model.element.LevelMap;
 
 public class Enemy implements ICharacter {
 
+	private Permeability permeability = Permeability.BLOCKING;
+	private ElementType elementType = ElementType.PLAYER;
+	
 	private int x;
 	private int y;
 	
@@ -142,6 +146,22 @@ public class Enemy implements ICharacter {
 	public boolean isExist() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Permeability getPermeability() {
+		return permeability;
+	}
+
+	public void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
+	}
+
+	public ElementType getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(ElementType elementType) {
+		this.elementType = elementType;
 	}
 	
 }

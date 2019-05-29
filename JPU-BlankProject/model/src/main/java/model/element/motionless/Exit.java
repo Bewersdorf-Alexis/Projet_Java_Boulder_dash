@@ -6,11 +6,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import contract.ElementType;
 import contract.IElement;
+import contract.Permeability;
 import model.element.LevelMap;
 
 public class Exit implements IElement {
 
+	private Permeability permeability = Permeability.SEMIBLOKING;
+	private ElementType elementType = ElementType.PLAYER;
+	
                 private String imageName;
                 
                 private Image image;
@@ -142,6 +147,35 @@ public class Exit implements IElement {
 
 				@Override
 				public void moveDown() {
+					// TODO Auto-generated method stub
+					
+				}
+
+
+				@Override
+				public Permeability getPermeability() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+
+				public void setPermeability(Permeability permeability) {
+					this.permeability = permeability;
+				}
+
+
+				public ElementType getElementType() {
+					return elementType;
+				}
+
+
+				public void setElementType(ElementType elementType) {
+					this.elementType = elementType;
+				}
+
+
+				@Override
+				public void die() {
 					// TODO Auto-generated method stub
 					
 				}

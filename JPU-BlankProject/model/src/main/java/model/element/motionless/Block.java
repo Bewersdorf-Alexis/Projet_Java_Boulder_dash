@@ -5,7 +5,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import contract.ElementType;
 import contract.IElement;
+import contract.ILevelMap;
 import contract.ISprite;
 import contract.Permeability;
 import entity.Level;
@@ -13,6 +15,9 @@ import model.element.LevelMap;
 
 public class Block implements IElement {
 
+	private Permeability permeability = Permeability.PENETRABLE;
+	private ElementType elementType = ElementType.PLAYER;
+	
 	private int x;
 	private int y;
 	
@@ -20,6 +25,8 @@ public class Block implements IElement {
 	private String imageName;
 	
 	private boolean state = false;
+	
+	private ILevelMap levelmap;
 	
 	public Block(final int x, final int y, LevelMap levelMap) {
 		this.x = x;
@@ -135,6 +142,27 @@ public class Block implements IElement {
 	@Override
 	public void doNothing() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public ElementType getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(ElementType elementType) {
+		this.elementType = elementType;
+	}
+
+	@Override
+	public Permeability getPermeability() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		this.levelmap.removeElement(this.getX(), this.getY());
 		
 	}
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import contract.ElementType;
 import contract.ICharacter;
 import contract.IElement;
 import contract.ILevelMap;
@@ -15,7 +16,12 @@ import model.element.LevelMap;
 
 public class Player implements ICharacter {
 	
+	private int score = 0;
+	
 	private boolean exist = true;
+	
+	private Permeability permeability = Permeability.BLOCKING;
+	private ElementType elementType = ElementType.PLAYER;
 	
 	private int xPlayer;
 	private int yPlayer;
@@ -49,7 +55,6 @@ public class Player implements ICharacter {
 			e.printStackTrace();
 		}
 		
-		this.levelmap.removeElement(this.getX(), this.getY());
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 
 	}
@@ -64,7 +69,6 @@ public class Player implements ICharacter {
 			e.printStackTrace();
 		}
 		
-		this.levelmap.removeElement(this.getX(), this.getY()-1);
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
@@ -78,7 +82,6 @@ public class Player implements ICharacter {
 			e.printStackTrace();
 		}
 		
-		this.levelmap.removeElement(this.getX(), this.getY());
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
@@ -92,7 +95,6 @@ public class Player implements ICharacter {
 			e.printStackTrace();
 		}
 		
-		this.levelmap.removeElement(this.getX(), this.getY());
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
@@ -106,13 +108,13 @@ public class Player implements ICharacter {
 			e.printStackTrace();
 		}
 		
-		this.levelmap.removeElement(this.getX(), this.getY());
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
+
+		this.levelmap.removeElement(xPlayer, yPlayer);
 		
 	}
 
@@ -210,6 +212,30 @@ public class Player implements ICharacter {
 
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public Permeability getPermeability() {
+		return permeability;
+	}
+
+	public void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
+	}
+
+	public ElementType getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(ElementType elementType) {
+		this.elementType = elementType;
 	}
 	
 }

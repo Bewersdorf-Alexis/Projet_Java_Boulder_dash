@@ -2,6 +2,8 @@ package contract;
 
 import java.awt.Image;
 
+import controller.ElementType;
+
 public interface IElement extends ISprite {
 
 
@@ -24,6 +26,12 @@ public interface IElement extends ISprite {
 	public void moveDown();
 
 	public void doNothing();
+
+	public Permeability getPermeability();
+
+	public ElementType getElementType();
+
+	void die();
 	
 	
 }

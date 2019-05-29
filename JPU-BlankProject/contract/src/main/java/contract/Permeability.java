@@ -2,7 +2,9 @@ package contract;
 
 public enum Permeability {
 
-	BLOCKING,
-	PENETRABLE;
+	BLOCKING, //Unbreakable, Enemy, Player
+	PENETRABLE, //Block
+	SEMIBLOKING, //Diamond, Exit
+	PUSHABLE; //Rock
 	
 }

@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.ControllerOrder;
 import contract.ICharacter;
 import contract.IElement;
 import contract.ILevelMap;
 import contract.IMobile;
 import contract.IModel;
+import contract.Permeability;
 import entity.Level;
 import model.element.LevelMap;
 import model.element.mobile.Diamond;
@@ -124,6 +126,7 @@ public final class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
 	
 	public Observable getObservable() {
 		return this;
