@@ -13,7 +13,7 @@ public interface ISprite {
 
 	public void setImage(Image image);
 
-	public void loadImage();
+	public void loadImage() throws IOException;
 
 	public String getImageName();
 

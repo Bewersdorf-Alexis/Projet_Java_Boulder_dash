@@ -7,80 +7,107 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import contract.ICharacter;
+import contract.IElement;
+import contract.ILevelMap;
 import contract.Permeability;
 import entity.Level;
+import model.element.LevelMap;
 
 public class Player implements ICharacter {
+	
+	private boolean exist = true;
 	
 	private int xPlayer;
 	private int yPlayer;
 
 	private static Image image;
 	
+	private ILevelMap levelmap;
+
+			
 	private String imageNameUp = "JoueurMonteArret";
 	private String imageNameDown = "JoueurDescendArret";
 	private String imageNameRight = "JoueurDroiteArret";
 	private String imageNameLeft = "JoueurGaucheArret";
-	private String str = null;
+	private String imageName;
 	
-	public Player(final int x, final int y, Level level) {
+	public Player(final int x, final int y, LevelMap levelMap) {
 		this.xPlayer = x;
 		this.yPlayer = y;
-		this.doNothing();
-		//loadImage
+		this.loadImage();
+		this.setLevelmap(levelMap);
+
 	}
 	
 	public void moveUp() {
-		this.setY(this.getY() - 16);
+		this.setY(this.getY() - 1);
 		this.setImageName("images/" + imageNameUp + ".png");
 		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.levelmap.removeElement(this.getX(), this.getY());
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+
 	}
 	
 	public void moveDown() {
-		this.setY(this.getY() + 16);
+		this.setY(this.getY() + 1);
 		this.setImageName("images/" + imageNameDown + ".png");
 		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.levelmap.removeElement(this.getX(), this.getY()-1);
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
 	public void moveLeft() {
-		this.setX(this.getX() - 16);
+		this.setX(this.getX() - 1);
 		this.setImageName("images/" + imageNameLeft + ".png");
 		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.levelmap.removeElement(this.getX(), this.getY());
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
 	public void moveRight() {
-		this.setX(this.getX() + 16);
+		this.setX(this.getX() + 1);
 		this.setImageName("images/" + imageNameRight + ".png");
 		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.levelmap.removeElement(this.getX(), this.getY());
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
 	public void doNothing() {
+		this.setY(this.getY());
+		this.setImageName("images/" + imageNameDown + ".png");
 		try {
 			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + imageNameDown + ".png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.levelmap.removeElement(this.getX(), this.getY());
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
 	@Override
@@ -89,11 +116,6 @@ public class Player implements ICharacter {
 		
 	}
 
-	@Override
-	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public int getX() {
@@ -128,25 +150,30 @@ public class Player implements ICharacter {
 	@Override
 	public void setImage(Image image) {
 		// TODO Auto-generated method stub
-		
+		this.image = image;
 	}
 
 	@Override
 	public void loadImage() {
 		// TODO Auto-generated method stub
-		
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + imageNameDown + ".png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public String getImageName() {
 		// TODO Auto-generated method stub
-		return this.str;
+		return this.imageName;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
 		// TODO Auto-generated method stub
-		this.str = imageName;
+		this.imageName = imageName;
 	}
 
 	@Override
@@ -159,6 +186,30 @@ public class Player implements ICharacter {
 	public void setImageLoaded(boolean isImageLoaded) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean isExist() {
+		// TODO Auto-generated method stub
+		return this.exist;
+	}
+
+	public void setExist(boolean exist) {
+		this.exist = exist;
+	}
+
+	@Override
+	public boolean isAlive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ILevelMap getLevelmap() {
+		return levelmap;
+	}
+
+	public void setLevelmap(ILevelMap levelmap) {
+		this.levelmap = levelmap;
 	}
 	
 }

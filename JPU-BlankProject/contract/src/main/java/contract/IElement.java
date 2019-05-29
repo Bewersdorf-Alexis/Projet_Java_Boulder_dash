@@ -13,6 +13,17 @@ public interface IElement extends ISprite {
 
 	public void setY(int y);
 	
-	//public Image getImage();
+	public boolean isExist();
+	
+	public void moveUp();
+	
+	public void moveRight();
+	
+	public void moveLeft();
+	
+	public void moveDown();
+
+	public void doNothing();
+	
 	
 }

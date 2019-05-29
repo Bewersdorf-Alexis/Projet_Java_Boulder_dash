@@ -1,13 +1,16 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.ICharacter;
 import contract.IElement;
+import contract.ILevelMap;
 import contract.IMobile;
 import contract.IModel;
 import entity.Level;
+import model.element.LevelMap;
 import model.element.mobile.Diamond;
 import model.element.mobile.Player;
 
@@ -21,20 +24,27 @@ public final class Model extends Observable implements IModel {
 	/** The helloWorld. */
 	private Level level;
 	
+	private ILevelMap levelMap;
+	
 	private Player player;
 	
-	private int xPlayer;
-	private int yPlayer;
+	private int xPlayer = 0;
+	private int yPlayer = 0;
 	
 	private Diamond diamond;
 
 	/**
 	 * Instantiates a new model.
+	 * @throws IOException 
 	 */
 	public Model() {
-		this.level = new Level();
-		this.player = new Player(this.xPlayer, this.yPlayer, level);
-		this.diamond = new Diamond(1, 1, level);
+		//this.level = new Level();
+		//this.player = new Player(this.xPlayer, this.yPlayer, level);
+		//this.diamond = new Diamond(1, 1, level);
+		this.setLevel(new Level());
+		this.loadLevel(1);
+		
+		this.setLevelMap(new LevelMap(this.level));
 	}
 
 	/**
@@ -59,8 +69,7 @@ public final class Model extends Observable implements IModel {
      */
 	private void setLevel(final Level level) {
 		this.level = level;
-		this.setChanged();
-		this.notifyObservers();
+
 	}
 
 	/**
@@ -93,20 +102,31 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
-	public Observable getObservable() {
-		return this;
-	}
+
 	
+	@Override
 	public ICharacter getCharacter() {
 		return this.player;
 	}
 
 	@Override
-	public IMobile getMobile() {
+	public IElement getElement() {
 		// TODO Auto-generated method stub
 		return this.diamond;
 	}
+
+	public ILevelMap getLevelMap() {
+		return levelMap;
+	}
+
+	public void setLevelMap(ILevelMap levelMap) {
+		this.levelMap = levelMap;
+		this.setChanged();
+		this.notifyObservers();
+	}
 	
-	
+	public Observable getObservable() {
+		return this;
+	}
 	
 }

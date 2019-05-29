@@ -6,38 +6,31 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import contract.ICharacter;
+import contract.IElement;
 import contract.ISprite;
 import contract.Permeability;
 import entity.Level;
+import model.element.LevelMap;
 
 public class Enemy implements ICharacter {
 
 	private int x;
 	private int y;
 	
-	/*En attente d'ajout des images*/
-	private static ISprite sprite;
-	private static ISprite spriteLeft;
-	private static ISprite spriteRight;
-	private static ISprite spriteUp;
-	private static ISprite spriteDown;
-	
-	private String str = null;
+	private String imageName;
 	private static Image image;
 	
-	public Enemy(final int x, final int y, Level level) {
-		
-		/*spriteLeft.loadImage();
-		spriteRight.loadImage();
-		spriteUp.loadImage();
-		spriteDown.loadImage();*/
+	public Enemy(final int x, final int y, LevelMap levelMap) {		
+		this.x = x;
+		this.y = y;
+		this.loadImage();
 	}
 	
 	public void moveUp() {
 		this.setY(this.getY() - 16);
 		this.setImageName("images/BatMonteArret.png");
 		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.str));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -65,25 +58,25 @@ public class Enemy implements ICharacter {
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.x;
 	}
 
 	@Override
 	public void setX(int x) {
 		// TODO Auto-generated method stub
-		
+		this.x = x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.y;
 	}
 
 	@Override
 	public void setY(int y) {
 		// TODO Auto-generated method stub
-		
+		this.y = y;
 	}
 
 	@Override
@@ -101,31 +94,36 @@ public class Enemy implements ICharacter {
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.image;
 	}
 
 	@Override
 	public void setImage(Image image) {
 		// TODO Auto-generated method stub
-		
+		this.image = image;
 	}
 
 	@Override
 	public void loadImage() {
 		// TODO Auto-generated method stub
-		
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/BatDescendArret.png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public String getImageName() {
 		// TODO Auto-generated method stub
-		return this.str;
+		return this.imageName;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
 		// TODO Auto-generated method stub
-		this.str = imageName;
+		this.imageName = imageName;
 	}
 
 	@Override
@@ -140,8 +138,10 @@ public class Enemy implements ICharacter {
 		
 	}
 
-	
-
-	
+	@Override
+	public boolean isExist() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

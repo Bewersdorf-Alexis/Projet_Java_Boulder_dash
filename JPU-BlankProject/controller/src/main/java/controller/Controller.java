@@ -3,6 +3,8 @@ package controller;
 import contract.ControllerOrder;
 import contract.ICharacter;
 import contract.IController;
+import contract.IElement;
+import contract.IMobile;
 import contract.IModel;
 import contract.IView;
 
@@ -17,8 +19,8 @@ public final class Controller implements IController {
 	/** The model. */
 	private IModel	model;
 	
-	private ICharacter player;
 
+	private static final int speed = 5;
 
 	/**
 	 * Instantiates a new controller.
@@ -32,7 +34,6 @@ public final class Controller implements IController {
 		this.setView(view);
 		this.setModel(model);
 		this.model.loadLevel(1);
-		this.player = this.model.getCharacter();
 	}
 
 	/**
@@ -66,12 +67,17 @@ public final class Controller implements IController {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
+	
+	private IModel getModel() {
+		return this.model;
+	}
 
 	/**
      * Order perform.
      *
      * @param controllerOrder
      *            the controller order
+	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)
@@ -79,22 +85,29 @@ public final class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
-		switch (controllerOrder) {
-			case Up:
-				this.model.getCharacter().moveUp();
-				break;
-			case Down:
-				this.model.getCharacter().moveDown();
-				break;
-			case Left:
-				this.model.getCharacter().moveLeft();
-				break;
-			case Right:
-				this.model.getCharacter().moveRight();
-				break;
-			default:
-				break;
-		}
+
+			switch (controllerOrder) {
+				case Up:
+					this.getModel().getLevelMap().getPlayer().moveUp();
+					//this.model.getCharacter().moveUp();
+					break;
+				case Down:
+					this.getModel().getLevelMap().getPlayer().moveDown();
+					//this.model.getCharacter().moveDown();
+					break;
+				case Left:
+					this.getModel().getLevelMap().getPlayer().moveLeft();
+					//this.model.getCharacter().moveLeft();
+					break;
+				case Right:
+					this.getModel().getLevelMap().getPlayer().moveRight();
+					//this.model.getCharacter().moveRight();
+					break;
+				default : 
+					this.getModel().getLevelMap().getPlayer().doNothing();
+					break;
+		
+			}
 	}
 
 }

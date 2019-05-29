@@ -35,7 +35,11 @@ public interface IModel {
 	
 	ICharacter getCharacter();
 	
-	IMobile getMobile();
+	IElement getElement();
+	
+	ILevelMap getLevelMap();
+	
+	void setLevelMap(ILevelMap levelMap);
 	
 	
 }

@@ -10,8 +10,9 @@ import contract.IMobile;
 import contract.ISprite;
 import contract.Permeability;
 import entity.Level;
+import model.element.LevelMap;
 
-public class Diamond implements IMobile {
+public class Diamond implements IElement {
 
 	private static ISprite sprite;
 	private int Score;
@@ -23,10 +24,10 @@ public class Diamond implements IMobile {
 	private int xDiamond;
 	private int yDiamond;
 	
-	public Diamond(final int x, final int y, Level level) {
+	public Diamond(final int x, final int y, LevelMap levelMap) {
 		this.xDiamond = x;
 		this.yDiamond = y;
-		this.moveDown();
+		this.loadImage();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -98,7 +99,12 @@ public class Diamond implements IMobile {
 	@Override
 	public void loadImage() {
 		// TODO Auto-generated method stub
-		
+		try {
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/diamond.png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -121,6 +127,36 @@ public class Diamond implements IMobile {
 
 	@Override
 	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isExist() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void moveUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doNothing() {
 		// TODO Auto-generated method stub
 		
 	}
