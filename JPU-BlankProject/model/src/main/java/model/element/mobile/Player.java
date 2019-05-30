@@ -1,20 +1,17 @@
 package model.element.mobile;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import contract.ElementType;
-import contract.ICharacter;
 import contract.IElement;
 import contract.ILevelMap;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
-public class Player implements ICharacter {
+public class Player implements IElement {
 	
 	private int score = 0;
 	
@@ -111,12 +108,7 @@ public class Player implements ICharacter {
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
-	@Override
-	public void die() {
 
-		this.levelmap.removeElement(xPlayer, yPlayer);
-		
-	}
 
 
 	@Override
@@ -200,11 +192,6 @@ public class Player implements ICharacter {
 		this.exist = exist;
 	}
 
-	@Override
-	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -214,10 +201,12 @@ public class Player implements ICharacter {
 		this.levelmap = levelmap;
 	}
 
+	@Override
 	public int getScore() {
 		return score;
 	}
 
+	@Override
 	public void setScore(int score) {
 		this.score = score;
 	}
@@ -236,6 +225,12 @@ public class Player implements ICharacter {
 
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

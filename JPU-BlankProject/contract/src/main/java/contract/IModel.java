@@ -33,9 +33,6 @@ public interface IModel {
 	 */
 	Observable getObservable();
 	
-	ICharacter getCharacter();
-	
-	IElement getElement();
 	
 	ILevelMap getLevelMap();
 	

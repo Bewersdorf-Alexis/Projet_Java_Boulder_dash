@@ -6,20 +6,20 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import contract.ElementType;
-import contract.ICharacter;
 import contract.IElement;
-import contract.ISprite;
+import contract.ILevelMap;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
-public class Enemy implements ICharacter {
+public class Enemy implements IElement {
 
 	private Permeability permeability = Permeability.BLOCKING;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.ENEMY;
 	
 	private int x;
 	private int y;
+	
+	private ILevelMap levelmap;
 	
 	private String imageName;
 	private static Image image;
@@ -28,35 +28,38 @@ public class Enemy implements ICharacter {
 		this.x = x;
 		this.y = y;
 		this.loadImage();
+		this.levelmap = levelMap;
 	}
 	
 	public void moveUp() {
-		this.setY(this.getY() - 16);
-		this.setImageName("images/BatMonteArret.png");
-		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.imageName));
-		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
+		this.setY(this.getY() - 1);
+
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+
 	}
 	
 	public void moveDown() {
-		//Voir Player
+		this.setY(this.getY() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
 	public void moveLeft() {
+		this.setX(this.getX() - 1);
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 	
 	public void moveRight() {
+		this.setX(this.getX() + 1);
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
-
-	@Override
+	
 	public void doNothing() {
-		// TODO Auto-generated method stub
+		this.setY(this.getY());
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
 	@Override
@@ -83,17 +86,7 @@ public class Enemy implements ICharacter {
 		this.y = y;
 	}
 
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Image getImage() {
@@ -162,6 +155,24 @@ public class Enemy implements ICharacter {
 
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setScore(int score) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

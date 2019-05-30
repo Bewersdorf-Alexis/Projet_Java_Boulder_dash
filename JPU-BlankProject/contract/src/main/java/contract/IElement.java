@@ -1,9 +1,5 @@
 package contract;
 
-import java.awt.Image;
-
-import controller.ElementType;
-
 public interface IElement extends ISprite {
 
 
@@ -31,7 +27,11 @@ public interface IElement extends ISprite {
 
 	public ElementType getElementType();
 
-	void die();
+	void destroy();
+	
+	public int getScore();
+	
+	public void setScore(int score);
 	
 	
 }

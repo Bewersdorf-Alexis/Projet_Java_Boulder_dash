@@ -32,7 +32,7 @@ public class LevelMap extends Observable implements ILevelMap {
                                                                case "E":
                                                                                this.setElement(x, y, new Enemy(x, y, this));
                                                                                break;
-                                                               case "N":
+                                                               case "S":
                                                                                this.setElement(x, y, new Exit(x, y, this));
                                                                                break;
                                                                case "P":

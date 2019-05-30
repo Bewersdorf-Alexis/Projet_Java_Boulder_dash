@@ -2,13 +2,10 @@ package controller;
 
 import contract.ControllerOrder;
 import contract.ElementType;
-import contract.ICharacter;
 import contract.IController;
 import contract.IElement;
-import contract.IMobile;
 import contract.IModel;
 import contract.IView;
-import contract.Permeability;
 
 /**
  * The Class Controller.
@@ -22,7 +19,7 @@ public final class Controller implements IController {
 	private IModel	model;
 	
 
-	private static final int speed = 5;
+	//private static final int speed = 5; //pour un cycle avec ennemi et gravité
 
 	/**
 	 * Instantiates a new controller.
@@ -90,110 +87,198 @@ public final class Controller implements IController {
 
 		IElement player = this.getModel().getLevelMap().getPlayer();
 		
-		//boolean col = collision(controllerOrder, player);
-		
+		boolean col = this.getElementNext(player, controllerOrder);
+			
 			switch (controllerOrder) {
 				case Up:
-					//if(col == true) {
-						player.moveUp();		
-					//}
-
-					
-
+					if(col) {
+					player.moveUp();
+					}
+								
 					break;
 				case Down:
+					if(col) {
 					player.moveDown();
+					}
 
 					break;
 				case Left:
+					if(col) {
 					player.moveLeft();
+					}
 
 					break;
 				case Right:
+					if(col) {
 					player.moveRight();
+					}
 
 					break;
 				default : 
 					player.doNothing();
 					break;
 		
-			}
+		}
+
 	}
 	
-	public boolean collision (ControllerOrder controllerOrder, IElement element) {
+	public boolean getElementNext(IElement element, ControllerOrder controllerOrder) {
 		
-		IElement player = element;
+		boolean res = true;
 		
-		IElement elementNext;
+		IElement elementA = element;
+		ElementType TelementA;
+		IElement elementN = null;
+		
 
+			switch (controllerOrder) {
+			case Up:
+				elementN = this.model.getLevelMap().getElement(elementA.getX(), elementA.getY()-1);
+				break;
+			case Down:
+				elementN = this.model.getLevelMap().getElement(elementA.getX(), elementA.getY()+1);
+				break;
+			case Left:
+				elementN = this.model.getLevelMap().getElement(elementA.getX()-1, elementA.getY());
+				break;
+			case Right:
+				elementN = this.model.getLevelMap().getElement(elementA.getX()+1, elementA.getY());
+				break;
+			case Default : 
+				elementN = null;
+				break;
+			}
+		
+		res = collision(elementA, elementN, controllerOrder);
+		return res;
+		
+		
+	}
+	
+	public boolean collision(IElement elementA, IElement elementN, ControllerOrder controllerOrder) {
+		
+		ElementType TelementN = null; 
+		ElementType TelementA = elementA.getElementType();
+		
+		if(elementN != null) {
+			TelementN = elementN.getElementType();
+		}
+		else {
+			TelementN = ElementType.DEFAULT;
+		}
+		
+		
+		boolean res = true;
+		
+		switch(TelementA) {
+		case DIAMOND:
+			switch(TelementN) {
+			case ENEMY:
+				res = true;
+				for(int x = elementN.getX()-1; x<elementN.getX()+1; x++) {
+					for(int y = elementN.getY()-1; y<elementN.getX()+1; y++) {
+						this.model.getLevelMap().setElement(x, y, elementA);
+					}
+				}
+				break;
+			case PLAYER:
+				res = true;
+				this.model.getLevelMap().getPlayer().destroy();
+				System.out.println("You Die");
+				System.exit(0);
+				break;
+			case DEFAULT:
+				res = true;
+				break;
+			default :
+				res = false;
+			}
+			break;
+		case ENEMY:
+			switch(TelementN) {
+			case PLAYER :
+				res = true;
+				this.model.getLevelMap().getPlayer().destroy();
+				System.out.println("You Die");
+				System.exit(0);
+			break;
+			case DEFAULT :
+				res = true;
+			break;
+			default :
+				res = false;
+				break;
+			}
+		case PLAYER:
+			switch(TelementN) {
+			case BLOCK:
+				res = true;
+				break;
+			case DIAMOND:
+				res = true;
+				this.model.getLevelMap().getPlayer().setScore(this.model.getLevelMap().getPlayer().getScore()+1);;
+				break;
+			case ENEMY:
+				res = true;
+				this.model.getLevelMap().getPlayer().destroy();
+				System.out.println("You Die");
+				System.exit(0);
+				break;
+			case EXIT:
+				res = true;
+				if(this.model.getLevelMap().getPlayer().getScore() >= 5) {
+					System.out.println("You Win");
+					System.exit(0);
+				}
+				else {
+					res = false;
+				}
+				break;
+			case ROCK:
+				if(getElementNext(elementN, controllerOrder))
+				{
+					if(controllerOrder == ControllerOrder.Left) {
+						elementN.moveLeft();
+						res = true;
+					}
+					else if(controllerOrder == ControllerOrder.Right) {
+						elementN.moveRight();
+						res = true;
+					}
+				}
+				else {
+					res = false;
+				}
 				
-			switch(controllerOrder) {
-			
-				case Left:
-					elementNext = this.model.getLevelMap().getElement(player.getX()-1, player.getY());
-					break;
-				case Right:
-					elementNext = this.model.getLevelMap().getElement(player.getX()+1, player.getY());
-					break;
-				case Up:
-					elementNext = this.model.getLevelMap().getElement(player.getX(), player.getY()+1);
-					break;
-				case Down:
-					elementNext = this.model.getLevelMap().getElement(player.getX(), player.getY()-1);
-					break;
-			default:
-				elementNext = null;
+				break;
+			case UNBREAKABLEBLOCK:
+				res = false;
+				break;
+			case DEFAULT :
+				res = true;
 				break;
 			
 			}
-			
-			Permeability permeability = elementNext.getPermeability();
-			ElementType elementType = elementNext.getElementType();
-			
-
-			if(elementNext == null) {
-				return true;
+	
+			break;
+		case ROCK:
+			if((TelementN == ElementType.DEFAULT || TelementN == ElementType.PLAYER) && (controllerOrder == ControllerOrder.Right || controllerOrder == ControllerOrder.Left)) {
+				res = true;
 			}
 			else {
-				switch(permeability) {
-					case BLOCKING :
-						if(elementType == ElementType.PLAYER && element.getElementType() == ElementType.ENEMY) {
-							this.model.getLevelMap().getPlayer().die();
-							System.exit(0);
-						}
-						else if(elementType == ElementType.ENEMY && element.getElementType() == ElementType.PLAYER) {
-							this.model.getLevelMap().getPlayer().die();
-							System.exit(0);
-						}
-						else if(elementType == ElementType.UNBREAKABLEBLOCK) {
-						}
-						return false;
-						
-					case PENETRABLE :
-						if(elementType == ElementType.BLOCK) {
-							return true;
-						}
-						this.model.getLevelMap().removeElement(elementNext.getX(), elementNext.getY());
-						return true;
-						
-					case SEMIBLOKING :
-						//if()
-						
-						break;
-						
-					case PUSHABLE :
-						
-						break;
-				default:
-					break;
-				
-				}
-				
-				
+				res = false;
 			}
-			return false;
-			
+			break;
+		default:
+			res = true;
+			break;
+
+		}
 		
-	}
+		return res;
 	
+	}
 }
+	
+	
+

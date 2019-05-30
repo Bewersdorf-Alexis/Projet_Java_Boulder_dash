@@ -7,15 +7,13 @@ import javax.imageio.ImageIO;
 
 import contract.ElementType;
 import contract.IElement;
-import contract.ISprite;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
 public class UnbreakableBlock implements IElement {
 
 	private Permeability permeability = Permeability.BLOCKING;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.UNBREAKABLEBLOCK;
 	
 	private int x;
 	private int y;
@@ -152,8 +150,21 @@ public class UnbreakableBlock implements IElement {
 		this.elementType = elementType;
 	}
 
+
 	@Override
-	public void die() {
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setScore(int score) {
 		// TODO Auto-generated method stub
 		
 	}

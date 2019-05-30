@@ -7,62 +7,36 @@ import javax.imageio.ImageIO;
 
 import contract.ElementType;
 import contract.IElement;
-import contract.IMobile;
+import contract.ILevelMap;
 import contract.ISprite;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
 public class Diamond implements IElement {
 
 	private Permeability permeability = Permeability.SEMIBLOKING;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.DIAMOND;
 	
 	private static ISprite sprite;
-	private int Score;
-	private boolean stateRecup;
 	
 	private Image image;
 	private String imageName;
+	
+	private ILevelMap levelmap;
 	
 	private int xDiamond;
 	private int yDiamond;
 	
 	public Diamond(final int x, final int y, LevelMap levelMap) {
-		this.xDiamond = x;
-		this.yDiamond = y;
+		this.setX(x);
+		this.setY(y);
 		this.loadImage();
+		this.levelmap = levelMap;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void recup(final boolean isDiamondRecup) {
-		this.stateRecup = isDiamondRecup;
-	}
-	
-	public void score() {
-		if(stateRecup == true)
-			this.Score++;
-	}
-	
-	public int getScore() {
-		return this.Score;
-	}
-	
-	public void setScore(int score) {
-		this.Score = score;
-	}
 
-	@Override
-	public void moveDown() {
-		// TODO Auto-generated method stub
-		//this.setY(this.getY() + 16);
-		try {
-			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/diamond.png"));
-		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	@Override
 	public int getX() {
@@ -141,29 +115,37 @@ public class Diamond implements IElement {
 		return false;
 	}
 
-	@Override
 	public void moveUp() {
-		// TODO Auto-generated method stub
-		
-	}
+		this.setY(this.getY() - 1);
 
-	@Override
-	public void moveRight() {
-		// TODO Auto-generated method stub
-		
-	}
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 
-	@Override
+	}
+	
+	public void moveDown() {
+		this.setY(this.getY() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
+	
 	public void moveLeft() {
-		// TODO Auto-generated method stub
+		this.setX(this.getX() - 1);
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
+	
+	public void moveRight() {
+		this.setX(this.getX() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
+	
+	public void doNothing() {
+		this.setY(this.getY());
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
-	@Override
-	public void doNothing() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public Permeability getPermeability() {
 		return permeability;
@@ -182,7 +164,25 @@ public class Diamond implements IElement {
 	}
 
 	@Override
-	public void die() {
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+	@Override
+	public void setScore(int score) {
 		// TODO Auto-generated method stub
 		
 	}

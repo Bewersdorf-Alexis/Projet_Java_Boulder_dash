@@ -1,7 +1,6 @@
 package model.element.motionless;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -14,7 +13,7 @@ import model.element.LevelMap;
 public class Exit implements IElement {
 
 	private Permeability permeability = Permeability.SEMIBLOKING;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.EXIT;
 	
                 private String imageName;
                 
@@ -174,8 +173,24 @@ public class Exit implements IElement {
 				}
 
 
+
+
 				@Override
-				public void die() {
+				public void destroy() {
+					// TODO Auto-generated method stub
+					
+				}
+
+
+				@Override
+				public int getScore() {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+
+
+				@Override
+				public void setScore(int score) {
 					// TODO Auto-generated method stub
 					
 				}

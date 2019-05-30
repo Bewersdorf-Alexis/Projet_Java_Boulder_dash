@@ -8,23 +8,19 @@ import javax.imageio.ImageIO;
 import contract.ElementType;
 import contract.IElement;
 import contract.ILevelMap;
-import contract.ISprite;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
 public class Block implements IElement {
 
 	private Permeability permeability = Permeability.PENETRABLE;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.BLOCK;
 	
 	private int x;
 	private int y;
 	
 	private Image image;
 	private String imageName;
-	
-	private boolean state = false;
 	
 	private ILevelMap levelmap;
 	
@@ -35,7 +31,7 @@ public class Block implements IElement {
 	}
 
 	public void isDestroy() {
-		this.state = true;
+
 	}
 
 	@Override
@@ -159,10 +155,22 @@ public class Block implements IElement {
 		return null;
 	}
 
+
 	@Override
-	public void die() {
+	public void destroy() {
 		// TODO Auto-generated method stub
-		this.levelmap.removeElement(this.getX(), this.getY());
+		
+	}
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setScore(int score) {
+		// TODO Auto-generated method stub
 		
 	}
 

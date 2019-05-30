@@ -7,19 +7,19 @@ import javax.imageio.ImageIO;
 
 import contract.ElementType;
 import contract.IElement;
-import contract.IMobile;
-import contract.ISprite;
+import contract.ILevelMap;
 import contract.Permeability;
-import entity.Level;
 import model.element.LevelMap;
 
 public class Rock implements IElement {
 
 	private Permeability permeability = Permeability.PUSHABLE;
-	private ElementType elementType = ElementType.PLAYER;
+	private ElementType elementType = ElementType.ROCK;
 	
 	private int x;
 	private int y;
+	
+	private ILevelMap levelmap;
 	
 	private Image image;
 	private String imageName;
@@ -28,13 +28,9 @@ public class Rock implements IElement {
 		this.x = x;
 		this.y = y;
 		this.loadImage();
+		this.levelmap = levelMap;
 	}
 
-	@Override
-	public void moveDown() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int getX() {
@@ -113,28 +109,35 @@ public class Rock implements IElement {
 		return false;
 	}
 
-	@Override
 	public void moveUp() {
-		// TODO Auto-generated method stub
-		
-	}
+		this.setY(this.getY() - 1);
 
-	@Override
-	public void moveRight() {
-		// TODO Auto-generated method stub
-		
-	}
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 
-	@Override
+	}
+	
+	public void moveDown() {
+		this.setY(this.getY() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
+	
 	public void moveLeft() {
-		// TODO Auto-generated method stub
+		this.setX(this.getX() - 1);
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
-
-	@Override
-	public void doNothing() {
-		// TODO Auto-generated method stub
+	
+	public void moveRight() {
+		this.setX(this.getX() + 1);
 		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
+	
+	public void doNothing() {
+		this.setY(this.getY());
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
 	public Permeability getPermeability() {
@@ -153,8 +156,23 @@ public class Rock implements IElement {
 		this.elementType = elementType;
 	}
 
+
 	@Override
-	public void die() {
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public void setScore(int score) {
 		// TODO Auto-generated method stub
 		
 	}
