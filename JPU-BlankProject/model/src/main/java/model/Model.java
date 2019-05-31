@@ -2,15 +2,8 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Observable;
-
-import contract.ControllerOrder;
-import contract.ICharacter;
-import contract.IElement;
 import contract.ILevelMap;
-import contract.IMobile;
 import contract.IModel;
-import contract.Permeability;
 import entity.Level;
 import model.element.LevelMap;
 import model.element.mobile.Diamond;
@@ -21,7 +14,7 @@ import model.element.mobile.Player;
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model implements IModel {
 
 	/** The helloWorld. */
 	private Level level;
@@ -32,6 +25,7 @@ public final class Model extends Observable implements IModel {
 	
 	private Diamond diamond;
 
+
 	/**
 	 * Instantiates a new model.
 	 * @throws IOException 
@@ -41,7 +35,7 @@ public final class Model extends Observable implements IModel {
 		//this.player = new Player(this.xPlayer, this.yPlayer, level);
 		//this.diamond = new Diamond(1, 1, level);
 		this.setLevel(new Level());
-		this.loadLevel(1);
+		this.loadLevel(2);
 		
 		this.setLevelMap(new LevelMap(this.level));
 	}
@@ -102,31 +96,12 @@ public final class Model extends Observable implements IModel {
 	 * @see contract.IModel#getObservable()
 	 */
 
-	
-	@Override
-	public ICharacter getCharacter() {
-		return this.player;
-	}
-
-	@Override
-	public IElement getElement() {
-		// TODO Auto-generated method stub
-		return this.diamond;
-	}
-
 	public ILevelMap getLevelMap() {
 		return levelMap;
 	}
 
 	public void setLevelMap(ILevelMap levelMap) {
 		this.levelMap = levelMap;
-		this.setChanged();
-		this.notifyObservers();
-	}
-	
-	
-	public Observable getObservable() {
-		return this;
 	}
 	
 }
