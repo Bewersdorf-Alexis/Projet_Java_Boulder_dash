@@ -1,184 +1,176 @@
 package model.element.motionless;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import contract.ElementType;
 import contract.IElement;
-import contract.Permeability;
+import contract.ILevelMap;
 import model.element.LevelMap;
 
 public class Exit implements IElement {
-
-	private Permeability permeability = Permeability.SEMIBLOKING;
-	private ElementType elementType = ElementType.PLAYER;
 	
-                private String imageName;
-                
-                private Image image;
-                
-                private int xExit;
-                private int yExit;
+	private int score = 0;
+	
+	private boolean exist = true;
 
-                
-                public Exit(final int x, final int y, LevelMap levelMap) {
-                               this.xExit = x;
-                               this.yExit = y;
-                               this.loadImage();
-                }
+	private ElementType elementType = ElementType.EXIT;
+	
+	private int x;
+	private int y;
 
+	private ILevelMap levelmap;
 
-				@Override
-				public Image getImage() {
-					// TODO Auto-generated method stub
-					return this.image;
-				}
+	private static Image image;	
+	private String imageName = "trapdoor";
+	
+	public Exit(final int x, final int y, LevelMap levelMap) {
+		this.setX(x);
+		this.setY(y);
+		this.setImageName(imageName);
+		this.loadImage();
+		this.setLevelmap(levelMap);
 
+	}
+	
+	@Override
+	public int getX() {
 
-				@Override
-				public void setImage(Image image) {
-					// TODO Auto-generated method stub
-					this.image = image;
-				}
+		return this.x;
+	}
 
+	@Override
+	public void setX(int x) {
 
-				@Override
-				public void loadImage() {
-					// TODO Auto-generated method stub
-					try {
-						image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/trapdoor.png"));
-					}
-					catch(IOException e) {
-						e.printStackTrace();
-					}
-				}
-				
-				public void doNothing() {
-					
-				}
+		this.x = x;
+	}
 
+	@Override
+	public int getY() {
 
-				@Override
-				public String getImageName() {
-					// TODO Auto-generated method stub
-					return this.imageName;
-				}
+		return this.y;
+	}
 
+	@Override
+	public void setY(int y) {
 
-				@Override
-				public void setImageName(String imageName) {
-					// TODO Auto-generated method stub
-					this.imageName = imageName;
-				}
+		this.y = y;
+	}
+	
+	@Override
+	public void moveUp() {
+		
+		this.setY(this.getY() - 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+		this.levelmap.removeElement(getX(), getY()+1);
 
+	}
+	
+	public void moveDown() {
+		this.setY(this.getY() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+		this.levelmap.removeElement(getX(), getY()-1);
+	}
+	
+	public void moveLeft() {
+		this.setX(this.getX() - 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+		this.levelmap.removeElement(getX()+1, getY());
+	}
+	
+	public void moveRight() {
+		this.setX(this.getX() + 1);
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+		this.levelmap.removeElement(getX()-1, getY());
+	}
+	
+	public void doNothing() {
+		this.setY(this.getY());
+		
+		this.levelmap.setElement(this.getX(), this.getY(), this);
+	}
 
-				@Override
-				public boolean isImageLoaded() {
-					// TODO Auto-generated method stub
-					return false;
-				}
+	@Override
+	public Image getImage() {
 
+		return Exit.image;
+	}
 
-				@Override
-				public void setImageLoaded(boolean isImageLoaded) {
-					// TODO Auto-generated method stub
-					
-				}
+	@Override
+	public void setImage(Image image) {
 
+		Exit.image = image;
+	}
 
-				@Override
-				public int getX() {
-					// TODO Auto-generated method stub
-					return this.xExit;
-				}
+	@Override
+	public void loadImage() {
 
+		Image img = null;
+		try {
+			img = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + this.getImageName() + ".png"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		this.setImage(img);
+	}
 
-				@Override
-				public void setX(int x) {
-					// TODO Auto-generated method stub
-					this.xExit = x;
-				}
+	@Override
+	public String getImageName() {
 
+		return this.imageName;
+	}
 
-				@Override
-				public int getY() {
-					// TODO Auto-generated method stub
-					return this.yExit;
-				}
+	@Override
+	public void setImageName(String imageName) {
 
-
-				@Override
-				public void setY(int y) {
-					// TODO Auto-generated method stub
-					this.yExit = y;
-				}
-
-
-				@Override
-				public boolean isExist() {
-					// TODO Auto-generated method stub
-					return false;
-				}
-
-
-				@Override
-				public void moveUp() {
-					// TODO Auto-generated method stub
-					
-				}
-
-
-				@Override
-				public void moveRight() {
-					// TODO Auto-generated method stub
-					
-				}
-
-
-				@Override
-				public void moveLeft() {
-					// TODO Auto-generated method stub
-					
-				}
+		this.imageName = imageName;
+	}
 
 
-				@Override
-				public void moveDown() {
-					// TODO Auto-generated method stub
-					
-				}
+	@Override
+	public boolean isExist() {
+
+		return this.exist;
+	}
+
+	@Override
+	public void setExist(boolean exist) {
+		this.exist = exist;
+	}
 
 
-				@Override
-				public Permeability getPermeability() {
-					// TODO Auto-generated method stub
-					return null;
-				}
+	public ILevelMap getLevelmap() {
+		return levelmap;
+	}
 
+	public void setLevelmap(ILevelMap levelmap) {
+		this.levelmap = levelmap;
+	}
 
-				public void setPermeability(Permeability permeability) {
-					this.permeability = permeability;
-				}
+	@Override
+	public int getScore() {
+		return score;
+	}
 
+	@Override
+	public void setScore(int score) {
+		this.score = score;
+	}
 
-				public ElementType getElementType() {
-					return elementType;
-				}
+	@Override
+	public ElementType getElementType() {
+		return elementType;
+	}
 
-
-				public void setElementType(ElementType elementType) {
-					this.elementType = elementType;
-				}
-
-
-				@Override
-				public void die() {
-					// TODO Auto-generated method stub
-					
-				}
-
+	public void setElementType(ElementType elementType) {
+		this.elementType = elementType;
+	}
+	
 }
-

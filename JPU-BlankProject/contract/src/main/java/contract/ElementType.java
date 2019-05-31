@@ -8,6 +8,7 @@ public enum ElementType {
 	ROCK,
 	BLOCK,
 	UNBREAKABLEBLOCK,
-	EXIT;
+	EXIT,
+	DEFAULT;
 	
 }
