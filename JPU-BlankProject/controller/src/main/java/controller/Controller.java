@@ -1,13 +1,14 @@
 package controller;
 
-import java.util.Random;
-
 import contract.ControllerOrder;
 import contract.ElementType;
+import contract.ICharacter;
 import contract.IController;
 import contract.IElement;
+import contract.IMobile;
 import contract.IModel;
 import contract.IView;
+import contract.Permeability;
 
 /**
  * The Class Controller.
@@ -20,11 +21,8 @@ public final class Controller implements IController {
 	/** The model. */
 	private IModel	model;
 	
-	private ControllerOrder stackOrder;
-	
-	private boolean gravity = true;
 
-	//private static final int speed = 5; //pour un cycle avec ennemi et gravité
+	private static final int speed = 5;
 
 	/**
 	 * Instantiates a new controller.
@@ -88,326 +86,114 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
-	public void play() {
+	public void orderPerform(final ControllerOrder controllerOrder) {
 
-		while(this.getModel().getLevelMap().getPlayer().isExist()){
-
-			try {
-				Thread.sleep(60);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 		IElement player = this.getModel().getLevelMap().getPlayer();
 		
-		boolean col = this.getElementNext(player, this.getStackOrder());
-			
-			switch (this.getStackOrder()) {
+		//boolean col = collision(controllerOrder, player);
+		
+			switch (controllerOrder) {
 				case Up:
-					if(col) {
-						player.moveUp();
-					}		
+					//if(col == true) {
+						player.moveUp();		
+					//}
+
+					
+
 					break;
 				case Down:
-					if(col) {
-						player.moveDown();
-					}
+					player.moveDown();
+
 					break;
 				case Left:
-					if(col) {
-						player.moveLeft();
-					}
+					player.moveLeft();
+
 					break;
 				case Right:
-					if(col) {
-						player.moveRight();
-					}
+					player.moveRight();
+
 					break;
 				default : 
 					player.doNothing();
 					break;
 		
 			}
-			this.clearStackOrder();
+	}
+	
+	public boolean collision (ControllerOrder controllerOrder, IElement element) {
+		
+		IElement player = element;
+		
+		IElement elementNext;
+
+				
+			switch(controllerOrder) {
 			
-
-			for(int x=0; x<40; x++) {
-				if(this.getStackOrder() != ControllerOrder.Default) break;
-				for(int y=0; y<22; y++) {
-					if(this.getStackOrder() != ControllerOrder.Default) break;
-					IElement e1 = this.getModel().getLevelMap().getElement(x, y);
-					boolean cole1 = false;
-					if(e1 != null && e1.getElementType() == ElementType.ENEMY) {
-						Random r = new Random();
-						int valeur = 1 + r.nextInt(5 - 1);
-						switch(valeur) {
-						case 1:
-							cole1 = this.getElementNext(e1, ControllerOrder.Up);
-							if(cole1) {
-								e1.moveUp();
-							}
-							break;
-						case 2:	
-							cole1 = this.getElementNext(e1, ControllerOrder.Down);
-							if(cole1) {
-								e1.moveDown();
-							}
-							break;
-						case 3:
-							cole1 = this.getElementNext(e1, ControllerOrder.Right);
-							if(cole1) {
-								e1.moveRight();
-							}
-							break;
-						case 4:
-							cole1 = this.getElementNext(e1, ControllerOrder.Left);
-							if(cole1) {
-								e1.moveLeft();
-							}
-							break;
-						default:
-							e1.doNothing();
-							break;
-						}
-					}
-					else if(e1 != null && (e1.getElementType() == ElementType.ROCK || e1.getElementType() == ElementType.DIAMOND)) {
-						cole1 = this.getElementNext(e1, ControllerOrder.Down);
-						if(this.getStackOrder() != ControllerOrder.Default) break;
-						if(cole1) {
-
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-
-								e.printStackTrace();
-							}
-							
-							if(this.getStackOrder() != ControllerOrder.Default) break;
-
-							
-							e1.moveDown();
-							this.gravity = true;
-
-						}
-
-					}
-					
-				}
-
-			}
-		}
-	}
-	
-	
-	public ControllerOrder getStackOrder() {
-		this.gravity = false;
-		return stackOrder;
-	}
-
-	public void setStackOrder(ControllerOrder stackOrder) {
-
-		this.stackOrder = stackOrder;
-	}
-	
-    private void clearStackOrder() {
-
-    	this.gravity = true;
-        this.stackOrder = ControllerOrder.Default;
-    }
-	
-    public IController getOrderPeformer() {
-        return this;
-    }
-
-    @Override
-    public final void orderPerform(final ControllerOrder userOrder) {
-
-        this.setStackOrder(userOrder);
-    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public boolean getElementNext(IElement element, ControllerOrder controllerOrder) {
-		
-		boolean res = true;
-		
-		IElement elementA = element;
-		IElement elementN = null;
-		
-
-			switch (controllerOrder) {
-			case Up:
-				elementN = this.model.getLevelMap().getElement(elementA.getX(), elementA.getY()-1);
+				case Left:
+					elementNext = this.model.getLevelMap().getElement(player.getX()-1, player.getY());
+					break;
+				case Right:
+					elementNext = this.model.getLevelMap().getElement(player.getX()+1, player.getY());
+					break;
+				case Up:
+					elementNext = this.model.getLevelMap().getElement(player.getX(), player.getY()+1);
+					break;
+				case Down:
+					elementNext = this.model.getLevelMap().getElement(player.getX(), player.getY()-1);
+					break;
+			default:
+				elementNext = null;
 				break;
-			case Down:
-				elementN = this.model.getLevelMap().getElement(elementA.getX(), elementA.getY()+1);
-				break;
-			case Left:
-				elementN = this.model.getLevelMap().getElement(elementA.getX()-1, elementA.getY());
-				break;
-			case Right:
-				elementN = this.model.getLevelMap().getElement(elementA.getX()+1, elementA.getY());
-				break;
-			case Default : 
-				elementN = null;
-				break;
+			
 			}
 			
-		res = collision(elementA, elementN, controllerOrder);
-		return res;
-		
-		
-	}
-	
-	public boolean collision(IElement elementA, IElement elementN, ControllerOrder controllerOrder) {
-		
-		ElementType TelementN = null; 
-		ElementType TelementA = elementA.getElementType();
-		
-		if(elementN != null) {
-			TelementN = elementN.getElementType();
-		}
-		else {
-			TelementN = ElementType.DEFAULT;
-		}
-		
-		
-		boolean res = false;
-		
-		switch(TelementA) {
-		case ROCK :
-		case DIAMOND :
-			switch(TelementN) {
-			case ENEMY:
-				res = true;
-				for(int x = elementN.getX()-1; x<elementN.getX()+1; x++) {
-					for(int y = elementN.getY()-1; y<elementN.getX()+1; y++) {
-						this.model.getLevelMap().setElement(x, y, elementA);
-					}
-				}
-				break;
-			case PLAYER:
-				if(gravity) {
-					res = true;
-					this.model.getLevelMap().getPlayer().setExist(false);;
-					System.out.println("You Die");
-					//System.exit(0);
-				}
+			Permeability permeability = elementNext.getPermeability();
+			ElementType elementType = elementNext.getElementType();
+			
 
-				break;
-			case DIAMOND:
-			case ROCK:
-			case UNBREAKABLEBLOCK:
-				//tombe sur le côté
-				break;
-			case DEFAULT:
-				gravity = true;
-				res = true;
-				break;
-			default :
-				res = false;
-				break;
+			if(elementNext == null) {
+				return true;
 			}
-			break;
-		case ENEMY:				
-			switch(TelementN) {
-			case PLAYER :
-				res = true;
-				this.model.getLevelMap().getPlayer().setExist(false);;
-				System.out.println("You Die");
-				System.exit(0);
-			break;
-			case DEFAULT :
-				res = true;
-			break;
-			default :
-				res = false;
-				break;
-			}
-			break;
-		case PLAYER:
-			switch(TelementN) {
-			case BLOCK:
-				res = true;
-				break;
-			case DIAMOND:
-				res = true;
-				this.model.getLevelMap().getPlayer().setScore(this.model.getLevelMap().getPlayer().getScore()+1);;
-				break;
-			case ENEMY:
-				res = true;
-				this.model.getLevelMap().getPlayer().setExist(false);;
-				System.out.println("You Die");
-				System.exit(0);
-				break;
-			case EXIT:
-				res = true;
-				if(this.model.getLevelMap().getPlayer().getScore() >= 5) {
-					System.out.println("You Win !");
-					System.exit(0);
-				}
-				else {
-					res = false;
-				}
-				break;
-			case ROCK:
-				if(getElementNext(elementN, controllerOrder))
-				{
-					if(controllerOrder == ControllerOrder.Left) {
-						elementN.moveLeft();
-						res = true;
-					}
-					else if(controllerOrder == ControllerOrder.Right) {
-						elementN.moveRight();
-						res = true;
-					}
-				}
-				else {
-					res = false;
+			else {
+				switch(permeability) {
+					case BLOCKING :
+						if(elementType == ElementType.PLAYER && element.getElementType() == ElementType.ENEMY) {
+							this.model.getLevelMap().getPlayer().die();
+							System.exit(0);
+						}
+						else if(elementType == ElementType.ENEMY && element.getElementType() == ElementType.PLAYER) {
+							this.model.getLevelMap().getPlayer().die();
+							System.exit(0);
+						}
+						else if(elementType == ElementType.UNBREAKABLEBLOCK) {
+						}
+						return false;
+						
+					case PENETRABLE :
+						if(elementType == ElementType.BLOCK) {
+							return true;
+						}
+						this.model.getLevelMap().removeElement(elementNext.getX(), elementNext.getY());
+						return true;
+						
+					case SEMIBLOKING :
+						//if()
+						
+						break;
+						
+					case PUSHABLE :
+						
+						break;
+				default:
+					break;
+				
 				}
 				
-				break;
-			case UNBREAKABLEBLOCK:
-				res = false;
-				break;
-			case DEFAULT :
-				res = true;
-				break;
-			default:
-				res = false;
-				break;
+				
 			}
-			break;
-		default:
-			res = true;
-			break;
-
-		}
+			return false;
+			
 		
-		
-		return res;
-	
 	}
-
-
+	
 }
-	
-	
-

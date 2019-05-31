@@ -8,163 +8,143 @@ import javax.imageio.ImageIO;
 import contract.ElementType;
 import contract.IElement;
 import contract.ILevelMap;
+import contract.ISprite;
+import contract.Permeability;
+import entity.Level;
 import model.element.LevelMap;
 
 public class Block implements IElement {
-	
-	private int score = 0;
-	
-	private boolean exist = true;
 
-	private ElementType elementType = ElementType.BLOCK;
+	private Permeability permeability = Permeability.PENETRABLE;
+	private ElementType elementType = ElementType.PLAYER;
 	
 	private int x;
 	private int y;
-
+	
+	private Image image;
+	private String imageName;
+	
+	private boolean state = false;
+	
 	private ILevelMap levelmap;
-
-	private static Image image;	
-	private String imageName = "cobblestone";
 	
 	public Block(final int x, final int y, LevelMap levelMap) {
-		this.setX(x);
-		this.setY(y);
-		this.setImageName(imageName);
-		this.loadImage();
-		this.setLevelmap(levelMap);
-
-	}
-	
-	@Override
-	public int getX() {
-
-		return this.x;
-	}
-
-	@Override
-	public void setX(int x) {
-
 		this.x = x;
-	}
-
-	@Override
-	public int getY() {
-
-		return this.y;
-	}
-
-	@Override
-	public void setY(int y) {
-
 		this.y = y;
+		this.loadImage();
 	}
-	
-	@Override
-	public void moveUp() {
-		
-		this.setY(this.getY() - 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX(), getY()+1);
 
-	}
-	
-	public void moveDown() {
-		this.setY(this.getY() + 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX(), getY()-1);
-	}
-	
-	public void moveLeft() {
-		this.setX(this.getX() - 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX()+1, getY());
-	}
-	
-	public void moveRight() {
-		this.setX(this.getX() + 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX()-1, getY());
-	}
-	
-	public void doNothing() {
-		this.setY(this.getY());
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
+	public void isDestroy() {
+		this.state = true;
 	}
 
 	@Override
 	public Image getImage() {
-
-		return Block.image;
+		// TODO Auto-generated method stub
+		return this.image;
 	}
 
 	@Override
 	public void setImage(Image image) {
-
-		Block.image = image;
+		// TODO Auto-generated method stub
+		this.image = image;
 	}
 
 	@Override
 	public void loadImage() {
-
-		Image img = null;
+		// TODO Auto-generated method stub
 		try {
-			img = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + this.getImageName() + ".png"));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/cobblestone.png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		this.setImage(img);
 	}
 
 	@Override
 	public String getImageName() {
-
+		// TODO Auto-generated method stub
 		return this.imageName;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
-
+		// TODO Auto-generated method stub
 		this.imageName = imageName;
 	}
 
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return this.x;
+	}
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		this.y = y;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return this.y;
+	}
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		this.y = y;
+	}
 
 	@Override
 	public boolean isExist() {
-
-		return this.exist;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public void setExist(boolean exist) {
-		this.exist = exist;
-	}
-
-
-	public ILevelMap getLevelmap() {
-		return levelmap;
-	}
-
-	public void setLevelmap(ILevelMap levelmap) {
-		this.levelmap = levelmap;
+	public void moveUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public int getScore() {
-		return score;
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void setScore(int score) {
-		this.score = score;
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
+	public void moveDown() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doNothing() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public ElementType getElementType() {
 		return elementType;
 	}
@@ -172,5 +152,19 @@ public class Block implements IElement {
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
 	}
+
+	@Override
+	public Permeability getPermeability() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		this.levelmap.removeElement(this.getX(), this.getY());
+		
+	}
+
 	
 }

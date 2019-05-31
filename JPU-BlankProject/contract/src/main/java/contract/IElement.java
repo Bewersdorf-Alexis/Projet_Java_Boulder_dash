@@ -13,6 +13,8 @@ public interface IElement extends ISprite {
 
 	public void setY(int y);
 	
+	public boolean isExist();
+	
 	public void moveUp();
 	
 	public void moveRight();
@@ -23,15 +25,11 @@ public interface IElement extends ISprite {
 
 	public void doNothing();
 
+	public Permeability getPermeability();
+
 	public ElementType getElementType();
-	
-	public int getScore();
-	
-	public void setScore(int score);
 
-	boolean isExist();
-
-	void setExist(boolean exist);
+	void die();
 	
 	
 }

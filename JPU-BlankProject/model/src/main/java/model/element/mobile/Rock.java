@@ -7,164 +7,144 @@ import javax.imageio.ImageIO;
 
 import contract.ElementType;
 import contract.IElement;
-import contract.ILevelMap;
+import contract.IMobile;
+import contract.ISprite;
+import contract.Permeability;
+import entity.Level;
 import model.element.LevelMap;
 
 public class Rock implements IElement {
-	
-	private int score = 0;
-	
-	private boolean exist = true;
 
-	private ElementType elementType = ElementType.ROCK;
+	private Permeability permeability = Permeability.PUSHABLE;
+	private ElementType elementType = ElementType.PLAYER;
 	
 	private int x;
 	private int y;
-
-	private ILevelMap levelmap;
-
-	private static Image image;	
-	private String imageName = "Rocher";
+	
+	private Image image;
+	private String imageName;
 	
 	public Rock(final int x, final int y, LevelMap levelMap) {
-		this.setX(x);
-		this.setY(y);
-		this.setImageName(imageName);
+		this.x = x;
+		this.y = y;
 		this.loadImage();
-		this.setLevelmap(levelMap);
-
 	}
-	
+
+	@Override
+	public void moveDown() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	public int getX() {
-
+		// TODO Auto-generated method stub
 		return this.x;
 	}
 
 	@Override
 	public void setX(int x) {
-
+		// TODO Auto-generated method stub
 		this.x = x;
 	}
 
 	@Override
 	public int getY() {
-
+		// TODO Auto-generated method stub
 		return this.y;
 	}
 
 	@Override
 	public void setY(int y) {
-
+		// TODO Auto-generated method stub
 		this.y = y;
-	}
-	
-	@Override
-	public void moveUp() {
-		
-		this.setY(this.getY() - 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX(), getY()+1);
-
-	}
-	
-	public void moveDown() {
-		this.setY(this.getY() + 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX(), getY()-1);
-	}
-	
-	public void moveLeft() {
-		this.setX(this.getX() - 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX()+1, getY());
-	}
-	
-	public void moveRight() {
-		this.setX(this.getX() + 1);
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
-		this.levelmap.removeElement(getX()-1, getY());
-	}
-	
-	public void doNothing() {
-		this.setY(this.getY());
-		
-		this.levelmap.setElement(this.getX(), this.getY(), this);
 	}
 
 	@Override
 	public Image getImage() {
-
-		return Rock.image;
+		// TODO Auto-generated method stub
+		return this.image;
 	}
 
 	@Override
 	public void setImage(Image image) {
-
-		Rock.image = image;
+		// TODO Auto-generated method stub
+		this.image = image;
 	}
 
 	@Override
 	public void loadImage() {
-
-		Image img = null;
+		// TODO Auto-generated method stub
 		try {
-			img = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/" + this.getImageName() + ".png"));
+			image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("images/rocher.png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		this.setImage(img);
 	}
 
 	@Override
 	public String getImageName() {
-
+		// TODO Auto-generated method stub
 		return this.imageName;
 	}
 
 	@Override
 	public void setImageName(String imageName) {
-
+		// TODO Auto-generated method stub
 		this.imageName = imageName;
 	}
 
+	@Override
+	public boolean isImageLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setImageLoaded(boolean isImageLoaded) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public boolean isExist() {
-
-		return this.exist;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public void setExist(boolean exist) {
-		this.exist = exist;
-	}
-
-
-	public ILevelMap getLevelmap() {
-		return levelmap;
-	}
-
-	public void setLevelmap(ILevelMap levelmap) {
-		this.levelmap = levelmap;
+	public void moveUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public int getScore() {
-		return score;
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void setScore(int score) {
-		this.score = score;
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
+	public void doNothing() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Permeability getPermeability() {
+		return permeability;
+	}
+
+	public void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
+	}
+
 	public ElementType getElementType() {
 		return elementType;
 	}
@@ -172,5 +152,11 @@ public class Rock implements IElement {
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
 	}
-	
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
