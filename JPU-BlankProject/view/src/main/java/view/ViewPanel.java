@@ -42,7 +42,6 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
-		viewFrame.getModel().getObservable().addObserver(this);
 		viewFrame.getModel().getLevelMap().getObservable().addObserver(this);
 		
 		try {
@@ -53,8 +52,6 @@ class ViewPanel extends JPanel implements Observer {
 		}
 		this.imgFond = this.icoFond;
 		
-		//this.player = this.viewFrame.getModel().getCharacter();
-		//this.diamond = this.viewFrame.getModel().getMobile();
 		this.model = this.viewFrame.getModel();
 	}
 
@@ -94,28 +91,22 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		//graphics.drawString(this.getViewFrame().getModel().getLevel().getMessage(), 10, 20);
 		graphics.drawImage(imgFond, 0, 0, null);
 		
 		Graphics2D g = (Graphics2D)graphics;
 		g.scale(2,  2);
-		g.translate(-this.getViewFrame().getModel().getLevelMap().getPlayer().getX()*16+5*16, -this.getViewFrame().getModel().getLevelMap().getPlayer().getY()*16+5*16);
+		g.translate(-this.model.getLevelMap().getPlayer().getX()*16+5*16, -this.getViewFrame().getModel().getLevelMap().getPlayer().getY()*16+5*16);
 		
 		for(int x=0; x<40; x++) {
 			for(int y=0; y<22; y++) {
 				
-				IElement el = this.getViewFrame().getModel().getLevelMap().getElement(x, y);
+				IElement el = this.model.getLevelMap().getElement(x, y);
 
 				if(el instanceof IElement) {
 					graphics.drawImage(el.getImage(), el.getX()*16, el.getY()*16, null);
 				}
 			}
 		}
-		
-		//System.out.println(this.getViewFrame().getModel().getLevelMap().getPlayer().getX());
-		//System.out.println(this.getViewFrame().getModel().getLevelMap().getPlayer().getY());
-		
-		//graphics.drawImage(this.diamond.getImage(), this.diamond.getX(), this.diamond.getY(), null);
 		
 		this.repaint();
 	}

@@ -2,9 +2,6 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Observable;
-
-import contract.IElement;
 import contract.ILevelMap;
 import contract.IModel;
 import entity.Level;
@@ -15,7 +12,7 @@ import model.element.LevelMap;
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model implements IModel {
 
 	/** The helloWorld. */
 	private Level level;
@@ -99,14 +96,6 @@ public final class Model extends Observable implements IModel {
 
 	public void setLevelMap(ILevelMap levelMap) {
 		this.levelMap = levelMap;
-		this.setChanged();
-		this.notifyObservers();
 	}
-	
-	
-	public Observable getObservable() {
-		return this;
-	}
-
 	
 }

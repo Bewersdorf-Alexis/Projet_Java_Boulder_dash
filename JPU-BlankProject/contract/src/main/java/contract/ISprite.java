@@ -16,8 +16,4 @@ public interface ISprite {
 
 	public void setImageName(String imageName);
 
-	public boolean isImageLoaded();
-
-	public void setImageLoaded(boolean isImageLoaded);
-
 }

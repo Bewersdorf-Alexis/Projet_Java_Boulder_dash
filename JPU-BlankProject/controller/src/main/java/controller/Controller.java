@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Random;
+
 import contract.ControllerOrder;
 import contract.ElementType;
 import contract.IController;
@@ -18,6 +20,9 @@ public final class Controller implements IController {
 	/** The model. */
 	private IModel	model;
 	
+	private ControllerOrder stackOrder;
+	
+	private boolean gravity = true;
 
 	//private static final int speed = 5; //pour un cycle avec ennemi et gravité
 
@@ -83,51 +88,167 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
-	public void orderPerform(final ControllerOrder controllerOrder) {
+	public void play() {
 
+		while(this.getModel().getLevelMap().getPlayer().isExist()){
+
+			try {
+				Thread.sleep(60);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		IElement player = this.getModel().getLevelMap().getPlayer();
 		
-		boolean col = this.getElementNext(player, controllerOrder);
+		boolean col = this.getElementNext(player, this.getStackOrder());
 			
-			switch (controllerOrder) {
+			switch (this.getStackOrder()) {
 				case Up:
 					if(col) {
-					player.moveUp();
-					}
-								
+						player.moveUp();
+					}		
 					break;
 				case Down:
 					if(col) {
-					player.moveDown();
+						player.moveDown();
 					}
-
 					break;
 				case Left:
 					if(col) {
-					player.moveLeft();
+						player.moveLeft();
 					}
-
 					break;
 				case Right:
 					if(col) {
-					player.moveRight();
+						player.moveRight();
 					}
-
 					break;
 				default : 
 					player.doNothing();
 					break;
 		
-		}
+			}
+			this.clearStackOrder();
+			
 
+			for(int x=0; x<40; x++) {
+				if(this.getStackOrder() != ControllerOrder.Default) break;
+				for(int y=0; y<22; y++) {
+					if(this.getStackOrder() != ControllerOrder.Default) break;
+					IElement e1 = this.getModel().getLevelMap().getElement(x, y);
+					boolean cole1 = false;
+					if(e1 != null && e1.getElementType() == ElementType.ENEMY) {
+						Random r = new Random();
+						int valeur = 1 + r.nextInt(5 - 1);
+						switch(valeur) {
+						case 1:
+							cole1 = this.getElementNext(e1, ControllerOrder.Up);
+							if(cole1) {
+								e1.moveUp();
+							}
+							break;
+						case 2:	
+							cole1 = this.getElementNext(e1, ControllerOrder.Down);
+							if(cole1) {
+								e1.moveDown();
+							}
+							break;
+						case 3:
+							cole1 = this.getElementNext(e1, ControllerOrder.Right);
+							if(cole1) {
+								e1.moveRight();
+							}
+							break;
+						case 4:
+							cole1 = this.getElementNext(e1, ControllerOrder.Left);
+							if(cole1) {
+								e1.moveLeft();
+							}
+							break;
+						default:
+							e1.doNothing();
+							break;
+						}
+					}
+					else if(e1 != null && (e1.getElementType() == ElementType.ROCK || e1.getElementType() == ElementType.DIAMOND)) {
+						cole1 = this.getElementNext(e1, ControllerOrder.Down);
+						if(this.getStackOrder() != ControllerOrder.Default) break;
+						if(cole1) {
+
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+
+								e.printStackTrace();
+							}
+							
+							if(this.getStackOrder() != ControllerOrder.Default) break;
+
+							
+							e1.moveDown();
+							this.gravity = true;
+
+						}
+
+					}
+					
+				}
+
+			}
+		}
 	}
+	
+	
+	public ControllerOrder getStackOrder() {
+		this.gravity = false;
+		return stackOrder;
+	}
+
+	public void setStackOrder(ControllerOrder stackOrder) {
+
+		this.stackOrder = stackOrder;
+	}
+	
+    private void clearStackOrder() {
+
+    	this.gravity = true;
+        this.stackOrder = ControllerOrder.Default;
+    }
+	
+    public IController getOrderPeformer() {
+        return this;
+    }
+
+    @Override
+    public final void orderPerform(final ControllerOrder userOrder) {
+
+        this.setStackOrder(userOrder);
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public boolean getElementNext(IElement element, ControllerOrder controllerOrder) {
 		
 		boolean res = true;
 		
 		IElement elementA = element;
-		ElementType TelementA;
 		IElement elementN = null;
 		
 
@@ -148,7 +269,7 @@ public final class Controller implements IController {
 				elementN = null;
 				break;
 			}
-		
+			
 		res = collision(elementA, elementN, controllerOrder);
 		return res;
 		
@@ -168,10 +289,11 @@ public final class Controller implements IController {
 		}
 		
 		
-		boolean res = true;
+		boolean res = false;
 		
 		switch(TelementA) {
-		case DIAMOND:
+		case ROCK :
+		case DIAMOND :
 			switch(TelementN) {
 			case ENEMY:
 				res = true;
@@ -182,23 +304,33 @@ public final class Controller implements IController {
 				}
 				break;
 			case PLAYER:
-				res = true;
-				this.model.getLevelMap().getPlayer().destroy();
-				System.out.println("You Die");
-				System.exit(0);
+				if(gravity) {
+					res = true;
+					this.model.getLevelMap().getPlayer().setExist(false);;
+					System.out.println("You Die");
+					//System.exit(0);
+				}
+
+				break;
+			case DIAMOND:
+			case ROCK:
+			case UNBREAKABLEBLOCK:
+				//tombe sur le côté
 				break;
 			case DEFAULT:
+				gravity = true;
 				res = true;
 				break;
 			default :
 				res = false;
+				break;
 			}
 			break;
-		case ENEMY:
+		case ENEMY:				
 			switch(TelementN) {
 			case PLAYER :
 				res = true;
-				this.model.getLevelMap().getPlayer().destroy();
+				this.model.getLevelMap().getPlayer().setExist(false);;
 				System.out.println("You Die");
 				System.exit(0);
 			break;
@@ -209,6 +341,7 @@ public final class Controller implements IController {
 				res = false;
 				break;
 			}
+			break;
 		case PLAYER:
 			switch(TelementN) {
 			case BLOCK:
@@ -220,14 +353,14 @@ public final class Controller implements IController {
 				break;
 			case ENEMY:
 				res = true;
-				this.model.getLevelMap().getPlayer().destroy();
+				this.model.getLevelMap().getPlayer().setExist(false);;
 				System.out.println("You Die");
 				System.exit(0);
 				break;
 			case EXIT:
 				res = true;
 				if(this.model.getLevelMap().getPlayer().getScore() >= 5) {
-					System.out.println("You Win");
+					System.out.println("You Win !");
 					System.exit(0);
 				}
 				else {
@@ -257,16 +390,9 @@ public final class Controller implements IController {
 			case DEFAULT :
 				res = true;
 				break;
-			
-			}
-	
-			break;
-		case ROCK:
-			if((TelementN == ElementType.DEFAULT || TelementN == ElementType.PLAYER) && (controllerOrder == ControllerOrder.Right || controllerOrder == ControllerOrder.Left)) {
-				res = true;
-			}
-			else {
+			default:
 				res = false;
+				break;
 			}
 			break;
 		default:
@@ -275,9 +401,12 @@ public final class Controller implements IController {
 
 		}
 		
+		
 		return res;
 	
 	}
+
+
 }
 	
 	

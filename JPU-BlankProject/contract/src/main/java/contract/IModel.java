@@ -1,7 +1,5 @@
 package contract;
 
-import java.util.Observable;
-
 import entity.Level;
 
 /**
@@ -31,8 +29,6 @@ public interface IModel {
 	 *
 	 * @return the observable
 	 */
-	Observable getObservable();
-	
 	
 	ILevelMap getLevelMap();
 	

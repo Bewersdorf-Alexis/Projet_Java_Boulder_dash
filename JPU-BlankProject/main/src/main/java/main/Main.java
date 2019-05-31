@@ -35,6 +35,7 @@ public abstract class Main {
 
         controller.control();
         controller.orderPerform(ControllerOrder.Default);
-    	
+    	controller.play();
+
     }
 }
