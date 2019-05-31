@@ -1,7 +1,5 @@
 package contract;
 
-import java.awt.Image;
-
 public interface IElement extends ISprite {
 
 
@@ -12,15 +10,26 @@ public interface IElement extends ISprite {
 	public int getY();
 
 	public void setY(int y);
-
-	public ISprite getSprite();
-
-	public void setSprite(ISprite sprite);
-
-	public Permeability getPermeability();
-
-	public void setPermeability(Permeability permeability);
 	
-	public Image getImage();
+	public void moveUp();
+	
+	public void moveRight();
+	
+	public void moveLeft();
+	
+	public void moveDown();
+
+	public void doNothing();
+
+	public ElementType getElementType();
+	
+	public int getScore();
+	
+	public void setScore(int score);
+
+	boolean isExist();
+
+	void setExist(boolean exist);
+	
 	
 }

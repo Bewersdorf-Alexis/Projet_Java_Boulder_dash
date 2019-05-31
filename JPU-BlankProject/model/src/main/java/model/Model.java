@@ -1,34 +1,37 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Observable;
-
-import contract.ICharacter;
+import contract.ILevelMap;
 import contract.IModel;
 import entity.Level;
-import model.element.mobile.Player;
+import model.element.LevelMap;
 
 /**
  * The Class Model.
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model implements IModel {
 
 	/** The helloWorld. */
 	private Level level;
 	
-	private Player player;
-	
-	private int xPlayer;
-	private int yPlayer;
+	private ILevelMap levelMap;
+
 
 	/**
 	 * Instantiates a new model.
+	 * @throws IOException 
 	 */
 	public Model() {
-		this.level = new Level();
-		this.player = new Player(this.xPlayer, this.yPlayer);
+		//this.level = new Level();
+		//this.player = new Player(this.xPlayer, this.yPlayer, level);
+		//this.diamond = new Diamond(1, 1, level);
+		this.setLevel(new Level());
+		this.loadLevel(2);
+		
+		this.setLevelMap(new LevelMap(this.level));
 	}
 
 	/**
@@ -53,8 +56,7 @@ public final class Model extends Observable implements IModel {
      */
 	private void setLevel(final Level level) {
 		this.level = level;
-		this.setChanged();
-		this.notifyObservers();
+
 	}
 
 	/**
@@ -68,10 +70,10 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadLevel(final String code) {
+	public void loadLevel(final int id) {
 		try {
 			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(daoLevel.find(code));
+			this.setLevel(daoLevel.find(id));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -87,14 +89,13 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
-	public Observable getObservable() {
-		return this;
+
+	public ILevelMap getLevelMap() {
+		return levelMap;
 	}
-	
-	public ICharacter getCharacter() {
-		return this.player;
+
+	public void setLevelMap(ILevelMap levelMap) {
+		this.levelMap = levelMap;
 	}
-	
-	
 	
 }
