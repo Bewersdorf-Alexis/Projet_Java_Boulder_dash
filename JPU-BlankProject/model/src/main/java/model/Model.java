@@ -30,9 +30,6 @@ public final class Model extends Observable implements IModel {
 	
 	private Player player;
 	
-	private int xPlayer = 0;
-	private int yPlayer = 0;
-	
 	private Diamond diamond;
 
 	/**

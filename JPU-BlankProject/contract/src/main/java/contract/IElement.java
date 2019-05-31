@@ -2,8 +2,6 @@ package contract;
 
 import java.awt.Image;
 
-import controller.ElementType;
-
 public interface IElement extends ISprite {
 
 
