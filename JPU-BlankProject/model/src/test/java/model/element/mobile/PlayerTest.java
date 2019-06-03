@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import contract.ElementType;
+import entity.Level;
 import model.element.LevelMap;
 
 public class PlayerTest {
@@ -26,12 +27,16 @@ public class PlayerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.player = new Player(1,1, this.levelMap);
+		Level level = new Level(1);
+		levelMap = new LevelMap(level);
+		this.player = new Player(1,1, levelMap);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	
 
 	@Test
 	public void testGetX() {
