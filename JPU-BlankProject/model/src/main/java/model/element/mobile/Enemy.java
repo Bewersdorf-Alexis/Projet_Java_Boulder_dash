@@ -36,6 +36,12 @@ public class Enemy implements IElement {
 		this.setImageName(imageNameDown);
 		this.loadImage();
 		this.setLevelmap(levelMap);
+		/**
+	       * constructor to build and place enemy
+	       *
+	       * @param image
+	       *         
+	       */
 
 	}
 	
@@ -43,24 +49,48 @@ public class Enemy implements IElement {
 	public int getX() {
 
 		return this.x;
+		/**
+	       * Get x position of diamond
+	       *
+	       * @param x
+	       *         
+	       */
 	}
 
 	@Override
 	public void setX(int x) {
 
 		this.x = x;
+		/**
+	       * Set x position of diamond
+	       *
+	       * @param x
+	       *         
+	       */
 	}
 
 	@Override
 	public int getY() {
 
 		return this.y;
+		/**
+	       * Get y position of diamond
+	       *
+	       * @param y
+	       *         
+	       */
 	}
 
 	@Override
 	public void setY(int y) {
 
 		this.y = y;
+		/**
+	       * Set y position of diamond
+	       *
+	       * @param y
+	       *         
+	       */
 	}
 	
 	@Override
@@ -72,6 +102,13 @@ public class Enemy implements IElement {
 		
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 		this.levelmap.removeElement(getX(), getY()+1);
+		/**
+	       * Move up the player when up key are pressed
+	       *
+	       * @param x
+	       * @param y 
+	       *       
+	       */
 
 	}
 	
@@ -82,6 +119,13 @@ public class Enemy implements IElement {
 		
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 		this.levelmap.removeElement(getX(), getY()-1);
+		/**
+	       * Move down the player when down key are pressed
+	       *
+	       * @param x
+	       * @param y 
+	       *       
+	       */
 	}
 	
 	public void moveLeft() {
@@ -91,6 +135,13 @@ public class Enemy implements IElement {
 		
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 		this.levelmap.removeElement(getX()+1, getY());
+		/**
+	       * Move left the player when left key are pressed
+	       *
+	       * @param x
+	       * @param y 
+	       *       
+	       */
 	}
 	
 	public void moveRight() {
@@ -100,6 +151,13 @@ public class Enemy implements IElement {
 		
 		this.levelmap.setElement(this.getX(), this.getY(), this);
 		this.levelmap.removeElement(getX()-1, getY());
+		/**
+	       * Move right the player when right key are pressed
+	       *
+	       * @param x
+	       * @param y 
+	       *       
+	       */
 	}
 	
 	public void doNothing() {
@@ -108,18 +166,37 @@ public class Enemy implements IElement {
 		this.loadImage();
 		
 		this.levelmap.setElement(this.getX(), this.getY(), this);
+		/**
+	       * do nothing the player when player don't
+	       *
+	       * @param x
+	       * @param y 
+	       *       
+	       */
 	}
 
 	@Override
 	public Image getImage() {
 
 		return Enemy.image;
+		/**
+	       * Get image of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public void setImage(Image image) {
 
 		Enemy.image = image;
+		/**
+	       * Set image of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
@@ -133,18 +210,36 @@ public class Enemy implements IElement {
 			e.printStackTrace();
 		}
 		this.setImage(img);
+		/**
+	       * Load image of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public String getImageName() {
 
 		return this.imageName;
+		/**
+	       * Get image of enemy
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public void setImageName(String imageName) {
 
 		this.imageName = imageName;
+		/**
+	       * Set image of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 
@@ -152,39 +247,87 @@ public class Enemy implements IElement {
 	public boolean isExist() {
 
 		return this.exist;
+		/**
+	       * check existing of enemy
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public void setExist(boolean exist) {
 		this.exist = exist;
+		/**
+	       * set exist verification of enemy
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 
 	public ILevelMap getLevelmap() {
 		return levelmap;
+		/**
+	       * Get level
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
+		/**
+	       * Set level
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public int getScore() {
 		return score;
+		/**
+	       * Get score of collected diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public void setScore(int score) {
 		this.score = score;
+		/**
+	       * Set score of collected diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	@Override
 	public ElementType getElementType() {
 		return elementType;
+		/**
+	       * Get element type of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
+		/**
+	       * Set element type of diamond
+	       *
+	       * @param image
+	       *         
+	       */
 	}
 	
 }

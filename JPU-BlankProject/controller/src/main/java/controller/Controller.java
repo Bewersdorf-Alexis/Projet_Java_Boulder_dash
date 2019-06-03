@@ -124,9 +124,9 @@ public final class Controller implements IController {
 						player.moveRight();
 					}
 					break;
-				default : 
+				/*default : 
 					player.doNothing();
-					break;
+					break;*/
 		
 			}
 			this.clearStackOrder();

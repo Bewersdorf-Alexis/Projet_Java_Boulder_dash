@@ -29,7 +29,7 @@ public final class Model implements IModel {
 		//this.player = new Player(this.xPlayer, this.yPlayer, level);
 		//this.diamond = new Diamond(1, 1, level);
 		this.setLevel(new Level());
-		this.loadLevel(2);
+		this.loadLevel(4);
 		
 		this.setLevelMap(new LevelMap(this.level));
 	}
