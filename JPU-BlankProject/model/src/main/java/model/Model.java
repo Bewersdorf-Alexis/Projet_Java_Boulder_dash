@@ -27,7 +27,7 @@ public final class Model implements IModel {
 	 */
 	public Model() {
 		this.setLevel(new Level());
-		this.loadLevel(5);
+		this.loadLevel(1);
 		
 		this.setLevelMap(new LevelMap(this.level));
 	}
