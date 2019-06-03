@@ -10,7 +10,7 @@ import model.element.LevelMap;
 /**
  * The Class Model.
  *
- * @author Carlu Florian
+ * @author Group 5
  */
 public final class Model implements IModel {
 
@@ -32,15 +32,10 @@ public final class Model implements IModel {
 		this.setLevelMap(new LevelMap(this.level));
 	}
 
-	/**
-     * Gets the hello world.
-     *
-     * @return the hello world
-     */
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage()
+	 * @see contract.IModel#getLevel()
 	 */
 	public Level getLevel() {
 		return this.level;
@@ -57,16 +52,10 @@ public final class Model implements IModel {
 
 	}
 
-	/**
-     * Load level.
-     *
-     * @param code
-     *            the code
-     */
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
+	 * @see contract.IModel#loadLevel()
 	 */
 	public void loadLevel(final int id) {
 		try {
@@ -77,21 +66,19 @@ public final class Model implements IModel {
 		}
 	}
 
-	/**
-	 * Gets the levelMap.
-	 * 
-	 * @return levelMap
-	 * 				the levelMap
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IModel#getLevelMap()
 	 */
 	public ILevelMap getLevelMap() {
 		return levelMap;
 	}
 
-	/**
-	 * Sets the levelMap.
-	 * 
-	 * @param levelMap
-	 * 				the levelMap
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IModel#setLevelMap()
 	 */
 	public void setLevelMap(ILevelMap levelMap) {
 		this.levelMap = levelMap;

@@ -10,7 +10,7 @@ import entity.Level;
 /**
 * The Class DAOLevel.
 *
-* @author Carlu Florian
+* @author Group 5
 */
 class DAOLevel extends DAOEntity<Level> {
 
@@ -30,7 +30,7 @@ class DAOLevel extends DAOEntity<Level> {
 	/**
 	 * The find method
 	 * 
-	 * Gets character on phpmyadmin and create a new level.
+	 * Gets characters on phpmyadmin and create a new level.
 	 */
 	@Override
     public Level find(final int id) {
@@ -63,29 +63,5 @@ class DAOLevel extends DAOEntity<Level> {
 		}
 		return null;
 	}
-
-
-
-				@Override
-				public boolean create(Level entity) {
-					// TODO Auto-generated method stub
-					return false;
-				}
-
-
-
-				@Override
-				public boolean delete(Level entity) {
-					// TODO Auto-generated method stub
-					return false;
-				}
-
-
-
-				@Override
-				public boolean update(Level entity) {
-					// TODO Auto-generated method stub
-					return false;
-				}
 
 }
