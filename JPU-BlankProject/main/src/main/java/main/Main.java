@@ -1,11 +1,8 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 5
  * @version 1.0
  */
 package main;
-
-import java.awt.HeadlessException;
-import java.io.IOException;
 
 import contract.ControllerOrder;
 import controller.Controller;
@@ -15,7 +12,7 @@ import view.View;
 /**
  * The Class Main.
  *
- * @author Jean-Aymeric Diet
+ * @author Group 5
  */
 public abstract class Main {
 
@@ -24,8 +21,6 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
-     * @throws IOException 
-     * @throws HeadlessException 
      */
     public static void main(final String[] args) {
         final Model model = new Model();
