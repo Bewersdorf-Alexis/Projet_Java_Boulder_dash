@@ -49,7 +49,7 @@ public class Diamond implements IElement {
      *
      * @return x
      * 
-     *  @See contract.IElement#getX
+     * @See contract.IElement#getX
      */
 	@Override
 	
@@ -150,7 +150,7 @@ public class Diamond implements IElement {
 	}
 	
 	/**
-     * do nothing the player when player don't
+     * do nothing the player when player don't move
      * 
      *  @See contract.IElement#doNothing     
      */
@@ -321,6 +321,7 @@ public class Diamond implements IElement {
      * 
      *  @See contract.IElement#setElementType        
      */
+	@Override
 	public void setElementType(ElementType elementType) {
 		this.elementType = elementType;
 	}
