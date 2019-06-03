@@ -4,6 +4,9 @@
  */
 package main;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
+
 import contract.ControllerOrder;
 import controller.Controller;
 import model.Model;
@@ -21,6 +24,8 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
+     * @throws IOException 
+     * @throws HeadlessException 
      */
     public static void main(final String[] args) {
         final Model model = new Model();
@@ -29,6 +34,8 @@ public abstract class Main {
         view.setController(controller);
 
         controller.control();
-        controller.orderPerform(ControllerOrder.English);
+        controller.orderPerform(ControllerOrder.Default);
+    	controller.play();
+
     }
 }

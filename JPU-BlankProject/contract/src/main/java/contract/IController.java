@@ -3,7 +3,7 @@ package contract;
 /**
  * The Interface IController.
  *
- * @author Jean-Aymeric Diet
+ * @author Carlu Florian
  */
 public interface IController {
 
@@ -17,6 +17,7 @@ public interface IController {
 	 *
 	 * @param controllerOrder
 	 *          the controller order
+	 * @throws InterruptedException 
 	 */
-	public void orderPerform(ControllerOrder controllerOrder);
+	public void orderPerform(ControllerOrder controllerOrder) ;
 }

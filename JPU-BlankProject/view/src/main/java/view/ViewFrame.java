@@ -1,13 +1,19 @@
 package view;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 
@@ -18,6 +24,8 @@ import contract.IModel;
  */
 class ViewFrame extends JFrame implements KeyListener {
 
+	public static ViewPanel pan;
+
 	/** The model. */
 	private IModel						model;
 
@@ -25,7 +33,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	private IController				controller;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
-
+	
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -33,8 +41,9 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the model
 	 * @throws HeadlessException
 	 *           the headless exception
+	 * @throws IOException 
 	 */
-	public ViewFrame(final IModel model) throws HeadlessException {
+	public ViewFrame(final IModel model) {
 		this.buildViewFrame(model);
 	}
 
@@ -45,6 +54,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the model
 	 * @param gc
 	 *          the gc
+	 * @throws IOException 
 	 */
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
@@ -60,8 +70,9 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the title
 	 * @throws HeadlessException
 	 *           the headless exception
+	 * @throws IOException 
 	 */
-	public ViewFrame(final IModel model, final String title) throws HeadlessException {
+	public ViewFrame(final IModel model, final String title) {
 		super(title);
 		this.buildViewFrame(model);
 	}
@@ -75,6 +86,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the title
 	 * @param gc
 	 *          the gc
+	 * @throws IOException 
 	 */
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
@@ -124,15 +136,19 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *
 	 * @param model
 	 *          the model
+	 * @throws IOException 
 	 */
 	private void buildViewFrame(final IModel model) {
+		//pan = new ViewPanel();
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		//this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(635, 385);
 		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
 
 	/**
@@ -171,4 +187,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
+		
 }

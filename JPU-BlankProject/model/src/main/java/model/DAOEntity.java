@@ -8,7 +8,7 @@ import entity.Entity;
 /**
  * The Class DAOEntity.
  *
- * @author Jean-Aymeric Diet
+ * @author Carlu Florian
  *
  * @param <E>
  *          the element type
@@ -74,14 +74,5 @@ abstract class DAOEntity<E extends Entity> {
 	 * @return the e
 	 */
 	public abstract E find(int id);
-
-	/**
-	 * Find.
-	 *
-	 * @param code
-	 *          the code
-	 * @return the e
-	 */
-	public abstract E find(String code);
 
 }

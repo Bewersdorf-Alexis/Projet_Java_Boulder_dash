@@ -1,35 +1,42 @@
 package contract;
 
-import java.util.Observable;
-
-import entity.HelloWorld;
+import entity.Level;
 
 /**
  * The Interface IModel.
  *
- * @author Jean-Aymeric Diet
+ * @author Carlu Florian
  */
 public interface IModel {
 
 	/**
-	 * Gets the hello world.
+	 * Gets the level.
 	 *
-	 * @return the helloworld entity
+	 * @return the level entity
 	 */
-	HelloWorld getHelloWorld();
+	Level getLevel();
 
 	/**
-	 * Load the message.
+	 * Load the level.
 	 *
 	 * @param code
 	 *          the code
 	 */
-	void loadHelloWorld(String code);
-
+	void loadLevel(int id);
+	
 	/**
-	 * Gets the observable.
+	 * Gets the levelMap.
 	 *
-	 * @return the observable
+	 * @return the levelMap entity
 	 */
-	Observable getObservable();
+	ILevelMap getLevelMap();
+	
+	/**
+	 * Sets the level.
+	 *
+	 * @param the level entity
+	 */
+	void setLevelMap(ILevelMap levelMap);
+	
+	
 }
