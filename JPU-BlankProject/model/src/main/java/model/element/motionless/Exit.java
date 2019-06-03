@@ -39,12 +39,24 @@ public class Exit implements IElement {
 	public int getX() {
 
 		return this.x;
+		/**
+	       * Get x position of exit
+	       *
+	       * @param x
+	       *         
+	       */
 	}
 
 	@Override
 	public void setX(int x) {
 
 		this.x = x;
+		/**
+	       * Set x position of block
+	       *
+	       * @param x
+	       *         
+	       */
 	}
 
 	@Override
