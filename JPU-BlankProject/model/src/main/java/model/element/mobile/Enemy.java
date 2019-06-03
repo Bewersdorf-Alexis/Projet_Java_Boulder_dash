@@ -121,6 +121,7 @@ public class Enemy implements IElement {
      *
      *  @See contract.IElement#moveDown   
      */
+	@Override
 	public void moveDown() {
 		this.setY(this.getY() + 1);
 		this.setImageName(imageNameDown);
@@ -135,6 +136,7 @@ public class Enemy implements IElement {
      * 
      *  @See contract.IElement#moveLeft
      */
+	@Override
 	public void moveLeft() {
 		this.setX(this.getX() - 1);
 		this.setImageName(imageNameLeft);
@@ -149,6 +151,7 @@ public class Enemy implements IElement {
      * 
      *  @See contract.IElement#moveRight
      */
+	@Override
 	public void moveRight() {
 		this.setX(this.getX() + 1);
 		this.setImageName(imageNameRight);
@@ -163,6 +166,7 @@ public class Enemy implements IElement {
      * 
      *  @See contract.IElement#doNothing     
      */
+	@Override
 	public void doNothing() {
 		this.setY(this.getY());
 		this.setImageName(imageNameDown);
@@ -314,7 +318,7 @@ public class Enemy implements IElement {
 	}
 
 	/**
-     * Get element type of diamond
+     * Get element type of Enemy
      *
      * @return element type
      * 
@@ -326,7 +330,7 @@ public class Enemy implements IElement {
 	}
 	
 	/**
-     * Set element type of diamond
+     * Set element type of Enemy
      *
      * @param elementType
      * 

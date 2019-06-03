@@ -117,6 +117,7 @@ public class Diamond implements IElement {
      *
      *  @See contract.IElement#moveDown   
      */
+	@Override
 	public void moveDown() {
 		this.setY(this.getY() + 1);
 		
@@ -129,6 +130,7 @@ public class Diamond implements IElement {
      * 
      *  @See contract.IElement#moveLeft
      */
+	@Override
 	public void moveLeft() {
 		this.setX(this.getX() - 1);
 		
@@ -142,6 +144,7 @@ public class Diamond implements IElement {
        * 
        *  @See contract.IElement#moveRight
        */
+	@Override
 	public void moveRight() {
 		this.setX(this.getX() + 1);
 		
@@ -154,6 +157,7 @@ public class Diamond implements IElement {
      * 
      *  @See contract.IElement#doNothing     
      */
+	@Override
 	public void doNothing() {
 		this.setY(this.getY());
 		
