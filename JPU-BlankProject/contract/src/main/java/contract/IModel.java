@@ -5,7 +5,7 @@ import entity.Level;
 /**
  * The Interface IModel.
  *
- * @author Carlu Florian
+ * @author Group 5
  */
 public interface IModel {
 
@@ -19,8 +19,8 @@ public interface IModel {
 	/**
 	 * Load the level.
 	 *
-	 * @param code
-	 *          the code
+	 * @param id
+	 *          the id
 	 */
 	void loadLevel(int id);
 	
