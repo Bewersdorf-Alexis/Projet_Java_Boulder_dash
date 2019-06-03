@@ -16,7 +16,7 @@ import contract.IModel;
 /**
  * The Class ViewPanel.
  *
- * @author Jean-Aymeric Diet
+ * @author Group 5
  */
 class ViewPanel extends JPanel implements Observer {
 

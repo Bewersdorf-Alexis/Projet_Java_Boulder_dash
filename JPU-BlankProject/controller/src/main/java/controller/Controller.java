@@ -37,7 +37,7 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		this.model.loadLevel(1);
+		//this.model.loadLevel(1);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+		this.view.printMessage("Appuyez sur les flèches pour se déplacer.");
 	}
 
 	/**
@@ -107,7 +107,7 @@ public final class Controller implements IController {
 				case Up:
 					if(col) {
 						player.moveUp();
-					}		
+					}
 					break;
 				case Down:
 					if(col) {
@@ -125,7 +125,7 @@ public final class Controller implements IController {
 					}
 					break;
 				default : 
-					player.doNothing();
+					//player.doNothing();
 					break;
 		
 			}
