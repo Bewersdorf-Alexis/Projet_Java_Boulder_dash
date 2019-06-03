@@ -1,9 +1,9 @@
 package contract;
 
 /**
- * The Interface IController.
+ * The Interface IController
  *
- * @author Carlu Florian
+ * @author Group 5
  */
 public interface IController {
 
