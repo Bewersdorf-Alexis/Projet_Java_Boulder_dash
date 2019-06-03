@@ -20,6 +20,7 @@ public interface IElement extends ISprite {
 	 * Set the X of element
 	 * 
 	 * @param x
+	 * 				The x.
 	 */
 	public void setX(int x);
 
@@ -34,6 +35,7 @@ public interface IElement extends ISprite {
 	 * Set the Y of element
 	 * 
 	 * @param y
+	 * 				The y.
 	 */
 	public void setY(int y);
 	
@@ -73,6 +75,7 @@ public interface IElement extends ISprite {
 	 * Set the type of element
 	 * 
 	 * @param elementType
+	 * 						The elementType.
 	 */
 	public void setElementType(ElementType elementType);
 	
@@ -87,11 +90,12 @@ public interface IElement extends ISprite {
 	 * Set the Score 
 	 * 
 	 * @param score
+	 * 					The score.
 	 */
 	public void setScore(int score);
 
 	/**
-	 *Know if elements exist or they alive
+	 * Know if elements exist or they alive
 	 * 
 	 * @return exist
 	 */
@@ -101,6 +105,7 @@ public interface IElement extends ISprite {
 	 * Set element if they are destroy, or took
 	 * 
 	 * @param exist
+	 * 					The exist.
 	 */
 	void setExist(boolean exist);
 	

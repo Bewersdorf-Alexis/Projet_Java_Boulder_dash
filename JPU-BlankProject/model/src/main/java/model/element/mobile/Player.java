@@ -10,32 +10,58 @@ import contract.IElement;
 import contract.ILevelMap;
 import model.element.LevelMap;
 
+/**
+ * The Class Diamond.
+ *
+ * @author Group 5
+ */
 public class Player implements IElement {
 	
+	/** The score */
 	private int score = 0;
 	
+	/** The exist boolean */
 	private boolean exist = true;
 
+	/** The elementType */
 	private ElementType elementType = ElementType.PLAYER;
 	
+	/** The x */
 	private int x;
+	
+	/** The y */
 	private int y;
 
+	/** The levelmap */
 	private ILevelMap levelmap;
 
+	/** The image */
 	private static Image image;	
+	
+	/** The image up */
 	private String imageNameUp = "JoueurMonteArret";
+	
+	/** The image down */
 	private String imageNameDown = "JoueurDescendArret";
+	
+	/** The image right */
 	private String imageNameRight = "JoueurDroiteArret";
+	
+	/** The image left */
 	private String imageNameLeft = "JoueurGaucheArret";
+	
+	/** The imageName */
 	private String imageName;
 	
 	/**
      * constructor to build and place player
      *
      * @param x
+     * 		The x.
      * @param y
-     * @param LevelMap
+     * 		The y.
+     * @param levelMap
+     * 		The levelMap.
      *         
      */
 	public Player(final int x, final int y, LevelMap levelMap) {
@@ -51,8 +77,6 @@ public class Player implements IElement {
      * Get x position of player
      *
      * @return x
-     * 
-     * @See contract.IElement#getX
      */
 	@Override
 	public int getX() {
@@ -64,8 +88,7 @@ public class Player implements IElement {
      * Set x position of player
      *
      * @param x
-     *  
-     *  @See contract.IElement#setX
+     * 		The x.
      */
 	@Override
 	public void setX(int x) {
@@ -77,8 +100,6 @@ public class Player implements IElement {
      * Get y position of player
      *
      * @return y
-     * 
-     *  @See contract.IElement#getY
      */
 	@Override
 	public int getY() {
@@ -90,8 +111,7 @@ public class Player implements IElement {
      * Set y position of player
      *
      * @param y
-     * 
-     *  @See contract.IElement#setY
+     * 		The y.
      */
 	@Override
 	public void setY(int y) {
@@ -102,7 +122,6 @@ public class Player implements IElement {
 	/**
      * Move up the player when up key are pressed
      *     
-     *  @See contract.IElement#moveUp
      */
 	@Override
 	public void moveUp() {
@@ -118,8 +137,7 @@ public class Player implements IElement {
 	
 	/**
      * Move down the player when down key are pressed
-     *
-     *  @See contract.IElement#moveDown   
+     * 
      */
 	@Override
 	public void moveDown() {
@@ -134,7 +152,6 @@ public class Player implements IElement {
 	/**
      * Move left the player when left key are pressed
      * 
-     *  @See contract.IElement#moveLeft
      */
 	@Override
 	public void moveLeft() {
@@ -149,7 +166,6 @@ public class Player implements IElement {
 	/**
      * Move right the player when right key are pressed
      * 
-     *  @See contract.IElement#moveRight
      */
 	@Override
 	public void moveRight() {
@@ -163,8 +179,7 @@ public class Player implements IElement {
 	
 	/**
      * do nothing the player when player don't move
-     * 
-     *  @See contract.IElement#doNothing     
+     *     
      */
 	@Override
 	public void doNothing() {
@@ -178,9 +193,7 @@ public class Player implements IElement {
 	/**
      * Get image of player
      *
-     * @return image
-     * 
-     *  @See contract.IElement#getImage        
+     * @return image      
      */
 	@Override
 	public Image getImage() {
@@ -192,8 +205,7 @@ public class Player implements IElement {
      * Set image of player
      *
      * @param image
-     *  
-     *  @See contract.IElement#setImage        
+     * 			The image.      
      */
 	@Override
 	public void setImage(Image image) {
@@ -203,8 +215,7 @@ public class Player implements IElement {
 
 	/**
      * Load image of player
-     * 
-     *  @See contract.IElement#loadImage        
+     *        
      */
 	@Override
 	public void loadImage() {
@@ -223,8 +234,7 @@ public class Player implements IElement {
      * Get image name of player
      *
      * @return imgaName
-     * 
-     *  @See contract.IElement#getImageName       
+     *       
      */
 	@Override
 	public String getImageName() {
@@ -235,9 +245,8 @@ public class Player implements IElement {
 	/**
      * Set image name of player
      *
-     * @param imageName
-     * 
-     *  @See contract.IElement#setImageName        
+     * @param imageName      
+     * 				The image name. 
      */
 	@Override
 	public void setImageName(String imageName) {
@@ -251,7 +260,6 @@ public class Player implements IElement {
      *
      * @return exist
      * 
-     *  @See contract.IElement#isExist
      */
 	@Override
 	public boolean isExist() {
@@ -263,8 +271,8 @@ public class Player implements IElement {
      * set exist verification of player
      *
      * @param exist
+     * 			The exist state.
      * 
-     *  @See contract.IElement#setExist
      */
 	@Override
 	public void setExist(boolean exist) {
@@ -276,7 +284,6 @@ public class Player implements IElement {
      *
      * @return level map
      * 
-     *  @See contract.IElement#getLevelmap
      */
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -285,9 +292,9 @@ public class Player implements IElement {
 	/**
      * Set level
      *
-     * @param levelMap
-     * 
-     *  @See contract.IElement#setLevelmap        
+     * @param levelmap
+     * 			The levelMap.
+     *       
      */
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
@@ -298,7 +305,6 @@ public class Player implements IElement {
      *
      * @return score
      * 
-     * @See contract.IElement#getScore
      */
 	@Override
 	public int getScore() {
@@ -309,8 +315,8 @@ public class Player implements IElement {
      * Set score of collected diamond
      *
      * @param score
-     * 
-     *  @See contract.IElement#setScore        
+     * 			The score.
+     *      
      */
 	@Override
 	public void setScore(int score) {
@@ -321,8 +327,7 @@ public class Player implements IElement {
      * Get element type of player
      *
      * @return element type
-     * 
-     *  @See contract.IElement#getElementType       
+     *    
      */
 	@Override
 	public ElementType getElementType() {
@@ -333,8 +338,8 @@ public class Player implements IElement {
      * Set element type of player
      *
      * @param elementType
-     * 
-     *  @See contract.IElement#setElementType        
+     * 				The elementType.
+     *       
      */
 	@Override
 	public void setElementType(ElementType elementType) {

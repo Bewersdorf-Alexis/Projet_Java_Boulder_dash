@@ -1,9 +1,6 @@
 package view;
 
-import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
@@ -26,8 +23,6 @@ public final class View implements IView, Runnable {
 	 *
 	 * @param model
 	 *          the model
-	 * @throws IOException 
-	 * @throws HeadlessException 
 	 */
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);

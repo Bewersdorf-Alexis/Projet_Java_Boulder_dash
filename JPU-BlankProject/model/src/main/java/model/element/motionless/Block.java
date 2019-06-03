@@ -10,28 +10,46 @@ import contract.IElement;
 import contract.ILevelMap;
 import model.element.LevelMap;
 
+/**
+ * The Class Diamond.
+ *
+ * @author Group 5
+ */
 public class Block implements IElement {
 	
+	/** The score */
 	private int score = 0;
 	
+	/** The exist boolean */
 	private boolean exist = true;
 
+	/** The elementType */
 	private ElementType elementType = ElementType.BLOCK;
 	
+	/** The x */
 	private int x;
+	
+	/** The y */
 	private int y;
 
+	/** The levelmap */
 	private ILevelMap levelmap;
 
-	private static Image image;	
+	/** The image */
+	private static Image image;
+	
+	/** The imageName */
 	private String imageName = "cobblestone";
 	
 	/**
      * constructor to build and place Block
      *
      * @param x
+     * 		The x.
      * @param y
-     * @param LevelMap
+     * 		The y.
+     * @param levelMap
+     * 		The levelMap.
      *         
      */
 	public Block(final int x, final int y, LevelMap levelMap) {
@@ -48,7 +66,6 @@ public class Block implements IElement {
      *
      * @return x
      * 
-     * @See contract.IElement#getX
      */
 	@Override
 	public int getX() {
@@ -60,8 +77,8 @@ public class Block implements IElement {
      * Set x position of Block
      *
      * @param x
+     * 		The x.
      *  
-     *  @See contract.IElement#setX
      */
 	@Override
 	public void setX(int x) {
@@ -74,7 +91,6 @@ public class Block implements IElement {
      *
      * @return y
      * 
-     *  @See contract.IElement#getY
      */
 	@Override
 	public int getY() {
@@ -86,8 +102,8 @@ public class Block implements IElement {
      * Set y position of Block
      *
      * @param y
+     * 		The y.
      * 
-     *  @See contract.IElement#setY
      */
 	@Override
 	public void setY(int y) {
@@ -98,7 +114,6 @@ public class Block implements IElement {
 	/**
      * Move up the player when up key are pressed
      *     
-     *  @See contract.IElement#moveUp
      */
 	@Override
 	public void moveUp() {
@@ -112,8 +127,7 @@ public class Block implements IElement {
 	
 	/**
      * Move down the player when down key are pressed
-     *
-     *  @See contract.IElement#moveDown   
+     * 
      */
 	@Override
 	public void moveDown() {
@@ -126,7 +140,6 @@ public class Block implements IElement {
 	/**
      * Move left the player when left key are pressed
      * 
-     *  @See contract.IElement#moveLeft
      */
 	@Override
 	public void moveLeft() {
@@ -139,7 +152,6 @@ public class Block implements IElement {
 	/**
      * Move right the player when right key are pressed
      * 
-     *  @See contract.IElement#moveRight
      */
 	@Override
 	public void moveRight() {
@@ -151,8 +163,7 @@ public class Block implements IElement {
 	
 	/**
      * do nothing the player when player don't move
-     * 
-     *  @See contract.IElement#doNothing     
+     *     
      */
 	@Override
 	public void doNothing() {
@@ -164,9 +175,7 @@ public class Block implements IElement {
 	/**
      * Get image of Block
      *
-     * @return image
-     * 
-     *  @See contract.IElement#getImage        
+     * @return image      
      */
 	@Override
 	public Image getImage() {
@@ -178,8 +187,8 @@ public class Block implements IElement {
      * Set image of Block
      *
      * @param image
-     *  
-     *  @See contract.IElement#setImage        
+     * 			The image.
+     *        
      */
 	@Override
 	public void setImage(Image image) {
@@ -189,8 +198,7 @@ public class Block implements IElement {
 
 	/**
      * Load image of Block
-     * 
-     *  @See contract.IElement#loadImage        
+     *      
      */
 	@Override
 	public void loadImage() {
@@ -206,11 +214,9 @@ public class Block implements IElement {
 	}
 
 	/**
-     * Set image name of Block
+     * Get image name of block
      *
-     * @param imageName
-     * 
-     *  @See contract.IElement#setImageName        
+     * @return imageName      
      */
 	@Override
 	public String getImageName() {
@@ -219,11 +225,11 @@ public class Block implements IElement {
 	}
 
 	/**
-     * check existing of Block
+     * Set image name of diamond
      *
-     * @return exist
+     * @param imageName   
+     * 				The image name.   
      * 
-     *  @See contract.IElement#isExist
      */
 	@Override
 	public void setImageName(String imageName) {
@@ -232,11 +238,9 @@ public class Block implements IElement {
 	}
 
 	/**
-     * set exist verification of Block
+     * check existing of diamond
      *
-     * @param exist
-     * 
-     *  @See contract.IElement#setExist
+     * @return exist
      */
 	@Override
 	public boolean isExist() {
@@ -248,8 +252,8 @@ public class Block implements IElement {
      * set exist verification of Block
      *
      * @param exist
-     * 
-     *  @See contract.IElement#setExist
+     * 			The exist state.
+     *
      */
 	@Override
 	public void setExist(boolean exist) {
@@ -261,7 +265,6 @@ public class Block implements IElement {
      *
      * @return level map
      * 
-     *  @See contract.IElement#getLevelmap
      */
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -270,9 +273,9 @@ public class Block implements IElement {
 	/**
      * Set level
      *
-     * @param levelMap
-     * 
-     *  @See contract.IElement#setLevelmap        
+     * @param levelmap
+     * 				The levelMap.
+     *        
      */
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
@@ -283,7 +286,6 @@ public class Block implements IElement {
      *
      * @return score
      * 
-     * @See contract.IElement#getScore
      */
 	@Override
 	public int getScore() {
@@ -294,8 +296,8 @@ public class Block implements IElement {
      * Set score of collected diamond
      *
      * @param score
-     * 
-     *  @See contract.IElement#setScore        
+     * 			The score.
+     *      
      */
 	@Override
 	public void setScore(int score) {
@@ -306,8 +308,7 @@ public class Block implements IElement {
      * Get element type of Block
      *
      * @return element type
-     * 
-     *  @See contract.IElement#getElementType       
+     *       
      */
 	@Override
 	public ElementType getElementType() {
@@ -318,8 +319,8 @@ public class Block implements IElement {
      * Set element type of diamond
      *
      * @param elementType
-     * 
-     *  @See contract.IElement#setElementType        
+     * 				The elementType.
+     *        
      */
 	@Override
 	public void setElementType(ElementType elementType) {

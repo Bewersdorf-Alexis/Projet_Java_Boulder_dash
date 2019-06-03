@@ -22,24 +22,25 @@ import contract.IModel;
 class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
-	private ViewFrame					viewFrame;
+	private ViewFrame			viewFrame;
+	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
+	/** the background icon. */
 	private Image icoFond;
+	
+	/** the background image. */
 	private Image imgFond;
-	//private static final Sprite CharacterDescendsStop          		= new Sprite("/Sprite_Character/JoueurDescendArret.png");
 
-	
+	/** the model. */
 	private IModel model;
-	
 	
 	/**
 	 * Instantiates a new view panel.
 	 *
 	 * @param viewFrame
 	 *          the view frame
-	 * @throws IOException 
 	 */
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);

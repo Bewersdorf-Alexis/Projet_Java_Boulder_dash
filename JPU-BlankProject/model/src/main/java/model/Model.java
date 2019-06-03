@@ -1,6 +1,5 @@
 package model;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import contract.ILevelMap;
 import contract.IModel;
@@ -23,7 +22,6 @@ public final class Model implements IModel {
 
 	/**
 	 * Instantiates a new model.
-	 * @throws IOException 
 	 */
 	public Model() {
 		this.setLevel(new Level());

@@ -10,28 +10,46 @@ import contract.IElement;
 import contract.ILevelMap;
 import model.element.LevelMap;
 
+/**
+ * The Class Diamond.
+ *
+ * @author Group 5
+ */
 public class Exit implements IElement {
 	
+	/** The score */
 	private int score = 0;
 	
+	/** The exist boolean */
 	private boolean exist = true;
 
+	/** The elementType */
 	private ElementType elementType = ElementType.EXIT;
 	
+	/** The x */
 	private int x;
+	
+	/** The y */
 	private int y;
 
+	/** The levelmap */
 	private ILevelMap levelmap;
 
-	private static Image image;	
+	/** The image */
+	private static Image image;
+	
+	/** The imageName */
 	private String imageName = "trapdoor";
 	
 	/**
      * constructor to build and place Exit
      *
      * @param x
+     * 		The x.
      * @param y
-     * @param LevelMap
+     * 		The y.
+     * @param levelMap
+     * 		The levelMap.
      *         
      */
 	public Exit(final int x, final int y, LevelMap levelMap) {
@@ -48,7 +66,6 @@ public class Exit implements IElement {
      *
      * @return x
      * 
-     * @See contract.IElement#getX
      */
 	@Override
 	public int getX() {
@@ -61,6 +78,7 @@ public class Exit implements IElement {
      * Set x position of Exit
      *
      * @param x
+     * 		The x.
      *         
      */
 	@Override
@@ -75,7 +93,6 @@ public class Exit implements IElement {
      *
      * @return y
      * 
-     *  @See contract.IElement#getY
      */
 	@Override
 	public int getY() {
@@ -87,8 +104,8 @@ public class Exit implements IElement {
      * Set y position of Exit
      *
      * @param y
+     * 		The y.
      * 
-     *  @See contract.IElement#setY
      */
 	@Override
 	public void setY(int y) {
@@ -99,7 +116,6 @@ public class Exit implements IElement {
 	/**
      * Move up the player when up key are pressed
      *     
-     *  @See contract.IElement#moveUp
      */
 	@Override
 	public void moveUp() {
@@ -114,7 +130,6 @@ public class Exit implements IElement {
 	/**
      * Move down the player when down key are pressed
      *
-     *  @See contract.IElement#moveDown   
      */
 	@Override
 	public void moveDown() {
@@ -127,7 +142,6 @@ public class Exit implements IElement {
 	/**
      * Move left the player when left key are pressed
      * 
-     *  @See contract.IElement#moveLeft
      */
 	@Override
 	public void moveLeft() {
@@ -140,7 +154,6 @@ public class Exit implements IElement {
 	/**
      * Move right the player when right key are pressed
      * 
-     *  @See contract.IElement#moveRight
      */
 	@Override
 	public void moveRight() {
@@ -152,8 +165,7 @@ public class Exit implements IElement {
 	
 	/**
      * do nothing the player when player don't move
-     * 
-     *  @See contract.IElement#doNothing     
+     *     
      */
 	@Override
 	public void doNothing() {
@@ -166,8 +178,7 @@ public class Exit implements IElement {
      * Get image of Exit
      *
      * @return image
-     * 
-     *  @See contract.IElement#getImage        
+     *        
      */
 	@Override
 	public Image getImage() {
@@ -179,8 +190,8 @@ public class Exit implements IElement {
      * Set image of Exit
      *
      * @param image
-     *  
-     *  @See contract.IElement#setImage        
+     * 			The image.
+     *      
      */
 	@Override
 	public void setImage(Image image) {
@@ -190,8 +201,7 @@ public class Exit implements IElement {
 
 	/**
      * Load image of Exit
-     * 
-     *  @See contract.IElement#loadImage        
+     *      
      */
 	@Override
 	public void loadImage() {
@@ -210,8 +220,7 @@ public class Exit implements IElement {
      * Get image name of Exit
      *
      * @return imgaName
-     * 
-     *  @See contract.IElement#getImageName       
+     *      
      */
 	@Override
 	public String getImageName() {
@@ -223,8 +232,8 @@ public class Exit implements IElement {
      * Set image name of Exit
      *
      * @param imageName
-     * 
-     *  @See contract.IElement#setImageName        
+     * 				The image name.
+     *    
      */
 	@Override
 	public void setImageName(String imageName) {
@@ -237,7 +246,6 @@ public class Exit implements IElement {
      *
      * @return exist
      * 
-     *  @See contract.IElement#isExist
      */
 	@Override
 	public boolean isExist() {
@@ -249,8 +257,8 @@ public class Exit implements IElement {
      * set exist verification of Exit
      *
      * @param exist
+     * 			The exist state.
      * 
-     *  @See contract.IElement#setExist
      */
 	@Override
 	public void setExist(boolean exist) {
@@ -262,7 +270,6 @@ public class Exit implements IElement {
      *
      * @return level map
      * 
-     *  @See contract.IElement#getLevelmap
      */
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -271,9 +278,9 @@ public class Exit implements IElement {
 	/**
      * Set level
      *
-     * @param levelMap
-     * 
-     *  @See contract.IElement#setLevelmap        
+     * @param levelmap
+     * 			The levelmap
+     *       
      */
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
@@ -284,7 +291,6 @@ public class Exit implements IElement {
      *
      * @return score
      * 
-     * @See contract.IElement#getScore
      */
 	@Override
 	public int getScore() {
@@ -295,8 +301,8 @@ public class Exit implements IElement {
      * Set score of collected diamond
      *
      * @param score
-     * 
-     *  @See contract.IElement#setScore        
+     * 			The score.
+     *      
      */
 	@Override
 	public void setScore(int score) {
@@ -307,8 +313,7 @@ public class Exit implements IElement {
      * Get element type of diamond
      *
      * @return element type
-     * 
-     *  @See contract.IElement#getElementType       
+     *    
      */
 	@Override
 	public ElementType getElementType() {
@@ -319,8 +324,8 @@ public class Exit implements IElement {
      * Set element type of diamond
      *
      * @param elementType
-     * 
-     *  @See contract.IElement#setElementType        
+     * 				The elementType.
+     *    
      */
 	@Override
 	public void setElementType(ElementType elementType) {

@@ -10,20 +10,25 @@ import java.util.Observable;
 public interface ILevelMap {
 
        /**
-        * Get the elements with coordonates
+        * Get the elements with coordinates
         * 
         * @param x
+        * 		The x.
         * @param y
+        * 		The y.
         * @return level array
         */
        public IElement getElement(int x, int y);
        
        /**
-        * Set the elements with coordonates, and set the change et notigy observer
+        * Set the elements with coordinates, and set the change and notify observer
         * 
         * @param x
+        * 		The x.
         * @param y
+        * 		The y.
         * @param element
+        * 		The element.
         */
        public void setElement(int x, int y, IElement element);
 
@@ -38,7 +43,9 @@ public interface ILevelMap {
         * Remove element when player go on
         * 
         * @param x
+        * 		The x.
         * @param y
+        * 		The y.
         */
        void removeElement(int x, int y);
 
@@ -53,7 +60,9 @@ public interface ILevelMap {
         * Set the Diamond
         * 
         * @param x
+        * 		The x.
         * @param y
+        * 		The y.
         */
 	void popDiamond(int x, int y);
        

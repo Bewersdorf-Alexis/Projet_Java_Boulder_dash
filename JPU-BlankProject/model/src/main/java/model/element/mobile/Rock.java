@@ -10,28 +10,46 @@ import contract.IElement;
 import contract.ILevelMap;
 import model.element.LevelMap;
 
+/**
+ * The Class Diamond.
+ *
+ * @author Group 5
+ */
 public class Rock implements IElement {
 	
+	/** The score */
 	private int score = 0;
 	
+	/** The exist boolean */
 	private boolean exist = true;
 
+	/** The elementType */
 	private ElementType elementType = ElementType.ROCK;
 	
+	/** The x */
 	private int x;
+	
+	/** The y */
 	private int y;
 
+	/** The levelmap */
 	private ILevelMap levelmap;
 
+	/** The image */
 	private static Image image;	
+	
+	/** The imageName */
 	private String imageName = "Rocher";
 	
 	/**
      * constructor to build and place Rock
      *
      * @param x
+     * 		The x.
      * @param y
-     * @param LevelMap
+     * 		The y.
+     * @param levelMap
+     * 		The levelMap.
      *         
      */
 	public Rock(final int x, final int y, LevelMap levelMap) {
@@ -48,7 +66,6 @@ public class Rock implements IElement {
      *
      * @return x
      * 
-     * @See contract.IElement#getX
      */
 	@Override
 	public int getX() {
@@ -60,8 +77,8 @@ public class Rock implements IElement {
      * Set x position of Rock
      *
      * @param x
+     * 		The x.
      *  
-     *  @See contract.IElement#setX
      */
 	@Override
 	public void setX(int x) {
@@ -74,7 +91,6 @@ public class Rock implements IElement {
      *
      * @return y
      * 
-     *  @See contract.IElement#getY
      */
 	@Override
 	public int getY() {
@@ -86,8 +102,8 @@ public class Rock implements IElement {
      * Set y position of Rock
      *
      * @param y
+     * 		The y.
      * 
-     *  @See contract.IElement#setY
      */
 	@Override
 	public void setY(int y) {
@@ -97,8 +113,6 @@ public class Rock implements IElement {
 	
 	/**
      * Move up the player when up key are pressed
-     *     
-     *  @See contract.IElement#moveUp
      */
 	@Override
 	public void moveUp() {
@@ -113,7 +127,6 @@ public class Rock implements IElement {
 	/**
      * Move down the player when down key are pressed
      *
-     *  @See contract.IElement#moveDown   
      */
 	@Override
 	public void moveDown() {
@@ -126,7 +139,6 @@ public class Rock implements IElement {
 	/**
      * Move left the player when left key are pressed
      * 
-     *  @See contract.IElement#moveLeft
      */
 	public void moveLeft() {
 		this.setX(this.getX() - 1);
@@ -137,7 +149,6 @@ public class Rock implements IElement {
 	/**
      * Move right the player when right key are pressed
      * 
-     *  @See contract.IElement#moveRight
      */
 	@Override
 	public void moveRight() {
@@ -149,8 +160,7 @@ public class Rock implements IElement {
 	
 	/**
      * do nothing the player when player don't move
-     * 
-     *  @See contract.IElement#doNothing     
+     *    
      */
 	@Override
 	public void doNothing() {
@@ -163,8 +173,7 @@ public class Rock implements IElement {
      * Get image of Rock
      *
      * @return image
-     * 
-     *  @See contract.IElement#getImage        
+     *       
      */
 	@Override
 	public Image getImage() {
@@ -176,8 +185,8 @@ public class Rock implements IElement {
      * Set image of Rock
      *
      * @param image
-     *  
-     *  @See contract.IElement#setImage        
+     * 			The image.
+     *       
      */
 	@Override
 	public void setImage(Image image) {
@@ -187,8 +196,7 @@ public class Rock implements IElement {
 
 	/**
      * Load image of Rock
-     * 
-     *  @See contract.IElement#loadImage        
+     *      
      */
 	@Override
 	public void loadImage() {
@@ -207,8 +215,7 @@ public class Rock implements IElement {
      * Get image name of Rock
      *
      * @return imgaName
-     * 
-     *  @See contract.IElement#getImageName       
+     *      
      */
 	@Override
 	public String getImageName() {
@@ -220,8 +227,8 @@ public class Rock implements IElement {
      * Set image name of Rock
      *
      * @param imageName
-     * 
-     *  @See contract.IElement#setImageName        
+     * 				The image name.
+     *       
      */
 	@Override
 	public void setImageName(String imageName) {
@@ -234,7 +241,6 @@ public class Rock implements IElement {
      *
      * @return exist
      * 
-     *  @See contract.IElement#isExist
      */
 	@Override
 	public boolean isExist() {
@@ -246,8 +252,8 @@ public class Rock implements IElement {
      * set exist verification of Rock
      *
      * @param exist
+     * 			The exist state.
      * 
-     *  @See contract.IElement#setExist
      */
 	@Override
 	public void setExist(boolean exist) {
@@ -259,7 +265,6 @@ public class Rock implements IElement {
      *
      * @return level map
      * 
-     *  @See contract.IElement#getLevelmap
      */
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -268,9 +273,9 @@ public class Rock implements IElement {
 	/**
      * Set level
      *
-     * @param levelMap
-     * 
-     *  @See contract.IElement#setLevelmap        
+     * @param levelmap
+     * 			The levelMap.
+     *        
      */
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
@@ -281,7 +286,6 @@ public class Rock implements IElement {
      *
      * @return score
      * 
-     * @See contract.IElement#getScore
      */
 	@Override
 	public int getScore() {
@@ -292,8 +296,8 @@ public class Rock implements IElement {
      * Set score of collected diamond
      *
      * @param score
-     * 
-     *  @See contract.IElement#setScore        
+     * 			The score.
+     *        
      */
 	@Override
 	public void setScore(int score) {
@@ -304,8 +308,7 @@ public class Rock implements IElement {
      * Get element type of Rock
      *
      * @return element type
-     * 
-     *  @See contract.IElement#getElementType       
+     *       
      */
 	@Override
 	public ElementType getElementType() {
@@ -316,8 +319,8 @@ public class Rock implements IElement {
      * Set element type of Rock
      *
      * @param elementType
-     * 
-     *  @See contract.IElement#setElementType        
+     * 				The elementType.
+     *       
      */
 	@Override
 	public void setElementType(ElementType elementType) {

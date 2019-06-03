@@ -22,6 +22,7 @@ public class LevelMap extends Observable implements ILevelMap {
 	 * Instantiates a new levelMap.
 	 * 
 	 * @param level
+	 * 			The level.
 	 */
 	public LevelMap(Level level) {
                                

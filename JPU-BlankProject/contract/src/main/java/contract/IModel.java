@@ -32,9 +32,10 @@ public interface IModel {
 	ILevelMap getLevelMap();
 	
 	/**
-	 * Sets the level.
+	 * Sets the levelMap.
 	 *
-	 * @param the level entity
+	 * @param levelMap
+	 * 				The levelMap.
 	 */
 	void setLevelMap(ILevelMap levelMap);
 	

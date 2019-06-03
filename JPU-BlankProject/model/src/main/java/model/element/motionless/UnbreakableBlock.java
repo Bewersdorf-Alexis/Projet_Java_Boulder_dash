@@ -10,28 +10,46 @@ import contract.IElement;
 import contract.ILevelMap;
 import model.element.LevelMap;
 
+/**
+ * The Class Diamond.
+ *
+ * @author Group 5
+ */
 public class UnbreakableBlock implements IElement {
 	
+	/** The score */
 	private int score = 0;
 	
+	/** The exist boolean */
 	private boolean exist = true;
 
+	/** The elementType */
 	private ElementType elementType = ElementType.UNBREAKABLEBLOCK;
 	
+	/** The x */
 	private int x;
+	
+	/** The y */
 	private int y;
 
+	/** The levelmap */
 	private ILevelMap levelmap;
 
-	private static Image image;	
+	/** The image */
+	private static Image image;
+	
+	/** The imageName */
 	private String imageName = "bedrock";
 	
 	/**
      * constructor to build and place UnbreakableBlock
      *
      * @param x
+     * 		The x.
      * @param y
-     * @param LevelMap
+     * 		The y.
+     * @param levelMap
+     * 		The levelMap
      *         
      */
 	public UnbreakableBlock(final int x, final int y, LevelMap levelMap) {
@@ -48,7 +66,6 @@ public class UnbreakableBlock implements IElement {
      *
      * @return x
      * 
-     * @See contract.IElement#getX
      */
 	@Override
 	public int getX() {
@@ -60,8 +77,8 @@ public class UnbreakableBlock implements IElement {
      * Set x position of UnbreakableBlock
      *
      * @param x
+     * 		The x.
      *  
-     *  @See contract.IElement#setX
      */
 	@Override
 	public void setX(int x) {
@@ -74,7 +91,6 @@ public class UnbreakableBlock implements IElement {
      *
      * @return y
      * 
-     *  @See contract.IElement#getY
      */
 	@Override
 	public int getY() {
@@ -86,8 +102,8 @@ public class UnbreakableBlock implements IElement {
      * Set y position of UnbreakableBlock
      *
      * @param y
+     * 		The y.
      * 
-     *  @See contract.IElement#setY
      */
 	@Override
 	public void setY(int y) {
@@ -98,7 +114,6 @@ public class UnbreakableBlock implements IElement {
 	/**
      * Move up the player when up key are pressed
      *     
-     *  @See contract.IElement#moveUp
      */
 	@Override
 	public void moveUp() {
@@ -112,8 +127,7 @@ public class UnbreakableBlock implements IElement {
 	
 	/**
      * Move down the player when down key are pressed
-     *
-     *  @See contract.IElement#moveDown   
+     *  
      */
 	@Override
 	public void moveDown() {
@@ -126,7 +140,6 @@ public class UnbreakableBlock implements IElement {
 	/**
      * Move left the player when left key are pressed
      * 
-     *  @See contract.IElement#moveLeft
      */
 	@Override
 	public void moveLeft() {
@@ -139,7 +152,6 @@ public class UnbreakableBlock implements IElement {
 	/**
      * Move right the player when right key are pressed
      * 
-     *  @See contract.IElement#moveRight
      */
 	@Override
 	public void moveRight() {
@@ -151,8 +163,7 @@ public class UnbreakableBlock implements IElement {
 	
 	/**
      * do nothing the player when player don't move
-     * 
-     *  @See contract.IElement#doNothing     
+     *   
      */
 	@Override
 	public void doNothing() {
@@ -165,8 +176,7 @@ public class UnbreakableBlock implements IElement {
      * Get image of UnbreakableBlock
      *
      * @return image
-     * 
-     *  @See contract.IElement#getImage        
+     *      
      */
 	@Override
 	public Image getImage() {
@@ -178,8 +188,8 @@ public class UnbreakableBlock implements IElement {
      * Set image of UnbreakableBlock
      *
      * @param image
-     *  
-     *  @See contract.IElement#setImage        
+     * 			The image.
+     *        
      */
 	@Override
 	public void setImage(Image image) {
@@ -189,8 +199,7 @@ public class UnbreakableBlock implements IElement {
 
 	/**
      * Load image of UnbreakableBlock
-     * 
-     *  @See contract.IElement#loadImage        
+     *     
      */
 	@Override
 	public void loadImage() {
@@ -209,8 +218,7 @@ public class UnbreakableBlock implements IElement {
      * Get image name of UnbreakableBlock
      *
      * @return imgaName
-     * 
-     *  @See contract.IElement#getImageName       
+     *     
      */
 	@Override
 	public String getImageName() {
@@ -222,8 +230,8 @@ public class UnbreakableBlock implements IElement {
      * Set image name of UnbreakableBlock
      *
      * @param imageName
-     * 
-     *  @See contract.IElement#setImageName        
+     * 				The image name.
+     *       
      */
 	@Override
 	public void setImageName(String imageName) {
@@ -236,7 +244,6 @@ public class UnbreakableBlock implements IElement {
      *
      * @return exist
      * 
-     *  @See contract.IElement#isExist
      */
 	@Override
 	public boolean isExist() {
@@ -248,8 +255,8 @@ public class UnbreakableBlock implements IElement {
      * set exist verification of UnbreakableBlock
      *
      * @param exist
+     * 			The exist state.
      * 
-     *  @See contract.IElement#setExist
      */
 	@Override
 	public void setExist(boolean exist) {
@@ -262,7 +269,6 @@ public class UnbreakableBlock implements IElement {
      *
      * @return level map
      * 
-     *  @See contract.IElement#getLevelmap
      */
 	public ILevelMap getLevelmap() {
 		return levelmap;
@@ -271,9 +277,9 @@ public class UnbreakableBlock implements IElement {
 	/**
      * Set level
      *
-     * @param levelMap
-     * 
-     *  @See contract.IElement#setLevelmap        
+     * @param levelmap
+     * 			The levelMap.
+     *      
      */
 	public void setLevelmap(ILevelMap levelmap) {
 		this.levelmap = levelmap;
@@ -284,7 +290,6 @@ public class UnbreakableBlock implements IElement {
      *
      * @return score
      * 
-     * @See contract.IElement#getScore
      */
 	@Override
 	public int getScore() {
@@ -295,8 +300,8 @@ public class UnbreakableBlock implements IElement {
      * Set score of collected diamond
      *
      * @param score
-     * 
-     *  @See contract.IElement#setScore        
+     * 			The score.
+     *      
      */
 	@Override
 	public void setScore(int score) {
@@ -307,8 +312,7 @@ public class UnbreakableBlock implements IElement {
      * Get element type of UnbreakableBlock
      *
      * @return element type
-     * 
-     *  @See contract.IElement#getElementType       
+     *     
      */
 	@Override
 	public ElementType getElementType() {
@@ -319,8 +323,8 @@ public class UnbreakableBlock implements IElement {
      * Set element type of UnbreakableBlock
      *
      * @param elementType
-     * 
-     *  @See contract.IElement#setElementType        
+     * 				The elementType.
+     *       
      */
 	@Override
 	public void setElementType(ElementType elementType) {

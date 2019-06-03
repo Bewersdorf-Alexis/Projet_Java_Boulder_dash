@@ -40,7 +40,7 @@ public class Level extends Entity {
         * @param y
        *                  the y position in table
        * 
-        * @param map
+        * @param element
        *                  the character of map level
        * 
         */
@@ -51,6 +51,12 @@ public class Level extends Entity {
        
        /**
        * Gets the level.
+       *
+       *@param x
+       *			The x.
+       *
+       *@param y 
+       *			The y.
        *
        * @return the level
        */

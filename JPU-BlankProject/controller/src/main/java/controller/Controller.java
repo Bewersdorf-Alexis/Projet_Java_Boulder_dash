@@ -27,7 +27,7 @@ public final class Controller implements IController {
 	/** The order */
 	private ControllerOrder stackOrder;
 	
-	/** A attribute gravity */
+	/** The gravity */
 	private int gravity = 0;
 
 
@@ -42,7 +42,6 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		//this.model.loadLevel(1);
 	}
 
 	/**
@@ -91,7 +90,7 @@ public final class Controller implements IController {
 	/**
 	 * The play method.
 	 * 
-	 * controls the movement of all entities.
+	 * Controls the movement of all entities.
 	 * 
 	 */
 	public void play() {
@@ -99,9 +98,8 @@ public final class Controller implements IController {
 		while(this.getModel().getLevelMap().getPlayer().isExist()){
 
 			try {
-				Thread.sleep(60);
+				Thread.sleep(40);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -215,6 +213,7 @@ public final class Controller implements IController {
 	 * Sets the stackOrder.
 	 * 
 	 * @param stackOrder
+	 * 				The stackOrder.
 	 */
 	public void setStackOrder(ControllerOrder stackOrder) {
 
@@ -254,7 +253,9 @@ public final class Controller implements IController {
 	 * Gets the next element.
 	 * 
 	 * @param element
+	 * 			The element.
 	 * @param controllerOrder
+	 * 			The controllerOrder.
 	 * @return boolean
 	 */
 	public boolean getElementNext(IElement element, ControllerOrder controllerOrder) {
@@ -293,8 +294,11 @@ public final class Controller implements IController {
 	 * checks for collisions.
 	 * 
 	 * @param elementA
+	 * 				The actual element.
 	 * @param elementN
+	 * 				The next element.
 	 * @param controllerOrder
+	 * 				The controllerOrder
 	 * @return boolean
 	 */
 	public boolean collision(IElement elementA, IElement elementN, ControllerOrder controllerOrder) {
@@ -319,16 +323,14 @@ public final class Controller implements IController {
 			case ENEMY:
 				res = true;
 				this.model.getLevelMap().popDiamond(elementN.getX(), elementN.getY());
-
 				break;
 			case PLAYER:
-				if(gravity >= 2) {
+				if(gravity >= 1) {
 					res = true;
 					this.model.getLevelMap().getPlayer().setExist(false);;
 					JOptionPane.showMessageDialog(null, "You die !");
 					System.exit(0);
 				}
-
 				break;
 			case DIAMOND:
 				this.gravity = 0;
@@ -375,7 +377,7 @@ public final class Controller implements IController {
 			case ENEMY:
 				res = true;
 				this.model.getLevelMap().getPlayer().setExist(false);;
-				System.out.println("You Die");
+				JOptionPane.showMessageDialog(null, "You die !");
 				System.exit(0);
 				break;
 			case EXIT:

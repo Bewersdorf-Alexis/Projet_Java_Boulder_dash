@@ -22,6 +22,7 @@ public interface ISprite {
 	 * Set the image of element
 	 * 
 	 * @param image
+	 * 			The image.
 	 */
 	public void setImage(Image image);
 
@@ -29,6 +30,7 @@ public interface ISprite {
 	 * Load the image of element with imageName
 	 * 
 	 * @throws IOException
+	 * 			Throws the IOExecption.
 	 */
 	public void loadImage() throws IOException;
 
@@ -43,6 +45,7 @@ public interface ISprite {
 	 * Set the name of image
 	 * 
 	 * @param imageName
+	 * 				The image name.
 	 */
 	public void setImageName(String imageName);
 
