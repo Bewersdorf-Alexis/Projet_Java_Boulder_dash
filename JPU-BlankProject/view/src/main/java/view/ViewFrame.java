@@ -1,11 +1,14 @@
 package view;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 
@@ -24,10 +27,10 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController			controller;
-	
+
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
-	
+
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -72,7 +75,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param title
 	 *          the title
 	 * @param gc
-	 *          the gc 
+	 *          the gc
 	 */
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
@@ -170,5 +173,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
-		
+
 }
