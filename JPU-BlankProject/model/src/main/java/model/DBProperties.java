@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * The Class DBProperties.
  *
- * @author Carlu Florian
+ * @author Group 5
  */
 class DBProperties extends Properties {
 

@@ -3,7 +3,7 @@ package entity;
 /**
 * The Class Level.
 *
-* @author Carlu Florian
+* @author Group 5
 */
 public class Level extends Entity {
 

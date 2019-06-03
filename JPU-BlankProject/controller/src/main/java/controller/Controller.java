@@ -13,11 +13,13 @@ import contract.IView;
 
 /**
  * The Class Controller.
+ * 
+ * @author Group 5
  */
 public final class Controller implements IController {
 
 	/** The view. */
-	private IView		view;
+	private IView	view;
 
 	/** The model. */
 	private IModel	model;
@@ -40,11 +42,13 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		this.model.loadLevel(1);
+		//this.model.loadLevel(1);
 	}
 
 	/**
-     * Control.
+     * The method control.
+     * 
+     * Print a message on start.
      */
 	/*
 	 * (non-Javadoc)
@@ -76,7 +80,7 @@ public final class Controller implements IController {
 	}
 	
 	/**
-	 * Gets the model
+	 * Gets the model.
 	 * 
 	 * @return model
 	 */
@@ -85,9 +89,9 @@ public final class Controller implements IController {
 	}
 
 	/**
-	 * The play method
+	 * The play method.
 	 * 
-	 * controls the movement of all entities
+	 * controls the movement of all entities.
 	 * 
 	 */
 	public void play() {
@@ -166,9 +170,9 @@ public final class Controller implements IController {
 								e1.moveLeft();
 							}
 							break;
-						//default:
-							//e1.doNothing();
-							//break;
+						default:
+							e1.doNothing();
+							break;
 						}
 					}
 					
@@ -199,7 +203,7 @@ public final class Controller implements IController {
 	}
 	
 	/**
-	 * Gets the order
+	 * Gets the order.
 	 * 
 	 * @return stackOrder
 	 */
@@ -209,7 +213,7 @@ public final class Controller implements IController {
 	}
 
 	/**
-	 * Sets the stackOrder
+	 * Sets the stackOrder.
 	 * 
 	 * @param stackOrder
 	 */
@@ -219,7 +223,7 @@ public final class Controller implements IController {
 	}
 	
 	/**
-	 * Reset the stackOrder
+	 * Reset the stackOrder.
 	 * 
 	 */
     private void clearStackOrder() {
@@ -228,7 +232,7 @@ public final class Controller implements IController {
     }
 	
     /**
-     * Gets the controller
+     * Gets the controller.
      * 
      * @return controller
      */
@@ -236,10 +240,11 @@ public final class Controller implements IController {
         return this;
     }
 
-    /**
-     * Sets the order
-     * 
-     */
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IController#orderPerform()
+	 */
     @Override
     public final void orderPerform(final ControllerOrder userOrder) {
 
@@ -247,7 +252,7 @@ public final class Controller implements IController {
     }
 	
 	/**
-	 * Gets the next element
+	 * Gets the next element.
 	 * 
 	 * @param element
 	 * @param controllerOrder
@@ -286,7 +291,7 @@ public final class Controller implements IController {
 	}
 	
 	/**
-	 * checks for collisions
+	 * checks for collisions.
 	 * 
 	 * @param elementA
 	 * @param elementN
@@ -417,6 +422,3 @@ public final class Controller implements IController {
 	
 	}
 }
-	
-	
-

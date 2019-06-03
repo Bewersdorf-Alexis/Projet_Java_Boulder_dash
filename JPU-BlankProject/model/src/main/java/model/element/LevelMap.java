@@ -8,11 +8,21 @@ import entity.Level;
 import model.element.mobile.*;
 import model.element.motionless.*;
 
+/**
+ * The Class Model.
+ *
+ * @author Group 5
+ */
 public class LevelMap extends Observable implements ILevelMap {
 
+	/** The levelmap; */
 	private IElement[][] levelmap = new IElement[40][22];
                 
-
+	/**
+	 * Instantiates a new levelMap.
+	 * 
+	 * @param level
+	 */
 	public LevelMap(Level level) {
                                
 		for(int x=0; x<40; x++) {
@@ -52,6 +62,11 @@ public class LevelMap extends Observable implements ILevelMap {
                                
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#getPlayer()
+	 */
 	@Override
 	public IElement getPlayer() {
                                
@@ -68,30 +83,55 @@ public class LevelMap extends Observable implements ILevelMap {
                                                
 		return null;
 	}
-                
+         
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#getElement()
+	 */
 	@Override
 	public IElement getElement(int x, int y) {
                                
 		return this.levelmap[x][y];
 	}
-                
+       
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#setElement()
+	 */
 	@Override
 	public void setElement(int x, int y, IElement element) {
 		this.levelmap[x][y] = element;
 		this.setChanged();
 		this.notifyObservers();
 	}
-                
+         
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#removeElement()
+	 */
 	@Override
 	public void removeElement(int x, int y) {
                                
 		this.setElement(x, y, null);
 	}
-                
+               
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#getObservable()
+	 */
 	public Observable getObservable() {
 		return this;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.ILevelMap#popDiamond()
+	 */
 	@Override
 	public void popDiamond(int a, int b) {
 		
