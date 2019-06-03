@@ -28,7 +28,7 @@ public final class Controller implements IController {
 	private ControllerOrder stackOrder;
 	
 	/** A attribute gravity */
-	private boolean gravity = true;
+	private int gravity = 0;
 
 
 	/**
@@ -185,7 +185,6 @@ public final class Controller implements IController {
 							e.printStackTrace();
 						}
 						
-						this.gravity = true;
 						cole1 = this.getElementNext(e1, ControllerOrder.Down);
 						
 						if(cole1) {
@@ -208,7 +207,7 @@ public final class Controller implements IController {
 	 * @return stackOrder
 	 */
 	public ControllerOrder getStackOrder() {
-		this.gravity = false;
+
 		return stackOrder;
 	}
 
@@ -323,7 +322,7 @@ public final class Controller implements IController {
 
 				break;
 			case PLAYER:
-				if(gravity) {
+				if(gravity >= 2) {
 					res = true;
 					this.model.getLevelMap().getPlayer().setExist(false);;
 					JOptionPane.showMessageDialog(null, "You die !");
@@ -332,14 +331,18 @@ public final class Controller implements IController {
 
 				break;
 			case DIAMOND:
+				this.gravity = 0;
 			case ROCK:
+				this.gravity = 0;
 			case UNBREAKABLEBLOCK:
+				this.gravity = 0;
 				break;
 			case DEFAULT:
-				gravity = true;
+				this.gravity++;
 				res = true;
 				break;
 			default :
+				this.gravity = 0;
 				res = false;
 				break;
 			}
